@@ -1,0 +1,176 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+
+# Box
+
+The `Box` component is a base-level component you to create visual sections with
+helpful styling tools attached. It can do things like calculate spacing and
+setting styling.
+
+## Use cases
+
+Below are some common use cases for the `Box` component.
+
+### Basic use
+
+Often, a section of the DOM has margin and padding applied to it. The `Box`
+component can set these css properties for all 4 dimensions when passed a
+spacing option.
+
+The teal border shows the margin. The rose border shows the padding.
+
+<Canvas>
+  <Story id="core-layout-box--basic-use" />
+</Canvas>
+
+### Multiple Sizes
+
+The `Box` component can also set each of the 4 dimensions seperately.
+
+The teal border shows the margin. The rose border shows the padding.
+
+<Canvas>
+  <Story id="core-layout-box--multiple-sizes" />
+</Canvas>
+
+### Convenience Sizes
+
+The `Box` component provides `horizontal` and `vertical` sizing props.
+`horizontal` will set the left and right dimensions. `vertical` will set the top
+and bottom dimensions.
+
+The teal border shows the margin. The rose border shows the padding.
+
+<Canvas>
+  <Story id="core-layout-box--convenience-sizes" />
+</Canvas>
+
+### Inline
+
+The `Box` component can be made to display using the `inline-block`
+attribute by passing it an `inline={true}` prop.
+
+<Canvas>
+  <Story id="core-layout-box--inline" />
+</Canvas>
+
+### Other Styling
+
+The `Box` component can apply other styles along with spacing. Below is an
+example showing how to apply flexbox.
+
+The teal border shows the margin. The rose border shows the padding. The green
+border shows the children's borders.
+
+<Canvas>
+  <Story id="core-layout-box--other-styling" />
+</Canvas>
+
+### Spacing Without Box
+
+While it is encouraged to use the `Box` component, if spacing needs to be
+applied to other components the `getBoxCss` function has been made available
+for use.
+
+The `getBoxCss` takes the same types as `Box` for margin and padding.
+
+The teal border shows the margin. The rose border shows the padding.
+
+<Canvas>
+  <Story id="core-layout-box--spacing-without-box" />
+</Canvas>
+
+### As another element type
+
+The `Box` component can be configured to render any other valid React
+component or HTML element via the `as` prop. This is especially useful
+when you want a semantically correct container.
+
+Note below that the box is being rendered as a `section` instead of the
+default `div`.
+
+<Canvas>
+  <Story id="core-layout-box--as-another-element" />
+</Canvas>
+
+Note also that `div`s are rendered as `display: block` elements by
+default, therefore changing the underlying element to something that
+does not render the same way may change the appearance of your
+container. In such scenarios, you may need to wrap your desired
+component with a `Box` instead, as shown in earlier stories on this page.
+
+See below a `Box` rendered using `span` as its `as` prop:
+
+```tsx
+<div
+  className="wrapper-display"
+  style={{
+    display: "inline-block",
+    border: "1px solid",
+    borderColor: getColor("lightBlue", 500)({ theme }),
+  }}
+>
+  <Box
+    boxMargin="md"
+    boxPadding="xl"
+    style={{
+      border: "1px solid",
+      borderColor: getColor("red", 500)({ theme }),
+    }}
+    as="span"
+  >
+    <BodyText>I need spacing!</BodyText>
+  </Box>
+</div>
+```
+
+## Usage
+
+```javascript
+import { Box } from "@braze/beacon-core";
+import { getBoxCss } from "@braze/beacon-core";
+```
+
+## Types
+
+These type definitions are needed to understand the property types.
+
+#### SpacingOptions
+
+```typescript
+type SpacingOptions =
+  | "none"
+  | "xs"
+  | "sm"
+  | "md"
+  | "lg"
+  | "xl"
+  | "xxl"
+  | "xxxl";
+```
+
+#### BoxSpecs
+
+```typescript
+interface BoxSpecs {
+  left?: SpacingOptions;
+  right?: SpacingOptions;
+  top?: SpacingOptions;
+  bottom?: SpacingOptions;
+  vertical?: SpacingOptions;
+  horizontal?: SpacingOptions;
+}
+```
+
+## Properties
+
+| propName     | propType                                                           | defaultValue | isRequired | Description                                                                     |
+| ------------ | ------------------------------------------------------------------ | ------------ | ---------- | ------------------------------------------------------------------------------- |
+| `as`         | string                                                             | `div`        | -          | indicates what tag what the component should be rendered as                     |
+| `boxMargin`  | oneOf(SpacingOptions, BoxSpecs)                                    | -            | -          | margin options to calculate spacing from                                        |
+| `boxPadding` | oneOf(SpacingOptions, BoxSpecs)                                    | -            | -          | padding options to calculate spacing from                                       |
+| `children`   | oneOfType( node, arrayOf( node ) )                                 | -            | -          | children to be passed into component                                            |
+| `className`  | string                                                             | -            | -          | class name of the component                                                     |
+| `id`         | string                                                             | -            | -          | id to be passed to the DOM                                                      |
+| `inline`     | boolean                                                            | -            | -          | indicates that 'inline-block' should be used for display                        |
+| `style`      | CSSObject                                                          | -            | -          | styles to be passed to the `Box`                                                |
+| `styledCss`  | return value of the `css` function exported by `styled-components` | -            | -          | prop to interpolate the returned value of a `css` call within styled-components |

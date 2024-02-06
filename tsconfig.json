@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.test.json",
+  "compilerOptions": {
+    "rootDir": "packages",
+    "types": ["node", "jest", "react", "mdx"],
+    "typeRoots": ["node_modules", "types"]
+  },
+  "include": ["packages/**/*.ts", "packages/**/*.tsx"],
+  "exclude": ["**/integration_tests/**/*", "**/component_tests/**/*", "**/test-utils/**/*"]
+}

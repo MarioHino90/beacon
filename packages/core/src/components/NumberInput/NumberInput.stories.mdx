@@ -1,0 +1,156 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { number, select, text } from "@storybook/addon-knobs";
+import { FieldLabel } from "@braze/beacon-core";
+
+import { NumberInput } from ".";
+
+<Meta title="Core/Forms/NumberInput" component={NumberInput} />
+
+# NumberInput
+
+The `NumberInput` component allows you to accept numerical
+values from your user and provide them with helper tools to
+increment and decrement the current value.
+
+## Use cases
+
+Below are some common use cases for the `NumberInput` component.
+
+### Basic use
+
+The `NumberInput` component uses the same props as the `Input`
+component and defines custom styles for the up/down steppers
+(hover to see these!).
+
+> NOTE: Unlike the `Input` component, the `NumberInput` does NOT
+> accept the `type` prop and is hardcoded to always use `number`.
+
+<Canvas>
+  <Story name="basic use">
+    {() => {
+      const [value, setValue] = React.useState(0);
+      return (
+        <div>
+          <FieldLabel label="This is a number field">
+            <NumberInput
+              type="number"
+              min={number("Min", 0)}
+              max={number("Max", 100)}
+              step={number("Step", 1)}
+              onChange={(event) => {
+                setValue(event.target.value);
+              }}
+              value={value}
+              vSize={select("Size", ["sm", "md"], "md")}
+            />
+          </FieldLabel>
+          <dl>
+            <dt>Number value:</dt>
+            <dd id="number-value">{value}</dd>
+          </dl>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### With min/max
+
+To bound your user's stepping to between allowed values, you can
+use the `min` and `max` props.
+
+> NOTE: The `min` and `max` props do NOT prevent the user from
+> manually entering any number value; if you need value validation,
+> you must implement this yourself.
+
+<Canvas>
+  <Story name="with min/max">
+    <FieldLabel label="This is a number field">
+      <NumberInput type="number" min={1} max={10} />
+    </FieldLabel>
+  </Story>
+</Canvas>
+
+### With step
+
+To allow your user to increment/decrement their values faster,
+you can define the `step` prop as shown below.
+
+<Canvas>
+  <Story name="with step">
+    {() => {
+      const [value, setValue] = React.useState(0);
+      return (
+        <div>
+          <FieldLabel label="This is a number field">
+            <NumberInput
+              type="number"
+              step={5}
+              onChange={(event) => {
+                setValue(event.target.value);
+              }}
+              value={value}
+            />
+          </FieldLabel>
+          <dl>
+            <dt>Number value:</dt>
+            <dd id="number-value">{value}</dd>
+          </dl>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Disabled
+
+Use prop `disabled` to disable the use of the underlying input.
+
+<Canvas>
+  <Story name="disabled">
+    <NumberInput placeholder="Enter text in me!" disabled />
+  </Story>
+</Canvas>
+
+### Invalid
+
+Use prop `invalid` to denote that the value in the input is not valid.
+
+> Add a descriptive error message to the field's label to tell your user what went wrong.
+
+<Canvas>
+  <Story name="invalid">
+    <FieldLabel
+      label="Field Label"
+      htmlFor="invalidInput"
+      status="danger"
+      statusText={text(
+        "Error Message",
+        "Please enter a valid value in this field"
+      )}
+    >
+      <NumberInput id="invalidInput" placeholder="Enter text in me!" invalid />
+    </FieldLabel>
+  </Story>
+</Canvas>
+
+## Usage
+
+```javascript
+import { NumberInput } from "@braze/beacon-core";
+```
+
+## Properties
+
+| propName             | propType                              | defaultValue | isRequired | Description                                                                           |
+| -------------------- | ------------------------------------- | ------------ | ---------- | ------------------------------------------------------------------------------------- |
+| `className`          | string                                | -            | -          | class name of the component                                                           |
+| `containerClassName` | string                                | -            | -          | class name to be passed to the container element                                      |
+| `fullWidth`          | boolean                               | -            | -          | takes up 100% of the width of the container                                           |
+| `id`                 | string                                | -            | -          | id to be passed to the DOM                                                            |
+| `invalid`            | boolean                               | -            | -          | indicates that the currently inputted value is invalid                                |
+| `max`                | oneOfType( number, string )           | -            | -          | max value for the input field; only relevant when `type` is either `number` or `date` |
+| `min`                | oneOfType( number, string )           | -            | -          | min value for the input field; only relevant when `type` is either `number` or `date` |
+| `ref`                | `React.RefObject<HTMLInputElement>`   | -            | -          | ref to get access to the DOM node                                                     |
+| `step`               | number                                | -            | -          | step to use when bumping up numbers                                                   |
+| `value`              | oneOfType( string, number, string[] ) | -            | -          | value to be rendered in the input field                                               |

@@ -1,0 +1,90 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+
+# RadioButton
+
+A radio is a form of control allowing users to pick a single option
+from the group. All possible options are exposed upfront for users
+to compare.
+
+## Use cases
+
+Below are some common use cases for the `RadioButton` component.
+
+> Note: for use cases involving multiple `RadioButtons` used together,
+> please refer to the `RadioButtonGroup` stories.
+
+### Basic use
+
+It is important to note that the `checked` and `defaultChecked` props
+are only used with isolated `RadioButton`s. When using in the context
+of a `RadioButtonGroup`, the `value` of the `RadioButtonGroup` controls
+the individual `RadioButton`'s `checked` prop. See the `RadioButtonGroup`
+stories for examples there.
+
+<Canvas>
+  <Story id="core-forms-radiobutton--basic-use" />
+</Canvas>
+
+### With children
+
+Rather than using the `label` prop, you can also pass in content as
+children to render a label. Note that when both `children` and `label`
+props are present, only `children` will be rendered.
+
+<Canvas>
+  <Story id="core-forms-radiobutton--with-children" />
+</Canvas>
+
+### With help text
+
+`RadioButton` can also be used with a help text underneath,
+informing the user about the consequences of their selection.
+
+<Canvas>
+  <Story id="core-forms-radiobutton--with-help-text" />
+</Canvas>
+
+### Invalid entry
+
+Most commonly, a radio button may be displayed as `invalid` if
+a user fails to make selection when prompted.
+
+<Canvas>
+  <Story id="core-forms-radiobutton--invalid-entry" />
+</Canvas>
+
+## Controlling the radio button state programmatically
+
+Controlling the radio button's checked state via external state is also possible.
+
+<Canvas>
+  <Story id="core-forms-radiobutton--update-programmatically-later" />
+</Canvas>
+
+## Usage
+
+```javascript
+import { RadioButton } from "@braze/beacon-core";
+```
+
+## Properties
+
+| propName             | propType                            | defaultValue | isRequired | Description                                                                  |
+| -------------------- | ----------------------------------- | ------------ | ---------- | ---------------------------------------------------------------------------- |
+| `checked`            | boolean                             | -            | -          | indicates whether the radio button should be marked as checked               |
+| `children`           | oneOfType( node, arrayOf( node ) )  | -            | -          | children to be passed into label component                                   |
+| `className`          | string                              | -            | -          | class name of the component                                                  |
+| `containerClassName` | string                              | -            | -          | class name to be passed into the radio button container; use as escape hatch |
+| `defaultChecked`     | boolean                             | -            | -          | indicates whether the radio button should default to checked                 |
+| `disabled`           | boolean                             | -            | -          | indicates whether the radio button should be disabled                        |
+| `errorText`          | string                              | -            | -          | text to be shown to the user if 'invalid' prop is true                       |
+| `helpText`           | string                              | -            | -          | text to be shown if the invalid prop is false                                |
+| `helpTextClassName`  | string                              | -            | -          | class name to be passed into the help text; use as escape hatch              |
+| `id`                 | string                              | -            | -          | id to be passed to the DOM                                                   |
+| `invalid`            | boolean                             | -            | -          | indicates that the current state of the radio button is invalid              |
+| `invalidRadioOnly`   | boolean                             | -            | -          | only set the radio to invalid state, don't display the error text            |
+| `label`              | string                              | -            | -          | label to be displayed alongside radio button                                 |
+| `labelClassName`     | string                              | -            | -          | class name to be passed into the label; use as escape hatch                  |
+| `name`               | string                              | -            | -          | name to be passed to the DOM                                                 |
+| `ref`                | `React.RefObject<HTMLInputElement>` | -            | -          | ref to get access to the DOM node                                            |
+| `value`              | sring                               | -            | +          | value to be passed to the change event                                       |

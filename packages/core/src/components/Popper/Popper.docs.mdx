@@ -1,0 +1,168 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+
+# Popper
+
+This story exists to document advanced behavior. In most cases, as a developer, you want to look at `Tooltip`, `Popover`, or `UncontrolledTooltip`.
+Proceed if you are writing a new component that uses `Popper` directly.
+
+> NOTE: The `Popper` component has a `30vh` max-height by default, which
+> is to encourage limiting the amount of content placed in `Popper`s.
+
+## Advanced Examples
+
+These examples should be ignored for end user developers, unless implementing a new component that needs to
+interact with the underlying Popper in more unusual ways.
+
+### Rendering later, using Context to set the data used to render elements
+
+In some cases, it is not known at initial render time what elements will be present that need tooltips.
+The underlying Popper element that forms the internal implementation of ToolTip supports this use case.
+
+Here is an example source code that demonstrates using React Context and a callback to construct the child
+elements to support a more intuitive developer interface:
+
+```tsx
+export const SampleContext = createContext({ addButton: () => {} });
+
+export const RenderTooltipButton = ({ children }) => {
+  const { addButton } = useContext(SampleContext);
+  useLayoutEffect(() => {
+    // add a parent button with custom tooltip
+    addButton(children);
+  }, [addButton, children]);
+  return null;
+};
+
+export const DelayedRenderOfChildrenwithTooltips = ({ children }) => {
+  const [buttons, setButtons] = useState(new Set());
+  // useCallback to prevent infinite re-render
+  const addButton = useCallback((buttonText) => {
+    setButtons((oldState) => new Set([...oldState, buttonText])), [setButtons];
+  });
+  return (
+    <SampleContext.Provider value={{ addButton }}>
+      <div>
+        {[...buttons].map((toolTip) => (
+          <span key={toolTip}>
+            <UncontrolledTooltip label={toolTip}>
+              <Button>Hover over me</Button>
+            </UncontrolledTooltip>
+            &nbsp;
+          </span>
+        ))}
+      </div>
+      {children}
+    </SampleContext.Provider>
+  );
+};
+```
+
+<Canvas>
+  <Story id="core-overlay-popper--advanced-example" />
+</Canvas>
+
+### No crashing if the target element doesn't exist
+
+<Canvas>
+  <Story id="core-overlay-popper--element-not-found" />
+</Canvas>
+
+### Overriding the default height
+
+For some use cases, such as the Popper used inside Beacon's `DatePicker`,
+it is necessary to override the max height and max width.
+
+<Canvas>
+  <Story id="core-overlay-popper--large-popper-content" />
+</Canvas>
+
+### Prevent close on outside click for specified elements with class
+
+Sometimes, you may want your `Popper` to _not_ close when a user clicks on
+specific elements. To denote elements that should not cause your `Popper`
+to close, either give them the a `className` of `bcl-popper-ignore-click`
+or whatever className corresponds to the `ignoreCloseOnClickOutsideClassName`
+prop you provide your `Popper` component.
+
+<Canvas>
+  <Story id="core-overlay-popper--prevent-close-on-outside-click-for-element-with-class" />
+</Canvas>
+
+<Canvas>
+  <Story id="core-overlay-popper--prevent-close-on-outside-click-for-element-with-custom-class" />
+</Canvas>
+
+To completely disable closing the popper except by clicking on the target, pass `false`
+to the `closeOnClickOutside` prop.
+
+<Canvas>
+  <Story id="core-overlay-popper--prevent-close-on-any-outside-interaction" />
+</Canvas>
+
+While this should rarely be needed, if you want to completely disable the
+outside click behavior for performance reasons or to prevent unintentional
+behavior, you can set `isIgnoreCloseOnClickOutsideEnabled` to `false`.
+
+<Canvas>
+  <Story id="core-overlay-popper--no-crash-on-outside-click-for-element-with-empty-ignore-class" />
+</Canvas>
+
+### Rendering a popper with internal interactive elements
+
+When the popper contains elements that users can interact with, such as a form or a link to open external documentation, the
+`interactive` prop should be true to prevent the popper closing on interacting with its internal elements
+
+<Canvas>
+  <Story id="core-overlay-popper--interactive" />
+</Canvas>
+
+### Delaying opening the popper
+
+In some cases (such as for tooltips), it may be desirable to delay opening the popper by a set amount.
+Note that if `delay` is specified, `untriggers` is a required property to get the desired behavior.
+Otherwise, the popup will disappear immediately.
+
+<Canvas>
+  <Story id="core-overlay-popper--delay-open-and-close" />
+</Canvas>
+
+<Canvas>
+  <Story id="core-overlay-popper--delay-only-close" />
+</Canvas>
+
+<Canvas>
+  <Story id="core-overlay-popper--delay-only-open" />
+</Canvas>
+
+## Usage
+
+```javascript
+import { Popper } from "@braze/beacon-core";
+```
+
+### `Popper`
+
+| propName                             | propType                                                                                                                                                    | defaultValue              | isRequired | Description                                                                                                                                                                        |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `children`                           | oneOfType( ReactNode, ({ activePlacement, targetDimensions, popperDimensions }) => ReactNode )                                                              | -                         | -          | children to be passed into component, or a render prop that accepts the auto-calculated placement plus the dimensions of the target and the popper (or undefined if not available) |
+| `className`                          | string                                                                                                                                                      | -                         | -          | class name of the component                                                                                                                                                        |
+| `closeOnClickOutside`                | boolean                                                                                                                                                     | `true`                    | -          | indicates that the popper should be closed when a user clicks outside the target or the popper (if interactive)                                                                    |
+| `delay`                              | oneOfType( `[number OR null, number OR null]`, `number` )                                                                                                   | -                         | -          | indicates the amount of time, if any, to delay opening and/or closing the popper by                                                                                                |
+| `id`                                 | string                                                                                                                                                      | -                         | -          | id to be passed to the DOM                                                                                                                                                         |
+| `interactive`                        | boolean                                                                                                                                                     | `false`                   | -          | indicates that the popper can be hovered/clicked/focused/etc. into                                                                                                                 |
+| `ignoreCloseOnClickOutsideClassName` | string                                                                                                                                                      | `bcl-popper-ignore-click` | -          | the className that should cause an element containing it to be ignored when determining whether to close popper                                                                    |
+| `isIgnoreCloseOnClickOutsideEnabled` | boolean                                                                                                                                                     | `true`                    | -          | indicates that the ignore close on outside click behavior using specific classNames is enabled                                                                                     |
+| `isOpen`                             | boolean                                                                                                                                                     | -                         | -          | determines if the component should be rendered                                                                                                                                     |
+| `distance`                           | number                                                                                                                                                      | `8`                       | -          | desired offset from bottom of `target` component                                                                                                                                   |
+| `skidding`                           | number                                                                                                                                                      | `0`                       | -          | desired offset from left of `target` component                                                                                                                                     |
+| `onOpen`                             | `(event: React.MouseEvent , React.FocusEvent , Event) => void`                                                                                              | -                         | +          | function to call when the tooltip should be opened                                                                                                                                 |
+| `onClose`                            | `(event: React.MouseEvent , React.FocusEvent , Event) => void`                                                                                              | -                         | +          | function to call when the tooltip should be closed                                                                                                                                 |
+| `placement`                          | `auto`, `top-start`, `top`, `top-end`, `right-start`, `right`, `right-end`, `bottom-end`, `bottom`, `bottom`, `left-end`, `left`, `left-start`, `undefined` | `auto`                    | -          | desired placement of Popper relative to target                                                                                                                                     |
+| `popperStyle`                        | object                                                                                                                                                      | -                         | -          | style object override to be passed to the parent popper component                                                                                                                  |
+| `popperStyledCss`                    | return value of the `css` function exported by `styled-components`                                                                                          | -                         | -          | prop to interpolate the returned value of a `css` call within styled-components                                                                                                    |
+| `portalRef`                          | `RefObject`                                                                                                                                                 | -                         | -          | ref of Portal inside which Popper will be rendered                                                                                                                                 |
+| `target`                             | string                                                                                                                                                      | -                         | +          | desired target component's ID                                                                                                                                                      |
+| `targetRef`                          | `React.RefObject`                                                                                                                                           | -                         | -          | ref object to pass down to the target object                                                                                                                                       |
+| `triggers`                           | arrayOf( `click`, `mouseenter`, `focus` )                                                                                                                   | `['click']`               | -          | array containing desired trigger(s) for popper on behavior                                                                                                                         |
+| `untriggers`                         | arrayOf( `click`, `mouseleave`, `blur`, `scroll` )                                                                                                          | `['click']`               | -          | array containing desired trigger(s) for popper off behavior                                                                                                                        |
+| `zIndex`                             | number                                                                                                                                                      | `1031`                    | -          | z-index for the component and its sub-components                                                                                                                                   |

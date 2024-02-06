@@ -1,0 +1,149 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+
+# FieldLabel
+
+A `FieldLabel` decorates an element (typically a form element)
+with an associated label as well as optional helper and
+validation text.
+
+## Use cases
+
+Below are some common use cases for the `FieldLabel` component.
+
+### Basic use
+
+Wrap your form element with `FieldLabel` and make sure to
+give `FieldLabel` an `htmlFor` attribute that matches the `id`
+of the target input element, as shown below:
+
+<Canvas>
+  <Story id="core-forms-fieldlabel--basic-use" />
+</Canvas>
+
+### Accessibility
+
+`FieldLabel` should typically take a single input element as its child.
+The child passed into the `FieldLabel` should have a unique id defined.
+
+<Canvas>
+  <Story id="core-forms-fieldlabel--accessibility" />
+</Canvas>
+
+### Helper text
+
+Specify prop `helpText` to show helper text below the control:
+
+<Canvas>
+  <Story id="core-forms-fieldlabel--helper-text" />
+</Canvas>
+
+### Success text
+
+Specify prop `status="success"` and `statusText` to whatever you want
+to render text that signifies success around the form control's
+value. Setting `status` will replace any helper text you have specified.
+
+<Canvas>
+  <Story id="core-forms-fieldlabel--success-text" />
+</Canvas>
+
+### Error text
+
+Specify prop `status="danger"` and `statusText` to whatever you want
+to render text that signifies error around the form control's
+value. Setting `status` will replace any helper text you have specified.
+
+<Canvas>
+  <Story id="core-forms-fieldlabel--error-text" />
+</Canvas>
+
+### Optional fields
+
+Adding prop `enforce="optional"` will add "(optional)" text styling to the label.
+
+<Canvas>
+  <Story id="core-forms-fieldlabel--optional" />
+</Canvas>
+
+### Required fields
+
+Adding prop `enforce="required"` will add "(required)" text styling to the label.
+
+<Canvas>
+  <Story id="core-forms-fieldlabel--required" />
+</Canvas>
+
+### Stacked fields
+
+Adjacent `FieldLabel` elements will get stacked with proper spacing:
+
+<Canvas>
+  <Story id="core-forms-fieldlabel--stacked-fields" />
+</Canvas>
+
+### Custom label formatting
+
+Adding the `formatLabel` callback prop allows styling the internal label.
+
+<Canvas>
+  <Story id="core-forms-fieldlabel--formatlabel" />
+</Canvas>
+
+## Usage
+
+```javascript
+import { FieldLabel } from "@braze/beacon-core";
+```
+
+### Info Icon and Popover
+
+In some scenarios, more extensive explanatory text is needed that can fit into a single sentence. In this case, `helpText` is insufficient.
+Instead, use the `infoIconPopoverContent` property to specify longer content. This will prompt the `FieldLabel` to render an info icon
+that displays a popover when triggered.
+
+If the content is simple text, a tooltip will be rendered. If, on the other hand, the content contains links or other rich text, a Popover
+will be rendered.
+
+By default, the info text will be triggered by hovering over the icon, or by focusing the icon. To change the behavior
+to only trigger on clicking or focusing, use the `infoIconTriggerVariant` property.
+
+In some cases, there is one primary `FieldLabel` in the set. To indicate this, use the `"muted"` `infoIconVariant` property for the other
+`FieldLabels` in the form.
+
+<Canvas>
+  <Story id="core-forms-fieldlabel--info-icon-popover" />
+</Canvas>
+
+In order to be keyboard-accessible, the underlying code relies upon being able to find the control associated with the label. There are 2 ways
+that `FieldLabel` can detect the underlying element:
+
+1. through the `htmlFor` prop, which references the underlying element's `id`
+2. through an explicit `React.RefObject` created with `React.createRef` or `useRef` passed in the `controlRef` prop
+
+The first is preferable for all single elements, the second should be used for RadioButtons or groups of checkboxes. Note that without an `htmlFor`
+prop or `controlRef` prop, keyboard accessibility will break, as demonstrated by the third example below. Try using the `Tab` key to navigate forward
+through the form, and the combination of `Shift` and `Tab` to navigate backwards through the form in Canvas view.
+
+<Canvas>
+  <Story id="core-forms-fieldlabel--info-icon-popover-with-ambiguous-children" />
+</Canvas>
+
+## Properties
+
+| propName                 | propType                                        | defaultValue | isRequired | Description                                                                                                                                    |
+| ------------------------ | ----------------------------------------------- | ------------ | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `boxProps`               | Box properties                                  | -            | -          | properties to pass to the containing box element                                                                                               |
+| `children`               | node                                            | -            | -          | child to be passed into the component; must be a single node                                                                                   |
+| `className`              | string                                          | -            | -          | class name of the component                                                                                                                    |
+| `controlRef`             | `React.RefObject<HTMLElement>`                  | -            | -          | For React-based help icon popover content, pass to the first control that is referenced by this `FieldLabel`. Prefer `htmlFor` over this prop. |
+| `enforce`                | oneOf( `optional`, `required` )                 | -            | -          | indicates whether the form is optional or required, if any                                                                                     |
+| `formatLabel`            | `(props?: FormatLabelProps) => React.ReactNode` | -            | -          | function that takes props and can be used to format the label                                                                                  |
+| `infoIconPopoverContent` | oneOf( `string`, `React.ReactNode` )            | -            | -          | For a large amount of explanatory or help text, this option should be used                                                                     |
+| `infoIconTriggerVariant` | oneOf( `"hover"`, `"click"` )                   | `"hover"`    | -          | how the popover should be triggered, by clicking or hovering                                                                                   |
+| `infoIconVariant`        | oneOf( `"muted"`, `"primary"` )                 | `"primary"`  | -          | The color of the info icon.                                                                                                                    |
+| `helpText`               | string                                          | -            | -          | succinct help text to be displayed below the field when no error/success present                                                               |
+| `htmlFor`                | string                                          | -            | -          | DOM id of the **target** input element; is used to focus on the input when the label is clicked                                                |
+| `id`                     | string                                          | -            | -          | id to be passed to the DOM for the label element                                                                                               |
+| `label`                  | string                                          | -            | -          | label to be displayed on top of the field                                                                                                      |
+| `status`                 | oneOf( `danger`, `success` )                    | -            | -          | indicates the current status of the form, if any                                                                                               |
+| `statusText`             | string                                          | -            | -          | indicates what message should be displayed as part of the status, if any                                                                       |

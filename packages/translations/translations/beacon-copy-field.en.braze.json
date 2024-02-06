@@ -1,0 +1,10 @@
+{
+  "en": {
+    "braze": {
+      "beacon-copy-field": {
+        "copied-to-clipboard": "Copied to Clipboard",
+        "copy-tooltip": "Copy"
+      }
+    }
+  }
+}

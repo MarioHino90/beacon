@@ -1,0 +1,16 @@
+{
+  "ja": {
+    "braze": {
+      "beacon-table": {
+        "sort-aria-label-asc": "Column { columnName }. Select to sort ascending",
+        "sort-aria-label-desc": "Column { columnName }. Select to sort descending",
+        "sort-tooltip-asc": "Sort ascending",
+        "sort-tooltip-desc": "Sort descending",
+        "sorted-aria-label-asc": "Sorted column { columnName } ascending. {nextSortDirection, select, desc {Select to sort descending} asc {Select to remove sort} other {Select to remove sort}}",
+        "sorted-aria-label-desc": "Sorted column { columnName } descending. {nextSortDirection, select, asc {Select to sort ascending} desc {Select to remove sort} other {Select to remove sort}}",
+        "sorted-tooltip-asc": "Sorted ascending",
+        "sorted-tooltip-desc": "Sorted descending"
+      }
+    }
+  }
+}

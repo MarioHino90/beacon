@@ -1,0 +1,217 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { boolean, select, text, withKnobs } from "@storybook/addon-knobs";
+import { action } from "@storybook/addon-actions";
+
+import { Box } from "../Box";
+import { Button } from "../Button";
+import { FieldLabel } from "../FieldLabel";
+import { Input } from "../Input";
+import { LoremIpsum } from "../LoremIpsum";
+import { Popover, usePopover } from "../Popover";
+import { PopoverBody } from "../PopoverBody";
+import { PopoverHeading } from "../PopoverHeading";
+import { Portal } from "../Portal";
+import { RadioButton } from "../RadioButton";
+import { RadioButtonGroup } from "../RadioButtonGroup";
+import { Tooltip, useTooltip } from "../Tooltip";
+
+import { ModalBody } from "../ModalBody";
+import { ModalFooter } from "../ModalFooter";
+import { ModalHeading } from "../ModalHeading";
+
+import { Modal } from ".";
+
+<Meta title="Core/Overlay/Modal" component={Modal} />
+
+# Modal
+
+The `Modal` component is used to provide additional context and/or prompt
+the user to take some sort of action. The goal is to avoid taking the user
+to a different screen, especially if the actions done by the modal are
+destructive.
+
+## Use cases
+
+Below are some common use cases for the `Modal` component.
+
+> NOTE: to align the `Button` components left and right, you can use the
+> `ModalFooter` in `aligner` mode as shown in the examples below.
+
+### Size: small (w/o icon)
+
+Small modals are used for short communications that may need user input.
+
+<Canvas>
+  <Story id="core-overlay-modal--size-small-wo-icon" />
+</Canvas>
+
+### Size: small (w/ icon)
+
+When appropriate a small modal can have an icon. To pass one, specify
+the `iconType` prop in `ModalHeading`.
+
+<Canvas>
+  <Story id="core-overlay-modal--size-small-w-icon" />
+</Canvas>
+
+### Size: medium
+
+Medium modals are the most common modal size in the dashboard.
+
+<Canvas>
+  <Story id="core-overlay-modal--size-medium" />
+</Canvas>
+
+### Size: large
+
+Large modals are used to display large and complex content. They should be
+used sparingly and very intentionally.
+
+<Canvas>
+  <Story id="core-overlay-modal--size-large" />
+</Canvas>
+
+### Size: extra large
+
+Use the extra large modal **only when** the content doesn't fit in
+`size === 'lg'`. Before using `extra large`, ask yourself:
+
+- Should this be a new page instead?
+- Am I trying to put too much content inside a Modal?
+- When was the last time I went on [ModalzModalzModalz](https://modalzmodalzmodalz.com/)?
+
+<Canvas>
+  <Story id="core-overlay-modal--size-extra-large" />
+</Canvas>
+
+### Heading size with h3
+
+You can also modify the size of the `ModalHeading` using the `level`
+prop, much like you would a standalone `Heading` component. By default,
+`ModalHeading` has a level of `2`.
+
+> Tip: Go over to the `Canvas` tab and play with the knobs to see
+> how the `ModalHeading` in `h3` format might work in different `Modal`
+> sizes.
+
+<Canvas>
+  <Story id="core-overlay-modal--heading-size-with-h-3" />
+</Canvas>
+
+### Nested Modals
+
+To nest modals, simply render a modal as a child of another modal. The z-indexing
+will be automatically calculated.
+
+<Canvas>
+  <Story id="core-overlay-modal--nested-modals" />
+</Canvas>
+
+### Nested Modals with Custom Z-Index
+
+To nest modals, simply render a modal as a child of another modal. The z-indexing
+will be automatically calculated even with a custom z-index passed to the parent
+modal.
+
+<Canvas>
+  <Story id="core-overlay-modal--nested-modals-with-custom-z-index" />
+</Canvas>
+
+### Non-dismissable Modal
+
+`Modal`s are not dismissable if `toggle` is not passed to the `Modal`. This will
+prevent closing from clicking outside of the `Modal`, as well remove any automatic
+closing components (such as the close button). You can still add a components that
+dismiss the `Modal` manually.
+
+<Canvas>
+  <Story id="core-overlay-modal--non-dismissable-modal" />
+</Canvas>
+
+#### Non-dismissable Modal with No exit button
+
+The exit `Button` on a non-dismissable `Modal` is completely optional. This can
+be used to block user interaction if needed.
+
+<Canvas>
+  <Story id="core-overlay-modal--non-dismissable-modal-with-no-exit" />
+</Canvas>
+
+### Modal with Outside Content
+
+`Modal`s often have poppers and other content that is inside the `Modal`, but in another
+`Portal`. You can use the `bcl-ignore-click-outside` class to have the `Modal` not
+close.
+
+Clicking on the pink "Click Me" square in the example below will NOT close the
+`Modal`.
+
+To view this effect, view the story in "Canvas" view (this is "Docs" view).
+
+<Canvas>
+  <Story id="core-overlay-modal--modal-with-outside-content" />
+</Canvas>
+
+#### Modal with Beacon Popovers/Tooltips
+
+You can see some examples of using our pre-built `Tooltip`s and `Popover`s with
+the `Modal` below.
+
+<Canvas>
+  <Story id="core-overlay-modal--modal-with-popovers" />
+</Canvas>
+
+## Usage
+
+```javascript
+import {
+  Modal,
+  ModalBody,
+  ModalHeading,
+  ModalFooter,
+  Button,
+} from "@braze/beacon-core";
+```
+
+## Properties
+
+### `Modal`
+
+| propName                  | propType                           | defaultValue               | isRequired | Description                                                           |
+| ------------------------- | ---------------------------------- | -------------------------- | ---------- | --------------------------------------------------------------------- |
+| `autoFocus`               | boolean                            | `true`                     | -          | focuses on the modal wrapper when true                                |
+| `children`                | oneOfType( node, arrayOf( node ) ) | -                          | -          | children to be passed into component                                  |
+| `className`               | string                             | -                          | -          | class name of the component                                           |
+| `isOpen`                  | boolean                            | -                          | -          | indicates whether component should be visible                         |
+| `keyboard`                | boolean                            | `true`                     | -          | indicates that keyboard commands should be listened to by the `Modal` |
+| `node`                    | func: `React.RefObject<any>`       | -                          | -          | DOM node override to use portal into                                  |
+| `outsideClickIgnoreClass` | string                             | `bcl-ignore-click-outside` | -          | when clicking outside, class name to ignore for toggle                |
+| `size`                    | oneOf(`sm`, `md`, `lg`, `xl`)      | `sm`                       | -          | size of the `Modal` to be displayed                                   |
+| `toggle`                  | func: `() => void`                 | -                          | -          | toggle function that toggles the modal                                |
+| `zIndex`                  | number                             | `1040`                     | -          | z-index value for the component and its children                      |
+
+### `ModalHeading`
+
+| propName    | propType                           | defaultValue | isRequired | Description                                              |
+| ----------- | ---------------------------------- | ------------ | ---------- | -------------------------------------------------------- |
+| `children`  | oneOfType( node, arrayOf( node ) ) | -            | -          | children to be passed into component                     |
+| `className` | string                             | -            | -          | class name of the component                              |
+| `iconType`  | oneOf( `warning` )                 | -            | -          | type of icon to be rendered, if any                      |
+| `level`     | oneOf( `2`, `3` )                  | `2`          | -          | which heading level the component should use             |
+| `toggle`    | func                               | -            | -          | function that renders an X button that toggles the modal |
+
+### `ModalBody`
+
+| propName    | propType                           | defaultValue | isRequired | Description                          |
+| ----------- | ---------------------------------- | ------------ | ---------- | ------------------------------------ |
+| `children`  | oneOfType( node, arrayOf( node ) ) | -            | -          | children to be passed into component |
+| `className` | string                             | -            | -          | class name of the component          |
+
+### `ModalFooter`
+
+| propName    | propType                           | defaultValue | isRequired | Description                                                                             |
+| ----------- | ---------------------------------- | ------------ | ---------- | --------------------------------------------------------------------------------------- |
+| `aligner`   | boolean                            | -            | -          | indicates that the component is being used as an aligner; required if using 'side' prop |
+| `children`  | oneOfType( node, arrayOf( node ) ) | -            | -          | children to be passed into component                                                    |
+| `className` | string                             | -            | -          | class name of the component                                                             |
+| `side`      | oneOf( `left`, `right` )           | -            | -          | indicates side of the parent footer to align items to; requires 'align' to be true      |

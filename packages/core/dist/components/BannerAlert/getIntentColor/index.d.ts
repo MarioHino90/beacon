@@ -1,0 +1,1 @@
+export { createGetIntentColor } from "./getIntentColor";

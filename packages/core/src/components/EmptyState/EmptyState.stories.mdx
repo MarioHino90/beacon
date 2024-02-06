@@ -1,0 +1,145 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { text } from "@storybook/addon-knobs";
+import LinkTo from "@storybook/addon-links/react";
+import {
+  Button,
+  Icon,
+  Link,
+  Panel,
+  PanelHeader,
+  PanelBody,
+  Table,
+  TableHeader,
+  TableHeaderCell,
+} from "@braze/beacon-core";
+
+import {
+  EmptyState,
+  EmptyStateIcon,
+  EmptyStateHeading,
+  EmptyStateText,
+  EmptyStateButtonGroup,
+} from "../..";
+
+<Meta title="Core/Content Display/EmptyState" component={EmptyState} />
+
+# EmptyState
+
+Empty states occur when there is no content/data to show users. In general, we want to make empty states informative and actionable.
+
+## Use cases
+
+Below are some common use cases for the `EmptyState` component.
+
+> **Tables:** to use `EmptyState` inside of a table, use the <LinkTo kind="lab-content-display-tableemptybody--basic-use#tableemptybody">`TableEmptyBody`</LinkTo>
+> component instead. It wraps an `EmptyState` in components that allow it to be the body of a table.
+
+### Basic use
+
+Pass a mix of images, text, and action buttons as children that tell the user why there is no content, and what actions they can take.
+It is recommended that you model your `EmptyState` after this example; however, other arrangements of child components will work.
+
+Currently, `EmptyStateIcon` choices are limited to those available in <LinkTo kind="lab-icons-brazeicon--basic-use#icons">`BrazeIcon`</LinkTo>,
+so if you want to use an icon that is not there, please have the new icon added to `BrazeIcon` first.
+
+<Canvas>
+  <Story name="basic use">
+    <Panel>
+      <PanelHeader>Settings For Braze</PanelHeader>
+      <PanelBody>
+        <EmptyState>
+          <EmptyStateIcon name="add-image-or-document" />
+          <EmptyStateHeading>
+            {text("Heading Content", "No apps yet")}
+          </EmptyStateHeading>
+          <EmptyStateText>
+            {text(
+              "Text Content",
+              "Add multiple apps to your App Group acress different platforms and price points."
+            )}
+          </EmptyStateText>
+          <EmptyStateButtonGroup>
+            <Button variant="primary" size="lg">
+              <Icon name="plus-circle" /> Add New App
+            </Button>
+          </EmptyStateButtonGroup>
+        </EmptyState>
+      </PanelBody>
+    </Panel>
+  </Story>
+</Canvas>
+
+### Inline link for call to action
+
+If your call to action is navigation to a different page, make it a link embedded in the `EmptyStateText`
+
+<Canvas>
+  <Story name="no buttons">
+    <Panel>
+      <PanelHeader>Global Control Group Report</PanelHeader>
+      <PanelBody>
+        <EmptyState>
+          <EmptyStateIcon name="add-image-or-document" />
+          <EmptyStateHeading>No Global Control Group set up</EmptyStateHeading>
+          <EmptyStateText>
+            You'll need to first set up a Global Control Group in Global Message
+            Settings in order to view this report.{" "}
+            <Link target="_blank" rel="noopener" href="https://www.google.com">
+              Learn More
+            </Link>
+          </EmptyStateText>
+        </EmptyState>
+      </PanelBody>
+    </Panel>
+  </Story>
+</Canvas>
+
+## Usage
+
+```javascript
+import { EmptyState, EmptyState } from "@braze/beacon-labs-table";
+```
+
+## Properties
+
+### `EmptyState`
+
+| propName      | propType                           | defaultValue | isRequired | Description                                  |
+| ------------- | ---------------------------------- | ------------ | ---------- | -------------------------------------------- |
+| `children`    | oneOfType( node, arrayOf( node ) ) | -            | -          | children to be passed into component         |
+| `className`   | string                             | -            | -          | class name of the component                  |
+| `id`          | string                             | -            | -          | id to be passed to the DOM                   |
+| `columnCount` | number                             | -            | yes        | the number of columns that are in this table |
+
+### `EmptyStateIcon`
+
+| propName    | propType                                                                      | defaultValue | isRequired | Description                          |
+| ----------- | ----------------------------------------------------------------------------- | ------------ | ---------- | ------------------------------------ |
+| `children`  | oneOfType( node, arrayOf( node ) )                                            | -            | -          | children to be passed into component |
+| `className` | string                                                                        | -            | -          | class name of the component          |
+| `id`        | string                                                                        | -            | -          | id to be passed to the DOM           |
+| `name`      | <LinkTo kind="lab-icons-brazeicon--basic-use#icons">`BrazeIcon` name</LinkTo> | -            | yes        | the icon to use for this space       |
+
+### `EmptyStateHeading`
+
+| propName    | propType                           | defaultValue | isRequired | Description                          |
+| ----------- | ---------------------------------- | ------------ | ---------- | ------------------------------------ |
+| `children`  | oneOfType( node, arrayOf( node ) ) | -            | -          | children to be passed into component |
+| `className` | string                             | -            | -          | class name of the component          |
+| `id`        | string                             | -            | -          | id to be passed to the DOM           |
+
+### `EmptyStateText`
+
+| propName    | propType                           | defaultValue | isRequired | Description                          |
+| ----------- | ---------------------------------- | ------------ | ---------- | ------------------------------------ |
+| `children`  | oneOfType( node, arrayOf( node ) ) | -            | -          | children to be passed into component |
+| `className` | string                             | -            | -          | class name of the component          |
+| `id`        | string                             | -            | -          | id to be passed to the DOM           |
+
+### `EmptyStateButtonGroup`
+
+| propName    | propType                           | defaultValue | isRequired | Description                          |
+| ----------- | ---------------------------------- | ------------ | ---------- | ------------------------------------ |
+| `children`  | oneOfType( node, arrayOf( node ) ) | -            | -          | children to be passed into component |
+| `className` | string                             | -            | -          | class name of the component          |
+| `id`        | string                             | -            | -          | id to be passed to the DOM           |

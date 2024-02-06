@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TabContent should render correctly 1`] = `<StyledTabContent />`;
+
+exports[`TabContent should render correctly if not active 1`] = `""`;
+
+exports[`TabContent should render correctly with className 1`] = `
+<StyledTabContent
+  className="someClass"
+/>
+`;

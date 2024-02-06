@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StyledMenuGroup should match the snapshot 1`] = `
+.c0 {
+  width: 100%;
+}
+
+.c0:not(:last-of-type) {
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid #E9EBED;
+}
+
+<div
+  className="c0 wireless"
+  id="Metal"
+>
+  Pants system transmitting
+</div>
+`;
+
+exports[`StyledMenuGroup should match the snapshot when 'hasHeading' is defined 1`] = `
+.c0 {
+  width: 100%;
+}
+
+.c0:not(:last-of-type) {
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid #E9EBED;
+}
+
+.c0:last-of-type {
+  margin-bottom: 0.5rem;
+}
+
+<div
+  className="c0 Handmade"
+  id="JBOD"
+>
+  Checking
+</div>
+`;

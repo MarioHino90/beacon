@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuGroup should match the snapshot 1`] = `
+<StyledMenuGroup
+  className="bcl-menu-group Gorgeous"
+  hasHeading={false}
+  id="tertiary"
+>
+  bypass
+</StyledMenuGroup>
+`;
+
+exports[`MenuGroup should match the snapshot when 'heading' is defined 1`] = `
+<StyledMenuGroup
+  className="bcl-menu-group Fish"
+  hasHeading={true}
+  id="project"
+>
+  <Heading
+    level={6}
+  >
+    mindshare bottom-line dot-com
+  </Heading>
+  Dinar
+</StyledMenuGroup>
+`;

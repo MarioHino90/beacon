@@ -1,0 +1,158 @@
+import { Canvas, Story } from "@storybook/addon-docs";
+
+# Tooltip
+
+The `Tooltip` component opens a box that overlays other content to provide
+contextual help to a user. `Tooltip` provides brief contextual information
+or functionality as the user hovers over the related element. Use for icon
+and button descriptions.
+
+> If you need to provide longer context or interactivity, please use
+> the `Popover` component.
+
+> Note: If you need to implement a basic use case of the tooltip, please
+> use `UncontrolledTooltip` instead, as that component has the open/close
+> handlers built-in and is built to be used in a more declarative way.
+
+## Use cases
+
+Below are some common use cases for the `Tooltip` component.
+
+### Basic use
+
+By default, the `Tooltip` will appear when the target element is either
+focused on or hovered over. Similarly, the `Tooltip` will disappear when
+the the target element is blurred or left with a mouse, whichever happens
+first.
+
+To facilitate usage, we also export a `useTooltip` hook that manages
+the `Tooltip`s state for you. Simply invoke the hook, assign it to a
+variable, and use the object spread notation in `Tooltip` to use it,
+as shown below!
+
+<Canvas>
+  <Story id="core-overlay-tooltip--basic-use" />
+</Canvas>
+
+### Trigger on click
+
+By setting the `triggers` prop to `["click"]`, you can make the `Tooltip` open
+and close only when the `target` is clicked.
+
+<Canvas>
+  <Story id="core-overlay-tooltip--trigger-only-on-click" />
+</Canvas>
+
+### Trigger on focus
+
+By setting the `triggers` prop to `["focus"]` and `untriggers` to `["blur"]`,
+you can make the `Tooltip` open when the `target` is focused and close
+when it is blurred.
+
+<Canvas>
+  <Story id="core-overlay-tooltip--trigger-only-on-focus" />
+</Canvas>
+
+### Trigger on hover
+
+By setting the `triggers` prop to `["mouseenter"]` and `untriggers`
+to `["mouseleave"]`, you can make the `Tooltip` open when
+the `target` is hovered and close when it is no longer hovered.
+
+<Canvas>
+  <Story id="core-overlay-tooltip--trigger-only-on-hover" />
+</Canvas>
+
+### Use with target DOM id
+
+Depending on your target component, it may not always be possible to use refs
+to get access to the DOM node. In such cases, the `target` prop is provided as
+an escape hatch. The `target` prop must correspond to the DOM id of the `target`
+element. Note that this requires that no two DOM ids are the same.
+
+<Canvas>
+  <Story id="core-overlay-tooltip--use-with-dom-id" />
+</Canvas>
+
+### Modal Use
+
+`Tooltip` will automatically calculate the z-index needed to display over a
+`Modal` it is inside of. Note that the `Modal` z-index is well above the
+`Tooltip`'s base z-index, but the `Tooltip` still renders above it.
+
+<Canvas>
+  <Story id="core-overlay-tooltip--modal-use" />
+</Canvas>
+
+### Tooltips and scrolling
+
+`Tooltip` closes automatically by default when the document scrolls, or any parent element scrolls.
+
+<Canvas>
+  <Story id="core-overlay-tooltip--closing-on-scroll" />
+</Canvas>
+
+## Usage
+
+```javascript
+import { Tooltip, useTooltip } from "@braze/beacon-core";
+```
+
+## Properties
+
+### `Tooltip`
+
+| propName                             | propType                                                                                                                                                    | defaultValue                       | isRequired | Description                                                                                                     |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | ---------- | --------------------------------------------------------------------------------------------------------------- |
+| `children`                           | oneOfType( node, arrayOf( node ) )                                                                                                                          | -                                  | -          | children to be passed into component                                                                            |
+| `className`                          | string                                                                                                                                                      | -                                  | -          | class name of the component                                                                                     |
+| `closeOnClickOutside`                | boolean                                                                                                                                                     | `true`                             | -          | indicates that the popper should be closed when a user clicks outside the target or the popper (if interactive) |
+| `delay`                              | oneOfType( `[number OR null, number OR null]`, `number` )                                                                                                   | -                                  | -          | indicates the amount of time, if any, to delay opening and/or closing the popper by                             |
+| `id`                                 | string                                                                                                                                                      | -                                  | -          | id to be passed to the DOM                                                                                      |
+| `ignoreCloseOnClickOutsideClassName` | string                                                                                                                                                      | `bcl-popper-ignore-click`          | -          | the className that should cause an element containing it to be ignored when determining whether to close popper |
+| `isIgnoreCloseOnClickOutsideEnabled` | boolean                                                                                                                                                     | `true`                             | -          | indicates that the ignore close on outside click behavior using specific classNames is enabled                  |
+| `isOpen`                             | boolean                                                                                                                                                     | -                                  | -          | determines if the component should be rendered                                                                  |
+| `distance`                           | number                                                                                                                                                      | `8`                                | -          | desired offset from bottom of `target` component                                                                |
+| `skidding`                           | number                                                                                                                                                      | `0`                                | -          | desired offset from left of `target` component                                                                  |
+| `onOpen`                             | `(event: React.MouseEvent , React.FocusEvent , Event) => void`                                                                                              | -                                  | +          | function to call when the tooltip should be opened                                                              |
+| `onClose`                            | `(event: React.MouseEvent , React.FocusEvent , Event) => void`                                                                                              | -                                  | +          | function to call when the tooltip should be closed                                                              |
+| `placement`                          | `auto`, `top-start`, `top`, `top-end`, `right-start`, `right`, `right-end`, `bottom-end`, `bottom`, `bottom`, `left-end`, `left`, `left-start`, `undefined` | `auto`                             | -          | desired placement of Popper relative to target                                                                  |
+| `popperClassName`                    | string                                                                                                                                                      | -                                  | -          | class name to be passed to the parent popper element                                                            |
+| `popperId`                           | string                                                                                                                                                      | -                                  | -          | DOM id to be passed to the parent popper element                                                                |
+| `popperStyle`                        | object                                                                                                                                                      | -                                  | -          | style object override to be passed to the parent popper component                                               |
+| `popperStyledCss`                    | return value of the `css` function exported by `styled-components`                                                                                          | -                                  | -          | prop passed to popper to interpolate the returned value of a `css` call within styled-components                |
+| `portalRef`                          | `RefObject`                                                                                                                                                 | -                                  | -          | ref of Portal inside which Popover will be rendered                                                             |
+| `target`                             | string                                                                                                                                                      | -                                  | +          | desired target component's ID                                                                                   |
+| `targetRef`                          | `React.RefObject`                                                                                                                                           | -                                  | -          | ref object to pass down to the target object                                                                    |
+| `triggers`                           | arrayOf( `click`, `mouseenter`, `focus` )                                                                                                                   | `['focus', 'mouseenter']`          | -          | array containing desired trigger(s) for popper on behavior                                                      |
+| `untriggers`                         | arrayOf( `click`, `mouseleave`, `blur`, `scroll` )                                                                                                          | `['blur', 'mouseleave', 'scroll']` | -          | array containing desired trigger(s) for popper off behavior                                                     |
+| `zIndex`                             | number                                                                                                                                                      | `1031`                             | -          | z-index for the component and its sub-components                                                                |
+
+### `useTooltip`
+
+`useTooltip` is a utility hook that aims to simplify your life when using
+a `Tooltip` in your project. The function conveniently manages the `Tooltip`
+state and the necessary refs for you, making getting started with a `Tooltip`
+a breeze.
+
+The following are arguments accepted by `useTooltip`:
+
+- `targetRef`: `React.RefObject`
+  - optional
+  - ref object to be passed to both the target component via its `ref` and the `Tooltip` via its `targetRef`
+- `initialState`: `boolean`
+  - optional; `false` by default
+  - sets the initial state of the `Tooltip`
+
+`useTooltip` returns the an array that can be destructured to reveal the following:
+
+- `state`: `object`
+  - exposes the state of the `Tooltip` and handlers
+  - can be passed into the `Tooltip` via object destructuring (e.g. `{...state}`)
+  - contains the following:
+    - `isOpen`: boolean; indicates current state of the `Tooltip`
+    - `onOpen`: func; changes `isOpen` to `true` when called
+    - `onClose`: func; changes `isOpen` to `false` when called
+- `ref`: `React.RefObject`
+  - if an argument was passed to `targetRef`, then this is identical to that argument
+  - if an argument was NOT passed to `targetRef`, this will be a newly instantiated ref object to be passed to both the target component via its `ref` and the `Tooltip` via its `targetRef`

@@ -1,0 +1,89 @@
+{
+  "name": "@braze/beacon-core",
+  "version": "15.6.0",
+  "description": "A library of core UI components for Braze",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "./README.md"
+  ],
+  "scripts": {
+    "precommit": "TZ=UTC lint-staged",
+    "lint": "eslint --max-warnings=0 --ext .js,.jsx,.ts,.tsx src",
+    "lint:ci": "eslint --max-warnings=0 --ext .js,.jsx,.ts,.tsx src --quiet",
+    "lint:fix": "eslint src --ext .ts,.tsx src --fix",
+    "prebuild": "rimraf dist",
+    "build": "run-p build-js build-types",
+    "build-js": "babel src -d dist --extensions \".ts,.tsx\" --ignore \"src/**/*.test.tsx\",\"src/**/*.test.ts\"",
+    "build-types": "tsc --emitDeclarationOnly -p tsconfig.json",
+    "postbuild": "postcss src/styles.css > dist/styles.css",
+    "test": "TZ=UTC jest --env=jsdom",
+    "test:ci": "CI=true TZ=UTC jest --env=jsdom --coverage --bail",
+    "cypress": "cypress open --project ../../integration-tests --config integrationFolder='../packages/core'",
+    "cypress:cli": "cypress run --project ../../integration-tests --config integrationFolder='../packages/core'",
+    "cypress:ci": "yarn cypress:cli --config-file cypress-ci.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/braze-inc/beacon.git",
+    "directory": "packages/core"
+  },
+  "author": "Braze",
+  "license": "UNLICENSED",
+  "contributors": [
+    "Sean Laude <sean.laude@braze.com>",
+    "Zach McCormick <zach.mccormick@braze.com>",
+    "Monik Pamecha <monik.pamecha@braze.com>",
+    "Ryan Campbell <ryancampbellbraze@gmail.com>",
+    "Caleb Severn <caleb.severn@braze.com>",
+    "Haldun Anil <haldun.anil@braze.com>",
+    "Samantha Abbott <samantha.abbott@braze.com>",
+    "Ian Leue <ian.leue@braze.com>",
+    "Andy Young <andy.young@braze.com>",
+    "Alex Guerra <alex.guerra@braze.com>",
+    "Maya Hernandez <maya.hernandez@braze.com",
+    "Gregory Beaver <gregory.beaver@braze.com>"
+  ],
+  "bugs": {
+    "url": "https://pbug.braze.com"
+  },
+  "homepage": "https://github.com/braze-inc/beacon#readme",
+  "devDependencies": {
+    "@braze/beacon-cypress-helpers": "^15.5.1",
+    "@braze/beacon-hooks": "^15.5.1",
+    "@braze/beacon-i18n-dev": "^15.4.4",
+    "@braze/beacon-test-utils": "^15.5.2",
+    "@braze/beacon-translations": "^15.2.16",
+    "@fortawesome/fontawesome-common-types": "0.2.36",
+    "@fortawesome/fontawesome-svg-core": "1.2.36",
+    "@fortawesome/free-brands-svg-icons": "5.15.4",
+    "@fortawesome/free-regular-svg-icons": "5.15.4",
+    "@fortawesome/free-solid-svg-icons": "5.15.4",
+    "@fortawesome/react-fontawesome": "0.2.0",
+    "react-transition-group": "4.4.5"
+  },
+  "dependencies": {
+    "@braze/beacon-core": "^15.6.0",
+    "classnames": "^2.2.6",
+    "copy-to-clipboard": "^3.3.1",
+    "react-toastify": "^7.0.0"
+  },
+  "peerDependencies": {
+    "@braze/beacon-fonts": "^4.0.0",
+    "@braze/beacon-hooks": "^6.0.0",
+    "@braze/beacon-styling": "^4.0.0",
+    "@braze/beacon-theme": "^3.0.0 || ^4.0.0",
+    "@braze/beacon-translations": "^8.0.3",
+    "@fortawesome/fontawesome-common-types": "^0.2.30",
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-brands-svg-icons": "^5.14.0",
+    "@fortawesome/free-regular-svg-icons": "^5.14.0",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/react-fontawesome": "^0.1.13 || ^0.2.0",
+    "react": "^16.8.0 || ^17",
+    "react-dom": "^16.8.0 || ^17",
+    "react-transition-group": "^4.4.1",
+    "styled-components": "^5.0.0"
+  }
+}

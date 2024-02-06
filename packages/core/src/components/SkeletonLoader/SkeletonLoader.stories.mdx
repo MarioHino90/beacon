@@ -1,0 +1,88 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+
+import { SkeletonLoader } from ".";
+
+<Meta title="Core/Primitives/SkeletonLoader" component={SkeletonLoader} />
+
+# SkeletonLoader
+
+A `SkeletonLoader` stands in for content while content is still being loaded.
+
+## Use cases
+
+Below are some common use cases for the `SkeletonLoader` component.
+
+### Basic use
+
+The `SkeletonLoader` pulses to indicate a loading state. By default, it will fill
+the size of it's container, however multiple variants exist for common use cases.
+If you need a custom size, use this version of the loader.
+
+<Canvas>
+  <Story name="basic use">
+    <div style={{ width: "200px", height: "100px" }}>
+      <SkeletonLoader />
+    </div>
+  </Story>
+</Canvas>
+
+### Text Variant
+
+This variant should be used in place of text. It has a set height, but fills the
+width of it's container. It currently mimics medium sized text. If a custom height
+is needed, use the basic variant.
+
+<Canvas>
+  <Story name="text variant">
+    <SkeletonLoader variant="text" />
+  </Story>
+</Canvas>
+
+### Checkbox Variant
+
+This variant should be used in place of a checkbox. It is set to the correct
+height and width of a normal checkbox. If a custom size is needed, use the basic
+variant.
+
+<Canvas>
+  <Story name="checkbox variant">
+    <SkeletonLoader variant="checkbox" />
+  </Story>
+</Canvas>
+
+### Image Variant
+
+This variant should be used in place of a thumbnail image. The `image-round` variant
+is reserved for avatar images. If a custom image size is needed, use the basic
+variant.
+
+<Canvas>
+  <Story name="image variant">
+    <SkeletonLoader variant="image" />
+  </Story>
+</Canvas>
+
+### Round Image Variant
+
+This variant should be used in place of avatar images. If a custom image size is
+needed, use the basic variant.
+
+<Canvas>
+  <Story name="round image variant">
+    <SkeletonLoader variant="image-round" />
+  </Story>
+</Canvas>
+
+## Usage
+
+```javascript
+import { SkeletonLoader } from "@braze/beacon-labs-skeleton-loader";
+```
+
+## Properties
+
+| propName    | propType                                                     | defaultValue | isRequired | Description                                              |
+| ----------- | ------------------------------------------------------------ | ------------ | ---------- | -------------------------------------------------------- |
+| `variant`   | oneOf(undefined, "text", "checkbox", "image", "image-round") | -            | -          | optional variant for pre-built loaders for content types |
+| `className` | string                                                       | -            | -          | class name of the component                              |
+| `id`        | string                                                       | -            | -          | id to be passed to the DOM                               |

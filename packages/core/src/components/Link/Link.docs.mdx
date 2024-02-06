@@ -1,0 +1,84 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+
+# Link
+
+The `Link` component is a navigational element that renders an anchor
+tag by default. This component should be used primarily for navigation.
+
+Note that the `Link` component also supports an `as` prop to render another
+component to the DOM with the same styles, which is particularly useful for
+alternative navigational libraries like `react-router-dom`.
+
+## Use cases
+
+Below are some common use cases for the `Link` component.
+
+### Basic use
+
+Without any `variant` prop defined, the `Link` component has basic styles
+applied to it and should be used as a primary link that you want your users
+to notice/find easily.
+
+<Canvas>
+  <Story id="core-primitives-link--basic-use" />
+</Canvas>
+
+### Table variant
+
+The table `variant` of the `Link` component has a more subdued style to
+minimize visual clutter in an already cluttered space.
+
+<Canvas>
+  <Story id="core-primitives-link--table-variant" />
+</Canvas>
+
+### Inline variant
+
+Another `variant` of the `Link` component is inline, which is most suitable
+for use inside a body of text as opposed to when it exists alone. In this case,
+the font size of `Link` will inherit that of its container.
+
+> NOTE: For call to action links, we can pass `isCTA` property to Link component.
+> If we add `isCTA` property, the link will not wrap onto multiple lines.
+
+<Canvas>
+  <Story id="core-primitives-link--inline-variant" />
+</Canvas>
+
+### Disabled use
+
+To indicate that a link is currently inacessible, set the `disabled` link
+to true.
+
+<Canvas>
+  <Story id="core-primitives-link--disabled-use" />
+</Canvas>
+
+### External Links
+
+Setting the `showExternalLinkIcon` property to `true` on the external link which has `target="_blank"` will display an external link icon next to the link text.
+Use when the link takes users to a new page outside of the current app.
+
+<Canvas>
+  <Story id="core-primitives-link--external-link" />
+</Canvas>
+
+## Usage
+
+```javascript
+import { Link } from "@braze/beacon-core";
+```
+
+## Properties
+
+| propName               | propType                                      | defaultValue | isRequired | Description                                                             |
+| ---------------------- | --------------------------------------------- | ------------ | ---------- | ----------------------------------------------------------------------- |
+| `children`             | oneOfType( node, arrayOf( node ) )            | -            | -          | children to be passed into component                                    |
+| `className`            | string                                        | -            | -          | class name of the component                                             |
+| `disabled`             | boolean                                       | -            | -          | indicates that the button should be visually and functionally disabled  |
+| `id`                   | string                                        | -            | -          | id to be passed to the DOM                                              |
+| `isCTA`                | boolean                                       | -            | -          | indicates the link is a call-to-action link                             |
+| `variant`              | oneOf( `table`, `inline` )                    | -            | -          | visual variant for the link component                                   |
+| `href`                 | string                                        | -            | -          | the url to redirect to                                                  |
+| `showExternalLinkIcon` | boolean                                       | -            | -          | indicates that external link icon should be displayed for external link |
+| `target`               | oneOf( `_blank`, `_self`, `_parent`, `_top` ) | -            | -          | where the redirection should happen                                     |

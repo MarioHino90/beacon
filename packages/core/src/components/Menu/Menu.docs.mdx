@@ -1,0 +1,182 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+
+import { Menu } from ".";
+
+<Meta title="Core/Overlay/Menu" component={Menu} />
+
+# Menu
+
+`Menu` is a floating panel that contains a list of actions,
+NOT selected values. These actions can be within the page
+or navigational in their nature.
+
+To ensure that your `Menu` components are accessible, we
+recommend the following:
+
+- Give a unique DOM id to the menu target (the target is usually a `Button`, pass the `id` attribute to this button)
+- Add `aria-haspopup="true"` to the menu target
+- Give a unique DOM id to the `Menu` component
+- Add `aria-controls="<menu-id>"` to the menu target,
+  where `<menu-id`> is the DOM id of the menu
+- Add `aria-expanded="<value>"` to the menu target,
+  where `<value>` is the boolean indicating whether the menu is open
+- Add `aria-labelledby="<target-id>"` to the `Menu`,
+  where the `<target-id>` is the DOM id of the `Menu` target element
+- Give unique DOM ids to each button inside a `Menu`
+
+To learn more about menu accessibility, check out [these](https://www.w3.org/TR/wai-aria-practices/examples/menu-button/menu-button-actions-active-descendant.html) [links](https://www.w3.org/TR/wai-aria-practices/examples/menu-button/menu-button-links.html).
+
+## Use cases
+
+Below are some common use cases for the `Menu` component.
+
+### Basic use with action buttons
+
+Action buttons are typically used to make something happen
+without leaving the current page/pill that the user is on.
+
+<Canvas>
+  <Story id="core-overlay-menu--basic-use-with-action-buttons" />
+</Canvas>
+
+### Basic use with category buttons
+
+Category buttons are typically navigational in nature and
+often redirect the user to another page/pill on click.
+
+<Canvas>
+  <Story id="core-overlay-menu--basic-use-with-category-buttons" />
+</Canvas>
+
+### With action buttons and icons
+
+Action buttons can also be decorated with icons to visually
+set them apart more easily.
+
+<Canvas>
+  <Story id="core-overlay-menu--with-action-buttons-icons" />
+</Canvas>
+
+### With category buttons and icons
+
+Just like action buttons, category buttons can also
+be decorated with icons to visually set them apart
+more easily.
+
+<Canvas>
+  <Story id="core-overlay-menu--with-category-buttons-icons" />
+</Canvas>
+
+### With grouped action buttons and no header
+
+It may be desirable to group related action buttons
+together to make it easier for the user to find what
+they're looking for via the `MenuGroup` component.
+
+<Canvas>
+  <Story id="core-overlay-menu--with-grouped-action-buttons-no-header" />
+</Canvas>
+
+### With grouped action buttons and header
+
+In addition to grouping buttons together, you may also want
+to denote a specific group by giving it a name. You can do
+so using the `heading` prop in `MenuGroup`.
+
+<Canvas>
+  <Story id="core-overlay-menu--with-grouped-action-buttons-header" />
+</Canvas>
+
+### With grouped category buttons and no header
+
+It may be desirable to group related action buttons
+together to make it easier for the user to find what
+they're looking for via the `MenuGroup` component.
+
+<Canvas>
+  <Story id="core-overlay-menu--with-grouped-category-buttons-no-header" />
+</Canvas>
+
+### With grouped category buttons and header
+
+In addition to grouping buttons together, you may also want
+to denote a specific group by giving it a name. You can do
+so using the `heading` prop in `MenuGroup`.
+
+<Canvas>
+  <Story id="core-overlay-menu--with-grouped-category-buttons-header" />
+</Canvas>
+
+## Usage
+
+```javascript
+import {
+  Menu,
+  MenuActionButton,
+  MenuCategoryButton,
+  MenuGroup,
+} from "@braze/beacon-labs-menu";
+```
+
+## Properties
+
+### `Menu`
+
+| propName              | propType                                                                                                                                | defaultValue | isRequired | Description                                                                                                                                                                        |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `children`            | oneOfType( ReactNode, ReactNode[], ({ activePlacement, targetDimensions, popperDimensions }) => ReactNode )                             | -            | -          | children to be passed into component, or a render prop that accepts the auto-calculated placement plus the dimensions of the target and the popper (or undefined if not available) |
+| `className`           | string                                                                                                                                  | -            | -          | class name of the component                                                                                                                                                        |
+| `closeOnClickInside`  | boolean                                                                                                                                 | -            | -          | indicates that the menu should be closed when a user clicks inside the menu; does NOT prevent event handlers from firing                                                           |
+| `closeOnClickOutside` | boolean                                                                                                                                 | `true`       | -          | indicates that the menu should be closed when a user clicks outside the target or the menu                                                                                         |
+| `delay`               | oneOfType( `[number OR null, number OR null]`, `number` )                                                                               | -            | -          | indicates the amount of time, if any, to delay opening and/or closing the menu by                                                                                                  |
+| `distance`            | number                                                                                                                                  | `8`          | -          | desired offset from bottom of `target` component                                                                                                                                   |
+| `fixed`               | boolean                                                                                                                                 | -            | -          | set to true if the Popover is not meant to move with the page                                                                                                                      |
+| `id`                  | string                                                                                                                                  | -            | -          | id to be passed to the DOM                                                                                                                                                         |
+| `isOpen`              | boolean                                                                                                                                 | -            | -          | determines if the component should be rendered                                                                                                                                     |
+| `hideTopMargin`       | boolean                                                                                                                                 | -            | -          | indicates that the menu doesn't have any spacing on top                                                                                                                            |
+| `onOpen`              | `(event: React.MouseEvent , React.FocusEvent , Event) => void`                                                                          | -            | +          | function to call when the tooltip should be opened                                                                                                                                 |
+| `onClose`             | `(event: React.MouseEvent , React.FocusEvent , Event) => void`                                                                          | -            | +          | function to call when the tooltip should be closed                                                                                                                                 |
+| `placement`           | `top-start`, `top`, `top-end`, `right-start`, `right`, `right-end`, `bottom-end`, `bottom`, `bottom`, `left-end`, `left`, `left-start`, | `bottom`     | -          | desired placement of Popover relative to target                                                                                                                                    |
+| `portalRef`           | `RefObject`                                                                                                                             | -            | -          | ref of Portal inside which Popover will be rendered                                                                                                                                |
+| `popperClassName`     | string                                                                                                                                  | -            | -          | class name to be passed to the parent menu element                                                                                                                                 |
+| `popperId`            | string                                                                                                                                  | -            | -          | DOM id to be passed to the parent menu element                                                                                                                                     |
+| `skidding`            | number                                                                                                                                  | `0`          | -          | desired offset from left of `target` component                                                                                                                                     |
+| `styledCss`           | return value of the `css` function exported by `styled-components`                                                                      | -            | -          | prop to interpolate the returned value of a `css` call within styled-components                                                                                                    |
+| `target`              | string                                                                                                                                  | -            | +          | desired target component's ID                                                                                                                                                      |
+| `targetRef`           | `React.RefObject`                                                                                                                       | -            | -          | ref object to pass down to the target object                                                                                                                                       |
+| `triggers`            | arrayOf( `click`, `mouseenter`, `focus` )                                                                                               | `['click']`  | -          | array containing desired trigger(s) for menu on behavior                                                                                                                           |
+| `untriggers`          | arrayOf( `click`, `mouseleave`, `blur` )                                                                                                | `['click']`  | -          | array containing desired trigger(s) for menu off behavior                                                                                                                          |
+| `variant`             | oneOf(`default`, `nav`)                                                                                                                 | `nav`        | -          | different visual treatments depending on menu use case                                                                                                                             |
+| `zIndex`              | number                                                                                                                                  | `1031`       | -          | z-index for the component and its sub-components                                                                                                                                   |
+
+### `MenuActionButton`
+
+| propName    | propType                                               | defaultValue | isRequired | Description                                                                        |
+| ----------- | ------------------------------------------------------ | ------------ | ---------- | ---------------------------------------------------------------------------------- |
+| `children`  | oneOfType( node, arrayOf( node ) )                     | -            | -          | children to be passed into component                                               |
+| `className` | string                                                 | -            | -          | class name of the component                                                        |
+| `iconName`  | see `BrazeIcon` docs for list of allowed icons         | -            | -          | name of spot icon to be rendered, if any                                           |
+| `id`        | string                                                 | -            | -          | id to be passed to the DOM                                                         |
+| `type`      | oneOf( `button`, `submit`, `reset` )                   | "button"     | -          | specifies the type of button for the DOM                                           |
+| `onClick`   | `(event: React.MouseEvent<HTMLButtonElement>) => void` | -            | -          | callback function on button click; will not be called if `disabled` prop is `true` |
+
+### `MenuCategoryButton`
+
+| propName    | propType                                               | defaultValue | isRequired | Description                                                                        |
+| ----------- | ------------------------------------------------------ | ------------ | ---------- | ---------------------------------------------------------------------------------- |
+| `children`  | oneOfType( node, arrayOf( node ) )                     | -            | -          | children to be passed into component                                               |
+| `className` | string                                                 | -            | -          | class name of the component                                                        |
+| `heading`   | string                                                 | -            | -          | heading to be displayed in the button                                              |
+| `iconName`  | see `BrazeIcon` docs for list of allowed icons         | -            | -          | name of spot icon to be rendered, if any                                           |
+| `id`        | string                                                 | -            | -          | id to be passed to the DOM                                                         |
+| `type`      | oneOf( `button`, `submit`, `reset` )                   | "button"     | -          | specifies the type of button for the DOM                                           |
+| `onClick`   | `(event: React.MouseEvent<HTMLButtonElement>) => void` | -            | -          | callback function on button click; will not be called if `disabled` prop is `true` |
+
+### `MenuGroup`
+
+| propName    | propType                           | defaultValue | isRequired | Description                                  |
+| ----------- | ---------------------------------- | ------------ | ---------- | -------------------------------------------- |
+| `children`  | oneOfType( node, arrayOf( node ) ) | -            | -          | children to be passed into component         |
+| `className` | string                             | -            | -          | class name of the component                  |
+| `heading`   | string                             | -            | -          | heading to be displayed in the group, if any |
+| `id`        | string                             | -            | -          | id to be passed to the DOM                   |

@@ -1,0 +1,181 @@
+import LinkTo from "@storybook/addon-links/react";
+import { Link } from "@braze/beacon-core";
+
+<Meta title="Welcome/FAQs" />
+
+export const TableOfContents = () => {
+  const [toc, setTOC] = React.useState([]);
+  React.useEffect(() => {
+    const headerIds = Array.from(document.getElementsByTagName("h2")).map(
+      (elem) => ({ id: elem.id, children: elem.textContent })
+    );
+    setTOC(headerIds);
+  }, []);
+  if (toc.length === 0) {
+    return (
+      <>
+        <br />
+        <div>Loading Table of Contents...</div>
+      </>
+    );
+  }
+  return (
+    <ul>
+      {toc.map((elem) => (
+        <li key={elem.id}>
+          <LinkTo kind={`welcome-faqs--page#${elem.id}`}>
+            <Link onClick={() => (location.hash = "#" + elem.id)}>
+              {elem.children}
+            </Link>
+          </LinkTo>
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+# Frequently Asked Questions (FAQs)
+
+<TableOfContents />
+
+<br />
+
+## 1. Why do I have to use `npm login` instead of `yarn login`?
+
+Per the [`yarn login` documentation](https://classic.yarnpkg.com/en/docs/cli/login/):
+
+> Running this command will prompt you for your username and email for the npm registry. It will **not** ask for your password.
+> Later when you run a command that requires authentication such as yarn publish, you will have to enter your password to do so.
+
+However, our use case requires the password to be entered when logging in to gain access to private repositories, which is a
+feature `NPM` offers. As a result, the login step must be performed via `npm login`. `yarn` later uses this login information
+when you run commands like `yarn` or `yarn add`.
+
+## 2. Why did you choose `yarn` over `npm`?
+
+There are many benefits of `yarn` over `npm` that specifically work for the Beacon repository use case and more generally.
+
+The most significant reason we chose `yarn` was because it offers a feature called [`workspaces`](https://classic.yarnpkg.com/en/docs/workspaces/),
+which allows projects with multiple packages (like Beacon, which is a monorepo that uses [lerna](https://github.com/lerna/lerna))
+to link and install all the dependencies together at the root level of the project. This allows `yarn` to better optimize
+dependency management, generate a single `yarn.lock` file at the root, install most external dependencies at a root-level
+`node_modules`, and allow developers to make changes to the various packages and immediately have access to those changes
+without having to muck around with things like `yarn link`.
+
+Additionally, `yarn` has other smaller benefits over `npm`, such as:
+
+- Better caching that results in faster reinstalls (try running `npm install` 3 times; now do `yarn` 3 times-- sweet, right?),
+  which is useful when switching between branches with different dependencies
+- Autocleaning that allows for the automatic deletion of sub-dependencies you may not _actually_ need via the `.yarnclean`
+  file (case in point: `@types/react-native` is a dependency of `@types/styled-components` but is known to cause issues in
+  web React projects; so `.yarnclean` allows us to automatically get rid of it after every installation)
+- Pinned version resolutions, which can make working with sub-dependencies easier, especially if certain dependencies are not
+  maintained as frequently
+
+## 3. How can I contribute and/or propose new components or ideas?
+
+Check out our <LinkTo kind="welcome-contributing-overview--page">contribution overview</LinkTo> to learn all about the
+different ways to contribute.
+
+## 4. When do lab components move to the core library?
+
+When Dashboard Infrastructure engineers feel confident on the state and performance of Lab components, they are then moved
+to Core.
+
+## 5. How does Beacon handle versioning?
+
+Beacon uses [SemVer](https://semver.org/), which is a standard used to communicate what kinds of changes are in a release.
+
+When changes are made to Platform by DASHI engineers, teams who are impacted are tagged to review the pull request.
+
+Changes made outside of Platform (e.g. Beacon) must be manually pulled into Platform via package upgrades through NPM so
+that Engineers and teams can decide when to upgrade to the new version. We encourage teams to stay as up-to-date as possible.
+
+## 6. How often do you review component, pattern, or workflow requests?
+
+We review new Beacon requests and move them into a Jira backlog once a month. At that point they will go through a
+research process to gather more information and be vetted.
+
+## 7. How can I track the status of a request?
+
+If you have submitted a request, we will tag you on the Jira ticket so you can be notified of updates to your request.
+
+## 8. How does Beacon handle breaking changes and deprecation?
+
+Beacon uses [SemVer](https://semver.org/), which is a standard used to communicate what kinds of changes are in a release.
+If any Beacon component has a breaking change, it increases the major version of affected package(s) so that an Eng team
+can see if it might break their code. The changelog for the package that had a major version bump will also specifically
+reflect the nature of the breaking change and how to address it. This practice is followed in all DASHI-owned repositories,
+including Beacon and Beacon Labs.
+
+If a Beacon update does NOT include a major version bump, then you can be sure the new version of Beacon is compatible with
+the version currently installed in your project.
+
+## 9. Who works on the Beacon Product System?
+
+Beacon has a core team of designers and developers who are dedicated to building and supporting the system.
+
+The core team includes:
+
+- Nick Willett-Jeffries - Director of Engineering
+- Bill Abresch - Engineering Manager
+- Dan Garrett - Senior Software Engineer
+- Greg Beaver - Senior Software Engineer
+- Hal Anil - Senior Software Engineer
+- Samantha Abbott - Senior Software Engineer
+- Nick Robin - Interim Product Manager
+- Melissa Haworth - Senior Product Design Manager
+- Jucelle Lim - Senior Product Designer
+
+## 10. What’s on the roadmap?
+
+See the <LinkTo kind="welcome-status-and-roadmap">Roadmap</LinkTo> page for up to date plans.
+
+## 11. What browsers are supported?
+
+Beacon components are supported in all of the browsers Braze’s officially supports as noted on
+[Confluence here](https://confluence.braze.com/display/DASHINFRA/Dashboard+Browser+Support+Guidelines)
+and which include:
+
+- Chrome (version 58 or newer)
+- Firefox (version 54 or newer)
+- Safari (version 10.1 or newer)
+- Edge (any version)
+
+## 12. What’s the best way to confirm if Beacon issues are known bugs or not?
+
+To check if a bug is known, view the [Beacon Jira bug backlog](https://jira.braze.com/browse/DASHI-1085?jql=project%20%3D%20%22Dashboard%20Infrastructure%22%20AND%20type%20%3D%20Bug%20).
+
+If you have a bug to report or are not sure, please submit it to the [PBUG reporter](https://pbug.braze.com).
+
+You can also reach out to us on [#product-dash-infra-team](https://brazetechnology.slack.com/archives/C01145XABT9).
+
+## 13. When does Beacon release merged code?
+
+Beacon has a build time of ~30-45 minutes and is released to NPM immediately after the code is merged.
+Any changes are also simultaneously reflected on the Beacon Storybook.
+
+## 14. Why build our own Design System instead of utilizing existing libraries like Material UI?
+
+The ability to customize components to our needs and cater to the complexity of the Braze product is the primary
+reason we decided to build our own design system. Furthermore, whitelabeling an existing library can cause maintenance
+and scalability issues especially as we evolve the components and mold them to our specific use cases.
+
+## 15. What goes into Beacon’s component library vs Platform’s component library?
+
+Beacon’s component library follows our Beacon Criteria [Link to our Contribution page] and is unique, reusable, and agnostic
+to the product. These are self contained components that do not contain any business logic which you would find on the Platform’s
+component library.
+
+While the largest user of Beacon is Platform, Beacon can and is also used in various projects across Braze, including PBUG,
+Webinole, and more!
+
+## 16. How do I get started?
+
+Visit our <LinkTo kind="welcome-getting-started">Getting Started Page</LinkTo> for both Engineering and Design guidance.
+
+<br />
+<br />
+<hr />
+
+**Didn’t see what you need here? Reach out to us on our [Slack Channel (#beacon-product-system)](https://brazetechnology.slack.com/archives/CBDKVUF2P)**

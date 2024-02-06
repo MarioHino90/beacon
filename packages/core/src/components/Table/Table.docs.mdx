@@ -1,0 +1,327 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+
+# Table
+
+Tables are meant to display tabular data. The components presented here
+provide you the semantic tags to do so.
+
+## Use cases
+
+See below for some sample use cases on how the `Table` component can be used
+in different ways.
+
+### Basic use
+
+The `Table` component has a set of composable children components that allow you
+to build a table.
+
+<Canvas>
+  <Story id="core-content-display-table--basic-use" />
+</Canvas>
+
+### Sorting
+
+Headers can display their current sort direction. If the
+`onSortColumn` callback is passed into a header cell, it will enter a state that
+renders the column as clickable to enable sorting. The logic of sorting is handled externally.
+
+When clicked, the column will call `onSortColumn` with the next sorting state as a parameter.
+The order of sorting states is `undefined` -> `"desc"` -> `"asc"` -> `"desc"` -> `"asc"` -> ...
+If a column is not currently being sorted, when clicked, it will call `onSortColumn` with the value `"desc"`.
+If is it being sorted in descending order (`sortDirection` is `"desc"`), when clicked, it will call
+`onSortColumn` with the value `"asc"`. In addition, a tooltip is displayed when hovering over
+a column.
+
+The rows in a table should never be in a random/indeterminate order. Instead, when the table is loaded,
+it should be sorted by one of the columns and, whichever column is sorted should
+have the sorting arrow icon pointing in the sort direction in its header.
+
+The story below shows one possible way in which the sorting logic may be handled.
+
+<Canvas>
+  <Story id="core-content-display-table--sorting" />
+</Canvas>
+
+### Custom Component use
+
+The `Table` and it's subcomponents can handle having custom components passed
+as children. As long as a valid table structure is built, custom content display
+through custom components is possible.
+
+<Canvas>
+  <Story id="core-content-display-table--custom-component-use" />
+</Canvas>
+
+### Size use
+
+The `Table` can display padding in several different ways. Below is an example
+of a `TableRow`, a `TableCell`, and a `TableHeaderCell` with the size overridden.
+
+> Use the knobs in the `Canvas` tab to see the different padding options!
+
+<Canvas>
+  <Story id="core-content-display-table--size-use" />
+</Canvas>
+
+### Vertical Rule
+
+The `Table` component can optionally set vertical rules on the cells.
+
+<Canvas>
+  <Story id="core-content-display-table--vertical-rule" />
+</Canvas>
+
+### Cell styling text alignment
+
+Header and body cells can be aligned horizontally via the `textAlign` prop,
+as seen below.
+
+<Canvas>
+  <Story id="core-content-display-table--text-alignment" />
+</Canvas>
+
+### Cell spanning columns
+
+Cells can span multiple columns, as seen here:
+
+<Canvas>
+  <Story id="core-content-display-table--column-span" />
+</Canvas>
+
+### Cell spanning row
+
+Cells can span multiple rows, as seen here:
+
+<Canvas>
+  <Story id="core-content-display-table--row-span" />
+</Canvas>
+
+### Table spanning full width
+
+Tables can be configured to be full-width with respect to its parent
+container using the `fullWidth` prop:
+
+<Canvas>
+  <Story id="core-content-display-table--full-width-table" />
+</Canvas>
+
+### Non-interactive use
+
+The `Table` can have special styling applied if the content is not interactive.
+
+<Canvas>
+  <Story id="core-content-display-table--non-interactive-use" />
+</Canvas>
+
+### With fixed column widths
+
+To have a more grid-like table layout, you can use the `fixed` prop. This will ensure that,
+unless otherwise specified, all columns in the table will have the same width. Per the CSS
+spec, using this prop make it such that column spacing is is determined using the first row,
+so you _only_ need to modify the column widths of the first row to affect the rest of the table.
+
+> NOTE: When using this prop, it's recommended you also set the `fullWidth` prop to
+> make sure the table takes up 100% of the width of its container. Otherwise, the table will
+> horizontally stretch depending on `truncation` settings (see below).
+
+<Canvas>
+  <Story id="core-content-display-table--with-fixed-widths" />
+</Canvas>
+
+### With ellipsis truncation
+
+You can pass `truncation="ellipsis"` to `TableCell` elements to make their contents
+truncate using `...`.
+
+Note that when using this feature, you _must_ also specify the `maxWidth` prop for each
+cell truncated using ellipses, otherwise they will not be truncated correctly. It's also
+recommended that you set the corresponding `TableHeaderCell`'s `width` prop to the same
+value. To prevent buggy behavior, ensure that `maxWidth` values across a column are all
+the same.
+
+If you need to fine tune column widths further, you should then use the `width` prop in
+the `TableHeaderCell` component for the remaining columns.
+
+<Canvas>
+  <Story id="core-content-display-table--with-ellipsis-truncation" />
+</Canvas>
+
+### With forced wrap
+
+You can pass `truncation="force-wrap"` to `TableCell` elements to make their contents
+wrap around the cell regardless of space breaks.
+
+<Canvas>
+  <Story id="core-content-display-table--with-forced-wrap" />
+</Canvas>
+
+## Usage
+
+```javascript
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableColumn,
+  TableColumnGroup,
+  TableFooter,
+  TableHeader,
+  TableHeaderCell,
+  TableRow,
+} from "@braze/beacon-core";
+```
+
+## Properties
+
+### `Table`
+
+| propName       | propType                                | defaultValue  | isRequired | Description                                                                     |
+| -------------- | --------------------------------------- | ------------- | ---------- | ------------------------------------------------------------------------------- |
+| `children`     | oneOfType( node, arrayOf( node ) )      | -             | -          | is the children to be passed into component                                     |
+| `className`    | string                                  | -             | -          | is the class name of the component                                              |
+| `fixed`        | boolean                                 | false         | -          | indicates that the table should ignore content and use fixed widths for columns |
+| `id`           | string                                  | -             | -          | id to be passed to the DOM                                                      |
+| `interactive`  | boolean                                 | true          | -          | indicates if the tables is interactive                                          |
+| `ref`          | `React.RefObject<HTMLTableElement>`     | -             | -          | ref to get access to the DOM node                                               |
+| `size`         | oneOf( `none, `compact`, `comfortable`) | "comfortable" | -          | spacing for the cells in the table                                              |
+| `verticalRule` | boolean                                 | false         | -          | indicates if there should be a vertical rule between the cells                  |
+
+### `TableBody`
+
+| propName    | propType                                   | defaultValue | isRequired | Description                                 |
+| ----------- | ------------------------------------------ | ------------ | ---------- | ------------------------------------------- |
+| `children`  | oneOfType( node, arrayOf( node ) )         | -            | -          | is the children to be passed into component |
+| `className` | string                                     | -            | -          | is the class name of the component          |
+| `id`        | string                                     | -            | -          | id to be passed to the DOM                  |
+| `ref`       | `React.RefObject<HTMLTableSectionElement>` | -            | -          | ref to get access to the DOM node           |
+
+### `TableCaption`
+
+| propName    | propType                             | defaultValue | isRequired | Description                                 |
+| ----------- | ------------------------------------ | ------------ | ---------- | ------------------------------------------- |
+| `children`  | oneOfType( node, arrayOf( node ) )   | -            | -          | is the children to be passed into component |
+| `className` | string                               | -            | -          | is the class name of the component          |
+| `id`        | string                               | -            | -          | id to be passed to the DOM                  |
+| `ref`       | `React.RefObject<TableCaptionProps>` | -            | -          | ref to get access to the DOM node           |
+
+### `TableCell`
+
+| propName     | propType                                  | defaultValue  | isRequired | Description                                                    |
+| ------------ | ----------------------------------------- | ------------- | ---------- | -------------------------------------------------------------- |
+| `as`         | oneOfType( ReactElement, HTMLElement )    | -             | -          | component / HTML tag to render component as instead of default |
+| `children`   | oneOfType( node, arrayOf( node ) )        | -             | -          | is the children to be passed into component                    |
+| `className`  | string                                    | -             | -          | is the class name of the component                             |
+| `colSpan`    | number                                    | -             | -          | number of columns spanned by the cell                          |
+| `id`         | string                                    | -             | -          | id to be passed to the DOM                                     |
+| `maxWidth`   | oneOfType( number, string )               | -             | -          | maximum width to apply to cell                                 |
+| `ref`        | `React.RefObject<HTMLTableCellElement>`   | -             | -          | ref to get access to the DOM node                              |
+| `rowSpan`    | number                                    | -             | -          | number of rows spanned by the cell                             |
+| `size`       | oneOf( `none`, `compact`, `comfortable`)  | "comfortable" | -          | spacing for the cell                                           |
+| `textAlign`  | oneOf( `center`, `left`, `right` )        | -             | -          | text alignment within the cell                                 |
+| `truncation` | oneOf( `ellipsis`, `wrap`, `force-wrap` ) | "wrap"        | -          | indicates what kind of truncation to apply to the table cell   |
+
+### `TableColumn`
+
+| propName    | propType                               | defaultValue | isRequired | Description                                 |
+| ----------- | -------------------------------------- | ------------ | ---------- | ------------------------------------------- |
+| `children`  | oneOfType( node, arrayOf( node ) )     | -            | -          | is the children to be passed into component |
+| `className` | string                                 | -            | -          | is the class name of the component          |
+| `id`        | string                                 | -            | -          | id to be passed to the DOM                  |
+| `ref`       | `React.RefObject<HTMLTableColElement>` | -            | -          | ref to get access to the DOM node           |
+
+### `TableColumnGroup`
+
+| propName    | propType                               | defaultValue | isRequired | Description                                 |
+| ----------- | -------------------------------------- | ------------ | ---------- | ------------------------------------------- |
+| `children`  | oneOfType( node, arrayOf( node ) )     | -            | -          | is the children to be passed into component |
+| `className` | string                                 | -            | -          | is the class name of the component          |
+| `id`        | string                                 | -            | -          | id to be passed to the DOM                  |
+| `ref`       | `React.RefObject<HTMLTableColElement>` | -            | -          | ref to get access to the DOM node           |
+
+### `TableFooter`
+
+| propName    | propType                                   | defaultValue | isRequired | Description                                 |
+| ----------- | ------------------------------------------ | ------------ | ---------- | ------------------------------------------- |
+| `children`  | oneOfType( node, arrayOf( node ) )         | -            | -          | is the children to be passed into component |
+| `className` | string                                     | -            | -          | is the class name of the component          |
+| `id`        | string                                     | -            | -          | id to be passed to the DOM                  |
+| `ref`       | `React.RefObject<HTMLTableSectionElement>` | -            | -          | ref to get access to the DOM node           |
+
+### `TableHeader`
+
+| propName    | propType                                   | defaultValue | isRequired | Description                                 |
+| ----------- | ------------------------------------------ | ------------ | ---------- | ------------------------------------------- |
+| `children`  | oneOfType( node, arrayOf( node ) )         | -            | -          | is the children to be passed into component |
+| `className` | string                                     | -            | -          | is the class name of the component          |
+| `id`        | string                                     | -            | -          | id to be passed to the DOM                  |
+| `ref`       | `React.RefObject<HTMLTableSectionElement>` | -            | -          | ref to get access to the DOM node           |
+
+### `TableHeaderCell`
+
+| propName               | propType                                                                                                                                                    | defaultValue  | isRequired | Description                                                                                                |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ---------- | ---------------------------------------------------------------------------------------------------------- |
+| `as`                   | oneOfType( ReactElement, HTMLElement )                                                                                                                      | -             | -          | component / HTML tag to render component as instead of default                                             |
+| `children`             | oneOfType( node, arrayOf( node ) )                                                                                                                          | -             | -          | is the children to be passed into component                                                                |
+| `className`            | string                                                                                                                                                      | -             | -          | is the class name of the component                                                                         |
+| `colSpan`              | number                                                                                                                                                      | -             | -          | number of columns spanned by the cell                                                                      |
+| `firstSortDirection`   | oneOf( `"asc"`, `"desc"` )                                                                                                                                  | `"desc"`      | -          | direction to start with when sorting is initiated. Ignored unless onSortColumn is also passed in           |
+| `id`                   | string                                                                                                                                                      | -             | -          | id to be passed to the DOM                                                                                 |
+| `onClick`              | `(e: React.MouseEvent) => void`                                                                                                                             | -             | -          | callback invoked when column header is clicked; use for sorting (required to display sorting arrows)       |
+| `ref`                  | `React.RefObject<HTMLTabelHeaderCellElement>`                                                                                                               | -             | -          | ref to get access to the DOM node                                                                          |
+| `rowSpan`              | number                                                                                                                                                      | -             | -          | number of rows spanned by the cell                                                                         |
+| `scope`                | oneOf( `row`, `col`, `rowgroup`, `colgroup` )                                                                                                               | -             | -          | indicates how the heading cell is being used                                                               |
+| `size`                 | oneOf( `none, `compact`, `comfortable`)                                                                                                                     | "comfortable" | -          | spacing for the cell                                                                                       |
+| `sortDirection`        | oneOf( `"asc"`, `"desc"`, `undefined` )                                                                                                                     | -             | -          | sorting direction for this column. Ignored unless onSortColumn is also passed in                           |
+| `sortMessages`         | `SortMessages`                                                                                                                                              | -             | -          | aria-label properties for the 3 sort states, `asc`, `desc`, and `none`                                     |
+| `sortTooltipPlacement` | `auto`, `top-start`, `top`, `top-end`, `right-start`, `right`, `right-end`, `bottom-end`, `bottom`, `bottom`, `left-end`, `left`, `left-start`, `undefined` | `bottom`      | -          | desired placement of Tooltip for sorting relative to target. Ignored unless onSortColumn is also passed in |
+| `textAlign`            | oneOf( `center`, `left`, `right` )                                                                                                                          | -             | -          | text alignment within the cell                                                                             |
+
+#### `SortMessages` interface
+
+The `SortMessages` interface is used to customize the `aria-label` read for screen reader users. By default, the message is customized and localized:
+
+```ts
+const defaultAriaLabels = {
+  asc: t(
+          "sorted-aria-label-asc",
+          "Sorted column { columnName } ascending. " +
+            "{nextSortDirection, select, desc {Select to sort descending} other {Select to remove sort}}", ...),
+  desc: t(
+          "sorted-aria-label-desc",
+          "Sorted column { columnName } descending. " +
+            "{nextSortDirection, select, asc {Select to sort ascending} other {Select to remove sort}}", ...),
+  // if firstSortDirection is "asc"
+  none: t(
+          "sort-aria-label-asc",
+          "Column { columnName }. Select to sort ascending", ...),
+  // if firstSortDirection is "desc"
+  none: t(
+          "sort-aria-label-desc",
+          "Column { columnName }. Select to sort descending", ...), // if firstSortDirection is "asc"
+}
+```
+
+To override with custom sort messages, this is the interface to pass. You are responsible for localizing as needed, and ensuring the message
+fits the pattern `Sorted column <column> ... Select to sort <sort info>`
+
+```ts
+export interface SortMessages {
+  /** message to display in aria-label for screen readers when the column is sorted in ascending order */
+  asc: string;
+  /** message to display in aria-label for screen readers when the column is sorted in descending order */
+  desc: string;
+  /** message to display in aria-label for screen readers when the column is not sorted */
+  none: string;
+}
+```
+
+### `TableRow`
+
+| propName    | propType                                | defaultValue  | isRequired | Description                                 |
+| ----------- | --------------------------------------- | ------------- | ---------- | ------------------------------------------- |
+| `children`  | oneOfType( node, arrayOf( node ) )      | -             | -          | is the children to be passed into component |
+| `className` | string                                  | -             | -          | is the class name of the component          |
+| `id`        | string                                  | -             | -          | id to be passed to the DOM                  |
+| `ref`       | `React.RefObject<HTMLTableRowElement>`  | -             | -          | ref to get access to the DOM node           |
+| `size`      | oneOf( `none, `compact`, `comfortable`) | "comfortable" | -          | spacing for the cell in the row             |

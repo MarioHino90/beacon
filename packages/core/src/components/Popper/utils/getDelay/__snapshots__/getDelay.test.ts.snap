@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getDelay should match snapshot when 'delay' arg is a number 1`] = `
+[
+  10,
+  10,
+]
+`;
+
+exports[`getDelay should match snapshot when 'delay' arg is an array 1`] = `
+[
+  0,
+  10,
+]
+`;
+
+exports[`getDelay should match snapshot when 'delay' arg is something else 1`] = `null`;
+
+exports[`getDelay should match snapshot when 'delay' arg is undefined 1`] = `null`;

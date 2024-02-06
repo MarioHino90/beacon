@@ -1,0 +1,7 @@
+{
+  "extends": [
+    "github>braze-inc/renovate-config:braze",
+    "github>braze-inc/renovate-config:beacon-styling",
+    "github>braze-inc/renovate-config:i18n"
+  ]
+}

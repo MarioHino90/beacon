@@ -1,0 +1,78 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+
+# Switch
+
+The `Switch` component acts as a stylized "checkbox", and is intended for use
+cases such as user setting toggles.
+
+**Note:** The `Switch` and `SimpleSwitch` components are not intended for use
+in forms. Use a `Checkbox` component instead.
+
+## Use cases
+
+Below are some common use cases for the `Switch` component.
+
+### Basic use
+
+A `Switch` component that toggles between "on" and "off". Using the `label` prop,
+you can define both the label visually displayed to the user as well as the
+`aria-label` value for the container.
+
+<Canvas>
+  <Story id="core-primitives-switch--basic-use" />
+</Canvas>
+
+### Disabled use
+
+A `Switch` component can be disabled using the `disabled` prop
+to prevent user from making changes but still visually reflect
+the current state of the underlying `Switch`.
+
+<Canvas>
+  <Story id="core-primitives-switch--disabled-use" />
+</Canvas>
+
+### Use with children
+
+Below is an example of using the `Switch` component with a custom child rather
+than a `label` string.
+
+> **Note:** In such cases, the `aria-label` should always be included for
+> accessibilty reasons.
+
+<Canvas>
+  <Story id="core-primitives-switch--use-with-children" />
+</Canvas>
+
+### Use without label or children
+
+You can also use a switch without any `label` or `children` prop.
+
+> **Note:** This is NOT recommended for general use, and the `aria-label`
+> should always be included for accessibilty reasons.
+
+<Canvas>
+  <Story id="core-primitives-switch--use-without-label-or-children" />
+</Canvas>
+
+## Usage
+
+```javascript
+import { Switch } from "@braze/beacon-core";
+```
+
+## Properties
+
+### Switch
+
+| propName    | propType                                               | defaultValue | isRequired | Description                                                  |
+| ----------- | ------------------------------------------------------ | ------------ | ---------- | ------------------------------------------------------------ |
+| `checked`   | `boolean`                                              | -            | +          | indicates if the switch is currently "on"                    |
+| `children`  | `oneOf( ReactNode, ReactNode[] )`                      | -            | -          | child to be passed into the component; must be a single node |
+| `className` | `string`                                               | -            | -          | class name of the component                                  |
+| `disabled`  | `boolean`                                              | -            | -          | indicates that the switch should be visually disabled        |
+| `id`        | `string`                                               | -            | -          | id to be passed to the DOM                                   |
+| `label`     | `string`                                               | -            | -          | text label for the switch                                    |
+| `onChange`  | `(event: React.ChangeEvent<HTMLInputElement>) => void` | -            | -          | callback function for switch check/uncheck                   |
+| `ref`       | `React.RefObject<HTMLInputElement>`                    | -            | -          | ref to get access to the DOM node                            |
+| `value`     | `oneOf( string, number )`                              | -            | -          | value to be represented in the switch                        |

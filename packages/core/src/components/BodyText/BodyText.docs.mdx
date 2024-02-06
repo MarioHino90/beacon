@@ -1,0 +1,54 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { select, withKnobs } from "@storybook/addon-knobs";
+
+import { Icon } from "../Icon";
+import { LoremIpsum } from "../LoremIpsum";
+
+import { BodyText } from "./BodyText";
+
+# BodyText
+
+<Meta title="Core/Text/BodyText" component={BodyText} />
+
+The `BodyText` component is built using the typography tokens.
+Prefer using this component when incorporating undecorated text
+elements into components or your application rather than
+referencing typography tokens in your styles.
+
+## Use cases
+
+See below for some sample use cases on how the `BodyText` component
+can be used in different ways.
+
+### Default Case
+
+Body text is represented by a `BodyText` component. These
+come in medium and small sizes. Labels for form components use a
+special size as well.
+
+> Go to the canvas tab to interact with the font family, size and
+> variants.
+
+<Canvas>
+  <Story id="core-text-bodytext--default-case" />
+</Canvas>
+
+### Usage
+
+Below is an example usage of the `BodyText` component.
+
+<Canvas>
+  <Story id="core-text-bodytext--usage-example" />
+</Canvas>
+
+## Properties
+
+| propName     | propType                                              | defaultValue | isRequired | Description                                         |
+| ------------ | ----------------------------------------------------- | ------------ | ---------- | --------------------------------------------------- |
+| `as`         | string                                                | -            | -          | what the component should be rendered as            |
+| `className`  | string                                                | -            | -          | is a class name to apply to the styled component    |
+| `children`   | oneOfType( node, arrayOf( node ) )                    | -            | -          | is the children to be passed into component         |
+| `fontFamily` | oneOf("base", "code")                                 | "base"       | -          | font family that should be used when rendering text |
+| `fontWeight` | oneOf("bold", "regular")                              | "regular"    | -          | font-family that should be used when rendering text |
+| `size`       | oneOf("sm", "md", "label")                            | "md"         | -          | which size the component should be                  |
+| `variant`    | oneOf("success", "danger", "warning", "info", "hint") | -            | -          | which variant the component should be               |

@@ -1,0 +1,98 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+
+# AlertModal
+
+The `AlertModal` is a commons component that aims to abstract away
+the frequent need to alert the user that something did or will happen
+based on an action they may take.
+
+## Use cases
+
+Below are some common use cases for the `AlertModal` component.
+
+### Basic use
+
+To indicate the type of information that is being provided, you can set
+`intent`. By default, `intent` is set to `info` as shown below.
+
+> Tip: Head over to the `Canvas` tab to access the various knobs
+> available for this component.
+
+<Canvas>
+  <Story id="commons-alerts-alertmodal--basic-use" />
+</Canvas>
+
+### With hook
+
+To further simplify usage, we also provide a `useAlertModal` hook to which
+which returns an object containing the `isOpen` state and `toggle` function.
+
+<Canvas>
+  <Story id="commons-alerts-alertmodal--with-hook" />
+</Canvas>
+
+### Multiple Actions
+
+You can have multiple actions in your alert modal.
+
+<Canvas>
+  <Story id="commons-alerts-alertmodal--multiple-actions-use" />
+</Canvas>
+
+### Different Sizes
+
+You can render your alert modal in different sizes depending on your content.
+
+> Open the "canvas" tab to see the different sizes in action!
+
+> The default size is "md" - or medium
+
+<Canvas>
+  <Story id="commons-alerts-alertmodal--different-sizes" />
+</Canvas>
+
+### Danger use
+
+To indicate that something dangerous might happen, you can set
+`intent` to `danger`.
+
+<Canvas>
+  <Story id="commons-alerts-alertmodal--danger-use" />
+</Canvas>
+
+### Success use
+
+To indicate that something desirable happened, you can set
+`intent` to `success`.
+
+<Canvas>
+  <Story id="commons-alerts-alertmodal--success-use" />
+</Canvas>
+
+### Warning use
+
+To indicate that potentially undesirable things may happen,
+you can set `intent` to `warning`.
+
+<Canvas>
+  <Story id="commons-alerts-alertmodal--warning-use" />
+</Canvas>
+
+## Usage
+
+```javascript
+import { AlertModal, useAlertModal } from "@braze/beacon-commons";
+```
+
+## Properties
+
+| propName        | propType                                                | defaultValue | isRequired | Description                                                                            |
+| --------------- | ------------------------------------------------------- | ------------ | ---------- | -------------------------------------------------------------------------------------- |
+| `buttonText`    | string                                                  | -            | +          | text for button inside modal footer                                                    |
+| `children`      | oneOfType( node, arrayOf( node ) )                      | -            | -          | children to be passed into component                                                   |
+| `className`     | string                                                  | -            | -          | class name of the component                                                            |
+| `heading`       | string                                                  | -            | +          | modal heading text                                                                     |
+| `id`            | string                                                  | -            | -          | id to be passed to the DOM                                                             |
+| `intent`        | oneOf( `info`, `danger`, `warning`, `success` )         | `info`       | -          | intent of the alert modal representing the type of information that should be conveyed |
+| `onButtonClick` | `(event: React.MouseEvent<HTMLButtonElement>) => void;` | -            | +          | function to be called when user clicks on button in modal footer                       |
+| `size`          | oneOf(`sm`, `md`, `lg`, `xl`)                           | `md`         | -          | size of the `Modal` to be displayed                                                    |

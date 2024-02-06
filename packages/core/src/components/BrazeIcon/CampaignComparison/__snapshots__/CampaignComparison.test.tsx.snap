@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CampaignComparison should match the snapshot 1`] = `
+<svg
+  className="bcl-campaign-comparison impactful"
+  fill="none"
+  height="24"
+  id="Cambridgeshire"
+  viewBox="0 0 24 24"
+  width="24"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <rect
+    fill="white"
+    height="14"
+    stroke="black"
+    strokeLinejoin="round"
+    width="14"
+    x="1"
+    y="8.99976"
+  />
+  <rect
+    fill="white"
+    height="16"
+    rx="8"
+    stroke="black"
+    strokeLinejoin="round"
+    width="16"
+    x="7"
+    y="1"
+  />
+  <path
+    d="M7 8.99976H15V16.9998V16.9998C10.5817 16.9998 7 13.418 7 8.99976V8.99976Z"
+    fill="#B5EDFF"
+    stroke="black"
+    strokeLinejoin="round"
+  />
+</svg>
+`;

@@ -1,0 +1,46 @@
+{
+  "name": "@braze/beacon-hooks",
+  "version": "15.5.1",
+  "description": "Beacon hooks package",
+  "homepage": "https://github.com/braze-inc/beacon#readme",
+  "license": "UNLICENSED",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "./README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/braze-inc/beacon.git",
+    "directory": "packages/hooks"
+  },
+  "scripts": {
+    "precommit": "TZ=UTC lint-staged",
+    "prebuild": "rimraf dist",
+    "build": "run-p build-js build-types",
+    "build-js": "babel src -d dist --extensions \".ts,.tsx\" --ignore \"src/**/*.test.tsx\",\"src/**/*.test.ts\"",
+    "build-types": "tsc --emitDeclarationOnly -p tsconfig.json",
+    "lint": "eslint src/ --ext .ts,.tsx",
+    "lint:ci": "eslint src/ --ext .ts,.tsx --quiet",
+    "lint:fix": "eslint src/ --ext .ts,.tsx --fix",
+    "test": "TZ=UTC jest --env=jsdom",
+    "test:ci": "CI=true TZ=UTC jest --env=jsdom --coverage --bail",
+    "cypress": "cypress open --project ../../integration-tests --config integrationFolder='../packages/hooks'",
+    "cypress:cli": "cypress run --project ../../integration-tests --config integrationFolder='../packages/hooks'",
+    "cypress:ci": "yarn cypress:cli --config-file cypress-ci.json"
+  },
+  "bugs": {
+    "url": "https://github.com/braze-inc/beacon/issues"
+  },
+  "peerDependencies": {
+    "@braze/beacon-styling": "^4.0.0",
+    "@braze/beacon-theme": "^4.0.0",
+    "react": "^16.8.0 || ^17",
+    "react-dom": "^16.8.0 || ^17",
+    "styled-components": "^5.0.0"
+  },
+  "contibutors": [
+    "Gregory Beaver <gregory.beaver@braze.com>"
+  ]
+}

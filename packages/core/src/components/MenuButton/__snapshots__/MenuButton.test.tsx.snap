@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuButton should match the snapshot 1`] = `
+<StyledMenuButton
+  className="bcl-menu-button dynamic"
+  id="B2B"
+  type="button"
+>
+  experiences Villages invoice
+</StyledMenuButton>
+`;

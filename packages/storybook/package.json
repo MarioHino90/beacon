@@ -1,0 +1,38 @@
+{
+  "name": "@braze/beacon-storybook",
+  "private": true,
+  "version": "15.5.3",
+  "description": "Storybook application for Beacon component library",
+  "homepage": "https://github.com/braze-inc/beacon#readme",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/braze-inc/beacon.git"
+  },
+  "bugs": {
+    "url": "https://github.com/braze-inc/beacon/issues"
+  },
+  "scripts": {
+    "storybook": "start-storybook -s ./public -p 6006",
+    "build-storybook": "build-storybook -s ./public",
+    "test": "true",
+    "test:ci": "true"
+  },
+  "contributors": [
+    "Haldun Anil <haldun.anil@braze.com>"
+  ],
+  "dependencies": {
+    "@braze/i18n-storybook-addon": "15.0.33",
+    "@storybook/addon-essentials": "6.5.13",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "@braze/beacon-i18n-dev": "^15.4.4",
+    "@lerna/project": "4.0.0",
+    "@storybook/addon-a11y": "6.5.13",
+    "@storybook/addon-knobs": "6.4.0",
+    "@storybook/addon-links": "6.5.13",
+    "@storybook/react": "6.5.13"
+  }
+}

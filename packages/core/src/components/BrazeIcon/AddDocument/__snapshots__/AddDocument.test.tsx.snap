@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddDocument should match the snapshot 1`] = `
+<svg
+  className="bcl-add-document bcl-empty-table-icon Savings"
+  fill="none"
+  height="55"
+  id="input"
+  viewBox="0 0 73 55"
+  width="73"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <mask
+    fill="white"
+    id="path-1-inside-1"
+  >
+    <rect
+      height="46.6852"
+      rx="1"
+      width="64.4661"
+      x="0.5"
+      y="0.125"
+    />
+  </mask>
+  <rect
+    fill="white"
+    height="46.6852"
+    mask="url(#path-1-inside-1)"
+    rx="1"
+    stroke="#101B24"
+    strokeWidth="4"
+    width="64.4661"
+    x="0.5"
+    y="0.125"
+  />
+  <path
+    d="M6.87939 23.0833H58.5866"
+    stroke="#101B24"
+    strokeWidth="2"
+  />
+  <path
+    d="M6.87939 28.9031H58.5866"
+    stroke="#101B24"
+    strokeWidth="2"
+  />
+  <path
+    d="M6.87939 34.499H58.5866"
+    stroke="#101B24"
+    strokeWidth="2"
+  />
+  <path
+    d="M6.87939 39.7593H58.5866"
+    stroke="#101B24"
+    strokeWidth="2"
+  />
+  <rect
+    fill="#75DBE7"
+    height="5.37217"
+    width="19.2503"
+    x="6.82349"
+    y="6.35156"
+  />
+  <rect
+    fill="#C4F0F5"
+    height="3.58145"
+    width="38.3886"
+    x="6.87939"
+    y="14.2417"
+  />
+  <circle
+    cx="63.2873"
+    cy="45.2082"
+    fill="#75DBE7"
+    r="8.2128"
+    stroke="#101B24"
+    strokeWidth="2"
+  />
+  <path
+    d="M63.4221 40.3308V49.8146"
+    stroke="#101B24"
+    strokeWidth="2"
+  />
+  <path
+    d="M68.1643 45.0725L58.6805 45.0725"
+    stroke="#101B24"
+    strokeWidth="2"
+  />
+</svg>
+`;

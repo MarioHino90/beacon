@@ -1,0 +1,85 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+
+# CopyField
+
+`CopyField` is an input element containing blocks of reusable
+code that can be inserted in a code file. They are always
+accompanied by a copy button.
+
+## Use cases
+
+Below are some common use cases for the `CopyField` component.
+
+### Basic use
+
+The `CopyField` component enables users to select and easily
+copy a snippet of code or text to their keyboard, as shown
+below. Test it out by clicking "Copy" and then paste your
+clipboard in the input field immediately below.
+
+> TIP: Check out the canvas tab to see a few knobs that allow
+> you to customize the experience.
+
+<Canvas>
+  <Story id="core-forms-copyfield--basic-use" />
+</Canvas>
+
+### With no text in button
+
+To make your `CopyField` more compact, you can flip the
+`showTextInButton` prop to `false`.
+
+<Canvas>
+  <Story id="core-forms-copyfield--with-no-text-in-button" />
+</Canvas>
+
+### With different sizes
+
+`CopyField` supports the same sizes as the regular `Input`
+component it's based on!
+
+<Canvas>
+  <Story id="core-forms-copyfield--with-different-sizes" />
+</Canvas>
+
+### With different copy text
+
+To provide more specific information to your user, you can
+override the tooltip text to render different text via the
+`copyTooltipText` prop.
+
+<Canvas>
+  <Story id="core-forms-copyfield--with-different-copy-text" />
+</Canvas>
+
+### with copyToClipboard options
+
+To provide copyToClipboard options though the props,
+See https://github.com/sudodoki/copy-to-clipboard#api all available options
+
+<Canvas>
+  <Story id="core-forms-copyfield--with-copy-to-clipboard-options" />
+</Canvas>
+
+## Usage
+
+```javascript
+import { CopyField } from "@braze/beacon-core";
+```
+
+## Properties
+
+| propName             | propType                                                                                  | defaultValue | isRequired | Description                                                                              |
+| -------------------- | ----------------------------------------------------------------------------------------- | ------------ | ---------- | ---------------------------------------------------------------------------------------- |
+| `children`           | oneOfType( node, arrayOf( node ) )                                                        | -            | -          | children to be passed into component                                                     |
+| `className`          | string                                                                                    | -            | -          | class name of the component                                                              |
+| `containerClassName` | string                                                                                    | -            | -          | class name for the container component                                                   |
+| `copyOptions`        | {debug: boolean, format: MIME type, onCopy: (clipboardData: object)=> void } | undefined  | undefined    | -          | options passing to copyToClipboard see https://github.com/sudodoki/copy-to-clipboard#api |
+| `copyTooltipText`    | string                                                                                    | -            | -          | text to be rendered in the tooltip before the copy button has been clicked               |
+| `id`                 | string                                                                                    | -            | -          | id to be passed to the DOM                                                               |
+| `onCopyClick`        | `(event: React.MouseEvent<HTMLButtonElement>) => void`                                    | -            | -          | function to be invoked when a user clicks on the copy button                             |
+| `onInputClick`       | `(event: React.MouseEvent<HTMLInputElement>) => void`                                     | -            | -          | function to be invoked when a user clicks on input                                       |
+| `showTextInButton`   | boolean                                                                                   | -            | -          | indicates that the copy text should be shown in the button                               |
+| `value`              | oneOfType( string, number, string[] )                                                     | -            | -          | value to be rendered in the input field                                                  |
+| `vSize`              | oneOf( `"sm"`, `"md"`)                                                                    | `"md"`       | -          | vertical size for input box                                                              |
+| `zIndex`             | number                                                                                    | -            | -          | z-index to use for the copy button (the tooltip will use `zIndex + 1`)                   |

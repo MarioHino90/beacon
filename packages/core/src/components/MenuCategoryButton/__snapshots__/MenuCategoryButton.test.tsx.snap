@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuCategoryButton should match the snapshot 1`] = `
+<li
+  role="none"
+>
+  <MenuButton
+    aria-label="compatible"
+    className="bcl-menu-category-button Human"
+    id="EXE"
+    role="menuitem"
+    tabIndex={-1}
+  >
+    <Flex
+      direction="column"
+    >
+      <Box
+        boxMargin={
+          {
+            "bottom": "xs",
+          }
+        }
+      >
+        <Heading
+          level={5}
+          variant="light"
+        />
+      </Box>
+      <BodyText
+        size="sm"
+      >
+        Compatible
+      </BodyText>
+    </Flex>
+  </MenuButton>
+</li>
+`;
+
+exports[`MenuCategoryButton should match the snapshot when 'children' is NOT a string 1`] = `
+<li
+  role="none"
+>
+  <MenuButton
+    className="bcl-menu-category-button portals"
+    id="niches"
+    role="menuitem"
+    tabIndex={-1}
+  >
+    <Flex
+      direction="column"
+    >
+      <Box
+        boxMargin={
+          {
+            "bottom": "xs",
+          }
+        }
+      >
+        <Heading
+          level={5}
+          variant="light"
+        />
+      </Box>
+      <BodyText
+        size="sm"
+      >
+        <span>
+          hi
+        </span>
+      </BodyText>
+    </Flex>
+  </MenuButton>
+</li>
+`;
+
+exports[`MenuCategoryButton should match the snapshot when 'heading' is defined 1`] = `
+<li
+  role="none"
+>
+  <MenuButton
+    aria-label="malaysia personal licensed"
+    className="bcl-menu-category-button violet"
+    id="Future"
+    role="menuitem"
+    tabIndex={-1}
+  >
+    <Flex
+      direction="column"
+    >
+      <Box
+        boxMargin={
+          {
+            "bottom": "xs",
+          }
+        }
+      >
+        <Heading
+          level={5}
+          variant="light"
+        >
+          Assurance invoice Plastic
+        </Heading>
+      </Box>
+      <BodyText
+        size="sm"
+      >
+        Malaysia Personal Licensed
+      </BodyText>
+    </Flex>
+  </MenuButton>
+</li>
+`;
+
+exports[`MenuCategoryButton should match the snapshot when 'iconName' is defined 1`] = `
+<li
+  role="none"
+>
+  <MenuButton
+    aria-label="utah payment wireless"
+    className="bcl-menu-category-button dot-com"
+    id="solution-oriented"
+    role="menuitem"
+    tabIndex={-1}
+  >
+    <FlexBox
+      alignItems="center"
+      boxMargin={
+        {
+          "right": "lg",
+        }
+      }
+      justifyContent="center"
+      style={
+        {
+          "minWidth": 32,
+        }
+      }
+    >
+      <BrazeIcon
+        name="campaign-comparison"
+      />
+    </FlexBox>
+    <Flex
+      direction="column"
+    >
+      <Box
+        boxMargin={
+          {
+            "bottom": "xs",
+          }
+        }
+      >
+        <Heading
+          level={5}
+          variant="light"
+        />
+      </Box>
+      <BodyText
+        size="sm"
+      >
+        Utah payment wireless
+      </BodyText>
+    </Flex>
+  </MenuButton>
+</li>
+`;

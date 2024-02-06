@@ -1,0 +1,72 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+
+import { Heading } from "./Heading";
+
+# Heading
+
+<Meta title="Core/Text/Heading" component={Heading} />
+
+The `Heading` component is built using the typography tokens.
+Prefer using this component when incorporating undecorated text elements into
+components or your application rather than referencing typography
+tokens in your styles.
+
+## Use cases
+
+See below for some sample use cases on how the `Heading` component can be used
+in different ways.
+
+### Headings
+
+A `Heading` component that represents some sort of header.
+
+> Go to the canvas tab to interact with the levels and variants
+
+<Canvas>
+  <Story id="core-text-heading--basic-use" />
+</Canvas>
+
+#### Header Level 1
+
+<Canvas>
+  <Story id="core-text-heading--level-one" />
+</Canvas>
+
+#### Header Level 2
+
+<Canvas>
+  <Story id="core-text-heading--level-two" />
+</Canvas>
+
+#### Header Level 3
+
+<Canvas>
+  <Story id="core-text-heading--level-three" />
+</Canvas>
+
+#### Header Level 4
+
+<Canvas>
+  <Story id="core-text-heading--level-four" />
+</Canvas>
+
+#### Header Level 5
+
+<Canvas>
+  <Story id="core-text-heading--level-five" />
+</Canvas>
+
+#### Header Level 6
+
+<Canvas>
+  <Story id="core-text-heading--level-six" />
+</Canvas>
+
+## Properties
+
+| propName    | propType                           | defaultValue | isRequired | Description                                      |
+| ----------- | ---------------------------------- | ------------ | ---------- | ------------------------------------------------ |
+| `className` | string                             | -            | -          | is a class name to apply to the styled component |
+| `children`  | oneOfType( node, arrayOf( node ) ) | -            | -          | is the children to be passed into component      |
+| `level`     | oneOf(1, 2, 3, 4, 5, 6)            | 1            | -          | which header level the component should use      |
+| `variant`   | oneOf("default", "light")          | "default"    | -          | which variant the component should be            |

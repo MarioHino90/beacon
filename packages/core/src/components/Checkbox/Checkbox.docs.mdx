@@ -1,0 +1,123 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { boolean, withKnobs } from "@storybook/addon-knobs";
+import { action } from "@storybook/addon-actions";
+
+import { BodyText } from "../BodyText";
+
+import { Checkbox } from ".";
+
+# Checkbox
+
+<Meta title="Core/Forms/Checkbox" component={Checkbox} />
+
+A `Checkbox` you can interact with.
+
+> NOTE: In order for the checkbox to toggle when clicking on its label, it
+> _MUST_ have an `id` prop defined.
+
+## Use cases
+
+See below for some sample use cases on how the `Checkbox` component can be used
+in different ways.
+
+### Basic use
+
+Try checking and unchecking! Note that, as shown in the example, you should use the
+`event.target.checked` value to determine whether your new checkbox state is checked
+or not, as opposed to the typical `event.target.value`, since the latter is static
+for the `Checkbox` component.
+
+> Tip: To toggle `disabled` on/off, switch to the `Canvas` tab and find the `Knobs`
+> section.
+
+<Canvas>
+  <Story id="core-forms-checkbox--basic-use" />
+</Canvas>
+
+### Indeterminate use
+
+When using the `indeterminate` prop, note that it will override `checked` styling.
+To display the checkbox as `checked`, make sure to set `indeterminate` to `false`.
+
+> To toggle `indeterminate` on/off, switch to the `Canvas` tab and find the `Knobs`
+> section.
+
+<Canvas>
+  <Story id="core-forms-checkbox--indeterminate-use" />
+</Canvas>
+
+### Disabled use
+
+When disabled, clicking on either the checkbox or its label
+will not change the state of the checkbox.
+
+<Canvas>
+  <Story id="core-forms-checkbox--disabled-use" />
+</Canvas>
+
+### Focus styling
+
+Try tabbing through the checkboxes here:
+
+<Canvas>
+  <Story id="core-forms-checkbox--focus-styling" />
+</Canvas>
+
+### Invalid state
+
+Checkboxes can represent invalid state as well
+
+<Canvas>
+  <Story id="core-forms-checkbox--invalid-state" />
+</Canvas>
+
+### Invalid state with no message
+
+Invalid state error messages are optionally rendered
+
+<Canvas>
+  <Story id="core-forms-checkbox--invalid-state-no-message" />
+</Canvas>
+
+### With help text
+
+Checkboxes can also be used with a help text underneath,
+informing the user about the consequences of their selection.
+
+<Canvas>
+  <Story id="core-forms-checkbox--with-help-text" />
+</Canvas>
+
+### No `id`
+
+If you don't provide an `id`, a random one will be provided for you to properly attach the label.
+
+<Canvas>
+  <Story id="core-forms-checkbox--no-id" />
+</Canvas>
+
+## Usage
+
+```javascript
+import { Checkbox } from "@braze/beacon-core";
+```
+
+## Properties
+
+| propName              | propType                             | defaultValue | isRequired | Description                                                               |
+| --------------------- | ------------------------------------ | ------------ | ---------- | ------------------------------------------------------------------------- |
+| `checked`             | boolean                              | -            | -          | indicates that checkbox should be checked                                 |
+| `className`           | string                               | -            | -          | is the class name of the component                                        |
+| `children`            | oneOfType( node, arrayOf( node ) )   | -            | -          | is the children to be rendered next to the checkbox                       |
+| `disabled`            | boolean                              | -            | -          | indicates that the checkbox should be visually disabled                   |
+| `errorText`           | string                               | -            | -          | text to be shown to the user if 'invalid' prop is true                    |
+| `helpText`            | string                               | -            | -          | text to be shown if the invalid prop is false                             |
+| `helpTextClassName`   | string                               | -            | -          | class name to be passed into the help text; use as escape hatch           |
+| `id`                  | string                               | -            | -          | id to be passed to the DOM                                                |
+| `indeterminate`       | boolean                              | -            | -          | indicates whether input has indeterminate state; overrides `checked` prop |
+| `invalid `            | boolean                              | -            | -          | indicates whether input has invalid state                                 |
+| `invalidCheckboxOnly` | boolean                              | -            | -          | only set the checkbox to invalid state, don't display the error text      |
+| `name`                | string                               | -            | -          | name to be passed to the DOM                                              |
+| `onChange`            | `(event: React.ChangeEvent) => void` | -            | -          | callback function for checkbox check/uncheck                              |
+| `ref`                 | `React.RefObject<HTMLInputElement>`  | -            | -          | ref to get access to the DOM node                                         |
+| `value`               | number                               | -            | -          | value to be represented in the checkbox                                   |

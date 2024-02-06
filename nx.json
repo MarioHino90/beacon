@@ -1,0 +1,127 @@
+{
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": [
+          "lint",
+          "lint:ci",
+          "lint:fix",
+          "prebuild",
+          "build",
+          "cypress:cli",
+          "test",
+          "test:ci",
+          "prebuild-i18n-config",
+          "build-i18n-config",
+          "build-js",
+          "build-storybook",
+          "prebuild-translations",
+          "build-translations"
+        ]
+      }
+    }
+  },
+  "targetDefaults": {
+    "prebuild": {
+      "dependsOn": [
+        "^prebuild"
+      ]
+    },
+    "build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "{projectRoot}/src/**/*",
+        "!{projectRoot}/src/**/*.mdx",
+        "!{projectRoot}/src/**/integration_tests/**/*",
+        "!{projectRoot}/src/**/component_tests/**/*"
+      ],
+      "outputs": [
+        "{projectRoot}/dist"
+      ]
+    },
+    "prebuild-i18n-config": {
+      "dependsOn": [
+        "^prebuild-i18n-config"
+      ]
+    },
+    "build-i18n-config": {
+      "dependsOn": [
+        "^build-i18n-config"
+      ],
+      "inputs": [
+        "{projectRoot}/src/**/*",
+        "!{projectRoot}/src/**/*.mdx",
+        "!{projectRoot}/src/**/integration_tests/**/*",
+        "!{projectRoot}/src/**/component_tests/**/*"
+      ],
+      "outputs": [
+        "{projectRoot}/dist"
+      ]
+    },
+    "build-js": {
+      "dependsOn": [
+        "^build-js"
+      ],
+      "inputs": [
+        "{projectRoot}/src/**/*",
+        "!{projectRoot}/src/**/*.mdx",
+        "!{projectRoot}/src/**/integration_tests/**/*",
+        "!{projectRoot}/src/**/component_tests/**/*"
+      ],
+      "outputs": [
+        "{projectRoot}/dist"
+      ]
+    },
+    "build-storybook": {
+      "dependsOn": [
+        "^build-storybook"
+      ],
+      "inputs": [
+        "{projectRoot}/src/**/*",
+        "!{projectRoot}/src/**/integration_tests/**/*",
+        "!{projectRoot}/src/**/component_tests/**/*"
+      ],
+      "outputs": [
+        "{projectRoot}/dist"
+      ]
+    },
+    "prebuild-translations": {
+      "dependsOn": [
+        "^prebuild-translations"
+      ]
+    },
+    "build-translations": {
+      "dependsOn": [
+        "^build-translations"
+      ],
+      "inputs": [
+        "{projectRoot}/src/**/*",
+        "!{projectRoot}/src/**/*.mdx",
+        "!{projectRoot}/src/**/integration_tests/**/*",
+        "!{projectRoot}/src/**/component_tests/**/*"
+      ],
+      "outputs": [
+        "{projectRoot}/dist"
+      ]
+    },
+    "test": {
+      "inputs": [
+        "{projectRoot}/src/**/*",
+        "!{projectRoot}/src/**/*.mdx",
+        "!{projectRoot}/src/**/integration_tests/**/*",
+        "!{projectRoot}/src/**/component_tests/**/*"
+      ]
+    },
+    "test:ci": {
+      "inputs": [
+        "{projectRoot}/src/**/*",
+        "!{projectRoot}/src/**/*.mdx",
+        "!{projectRoot}/src/**/integration_tests/**/*",
+        "!{projectRoot}/src/**/component_tests/**/*"
+      ]
+    }
+  }
+}

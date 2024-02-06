@@ -1,0 +1,41 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { select } from "@storybook/addon-knobs";
+import { action } from "@storybook/addon-actions";
+
+import { CloseButton } from ".";
+
+<Meta title="Core/Primitives/CloseButton" component={CloseButton} />
+
+# CloseButton
+
+The `CloseButton` component is a simple `button` component styled
+to render an `X` within.
+
+## Use cases
+
+The `CloseButton` is usually used within the context of a larger
+component like the `Modal` or `Popover`, to give the user the
+ability to quickly close the dialog they're viewing.
+
+### Basic use
+
+<Canvas>
+  <Story id="core-primitives-closebutton--basic-use" />
+</Canvas>
+
+## Usage
+
+```javascript
+import { CloseButton } from "@braze/beacon-core";
+```
+
+## Properties
+
+| propName    | propType                             | defaultValue | isRequired | Description                             |
+| ----------- | ------------------------------------ | ------------ | ---------- | --------------------------------------- |
+| `children`  | oneOfType( node, arrayOf( node ) )   | -            | -          | children to be passed into component    |
+| `className` | string                               | -            | -          | class name of the component             |
+| `id`        | string                               | -            | -          | id to be passed to the DOM              |
+| `onClick`   | func                                 | -            | -          | function to be invoked on button click  |
+| `ref`       | `React.RefObject<HTMLButtonElement>` | -            | -          | ref to get access to the DOM node       |
+| `size`      | oneOf( `"sm"`, `"lg"` )              | `"sm"`       | -          | sets the size of the button and its 'X' |

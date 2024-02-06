@@ -1,0 +1,66 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { text, select } from "@storybook/addon-knobs";
+
+import { IconCircle } from ".";
+
+<Meta title="Commons/Icons/IconCircle" component={IconCircle} />
+
+# IconCircle
+
+The `IconCircle` component is a simple abstraction of the `Icon`
+component for common use cases, particularly surrounding alerts.
+
+## Use cases
+
+Below are some common use cases for the `IconCircle` component.
+
+### Basic use
+
+To indicate the type of information that is being provided, you can set
+`intent`. By default, `intent` is set to `info` as shown below.
+
+<Canvas>
+  <Story id="commons-icons-iconcircle--basic-use" />
+</Canvas>
+
+### Danger use
+
+To indicate that something dangerous might happen, you can set
+`intent` to `danger`.
+
+<Canvas>
+  <Story id="commons-icons-iconcircle--danger-use" />
+</Canvas>
+
+### Success use
+
+To indicate that something desirable happened, you can set
+`intent` to `success`.
+
+<Canvas>
+  <Story id="commons-icons-iconcircle--success-use" />
+</Canvas>
+
+### Warning use
+
+To indicate that potentially undesirable things may happen,
+you can set `intent` to `warning`.
+
+<Canvas>
+  <Story id="commons-icons-iconcircle--warning-use" />
+</Canvas>
+
+## Usage
+
+```javascript
+import { IconCircle } from "@braze/beacon-core";
+```
+
+## Properties
+
+| propName    | propType                                       | defaultValue | isRequired | Description                                                                     |
+| ----------- | ---------------------------------------------- | ------------ | ---------- | ------------------------------------------------------------------------------- |
+| `children`  | oneOfType( node, arrayOf( node ) )             | -            | -          | children to be passed into component                                            |
+| `className` | string                                         | -            | -          | class name of the component                                                     |
+| `id`        | string                                         | -            | -          | id to be passed to the DOM                                                      |
+| `intent`    | oneOf( `info`, `danger`, `warning`, `success`) | `info`       | -          | intent of the icon representing the type of information that should be conveyed |

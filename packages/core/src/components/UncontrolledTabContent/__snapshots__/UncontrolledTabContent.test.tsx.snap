@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UncontrolledTabContent should render correctly 1`] = `
+<TabContent
+  active={false}
+>
+  <BodyText>
+    Hello World!
+  </BodyText>
+</TabContent>
+`;
+
+exports[`UncontrolledTabContent should render correctly if active 1`] = `
+<TabContent
+  active={true}
+>
+  <BodyText>
+    Hello World!
+  </BodyText>
+</TabContent>
+`;
+
+exports[`UncontrolledTabContent should render correctly with className 1`] = `
+<TabContent
+  active={false}
+  className="extraClass"
+>
+  <BodyText>
+    Hello World!
+  </BodyText>
+</TabContent>
+`;

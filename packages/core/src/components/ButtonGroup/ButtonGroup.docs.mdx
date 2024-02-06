@@ -1,0 +1,89 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { boolean, select, text } from "@storybook/addon-knobs";
+import { action } from "@storybook/addon-actions";
+
+import { Annotation } from "../Annotation";
+import { Button } from "../Button";
+
+import { ButtonGroup } from ".";
+
+<Meta title="Core/Primitives/ButtonGroup" component={ButtonGroup} />
+
+# ButtonGroup
+
+`ButtonGroup` is used to display similar or related actions. It will automatically lay out buttons in the order that is
+best for user experience. The use cases are defined below.
+
+Button groups are 2-3 buttons, and should be a primary and secondary button at the minimum. The third button should be
+a quaternary button.
+
+## Use cases
+
+When using multiple buttons, there are a couple of placement or alignment guidelines that ButtonGroup enforces:
+
+### Horizontally aligned groups
+
+#### Left-aligned
+
+Left-aligned buttons are always aligned with primary followed by secondary, and then quaternary.
+
+<Canvas>
+  <Story id="core-primitives-buttongroup--left-aligned-2-buttons" />
+</Canvas>
+
+<Canvas>
+  <Story id="core-primitives-buttongroup--left-aligned-3-buttons" />
+</Canvas>
+
+#### Right-aligned
+
+Primary button will be right-aligned and appear to the right of the secondary or quaternary button.
+This use case is for example within wizards, banner with accordion and dialog windows like modal and popover.
+
+<Canvas>
+  <Story id="core-primitives-buttongroup--right-aligned-3-buttons" />
+</Canvas>
+
+### Vertically aligned groups
+
+When vertically aligned, buttons are ordered primary, secondary, then quaternary independent of source ordering.
+
+<Canvas>
+  <Story id="core-primitives-buttongroup--vertical-aligned-2-buttons" />
+</Canvas>
+
+<Canvas>
+  <Story id="core-primitives-buttongroup--vertical-aligned-3-buttons" />
+</Canvas>
+
+### With annotation
+
+It's also possible to to use buttons wrapped with the `Annotation`
+component in case you want to call out info related to a button.
+
+<Canvas>
+  <Story id="core-primitives-buttongroup--with-annotation" />
+</Canvas>
+
+## Usage
+
+```javascript
+import { ButtonGroup } from "@braze/beacon-core";
+```
+
+## Properties
+
+| propName         | propType                                                                                     | defaultValue | isRequired | Description                                                                                           |
+| ---------------- | -------------------------------------------------------------------------------------------- | ------------ | ---------- | ----------------------------------------------------------------------------------------------------- |
+| `aligner`        | boolean                                                                                      | -            | -          | indicates that the component is being used as an aligner; required if using 'side' prop               |
+| `alignItems`     | oneOf( `stretch`, `flex-start`, `flex-end`, `center`, `baseline`)                            | `stretch`    | -          | defines the behavior for how items are laid out along the cross axis (perpendicular to the main axis) |
+| `children`       | oneOfType( node, arrayOf( node ) )                                                           | -            | -          | children to be passed into component                                                                  |
+| `className`      | string                                                                                       | -            | -          | class name of the component                                                                           |
+| `direction`      | oneOf( `row`, `column`, `row-reverse`, `column-reverse` )                                    | `row`        | -          | specified the direction of the items inside the flex element                                          |
+| `id`             | string                                                                                       | -            | -          | id to be passed to the DOM                                                                            |
+| `inline`         | boolean                                                                                      | -            | -          | indicates that the flex element should be inline                                                      |
+| `justifyContent` | oneOf( `flex-start`, `flex-end`, `center`, `space-between`, `space-around`, `space-evenly` ) | `flex-start` | -          | defines the behavior for how items are laid out along the main axis                                   |
+| `side`           | oneOf( `left`, `right` )                                                                     | -            | -          | indicates side of the parent footer to align items to; requires 'aligner' to be true                  |
+| `styledCss`      | return value of the `css` function exported by `styled-components`                           | -            | -          | prop to interpolate the returned value of a `css` call within styled-components                       |
+| `textAlign`      | oneOf( `left`, `center`, `right`, `justify`)                                                 | `left`       | -          | horizontally aligns text within a DOM element                                                         |
+| `wrap`           | oneOf( `wrap`, `nowrap`, `wrap-reverse` )                                                    | `nowrap`     | -          | specifies whether the flexed items should wrap                                                        |

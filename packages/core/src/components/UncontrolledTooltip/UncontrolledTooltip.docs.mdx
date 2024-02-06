@@ -1,0 +1,138 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+
+# UncontrolledTooltip
+
+Like the `Tooltip`, the `UncontrolledTooltip` component opens a box that
+overlays other content to provide contextual help to a user.
+`UncontrolledTooltip` provides brief contextual information or
+functionality as the user hovers over the related element. Use for icon
+and button descriptions.
+
+**Unlike the `Tooltip`, the `UncontrolledTooltip` is meant to offer a
+simpler interface with less configuration for basic use cases. For your
+day-to-day "hover-or-focus-to-show-tooltip" tasks, we recommend using
+this component instead.**
+
+The differences can be seen below in two implementations that operate
+identically:
+
+```tsx
+const MyTooltipComp = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const handleOpen = () => setIsOpen(true);
+  const handleClose = () => setIsOpen(false);
+
+  return (
+    <>
+      <Button id="some-id">My component</Button>
+      <Tooltip
+        target="some-id"
+        isOpen={isOpen}
+        onOpen={handleOpen}
+        onClose={handleClose}
+      >
+        Label
+      </Tooltip>
+    </>
+  );
+};
+```
+
+vs the `Uncontrolled` setup:
+
+```tsx
+const MyUncontrolledTooltipComp = () => {
+  return (
+    <UncontrolledTooltip label="Label">
+      <Button id="some-id">My component</Button>
+    </UncontrolledTooltip>
+  );
+};
+```
+
+> Note: If you need to implement a more complex use case of the tooltip,
+> please use `Tooltip` instead, as that component is much more flexible
+> in its configuration and accepts event handlers for custom open/close
+> behavior.
+
+### Important note regarding Usage
+
+This component relies on `refs` internally to manage the tooltip behavior.
+As a result, the component passed as a `child` into the `UncontrolledTooltip`
+_must_ accept refs and forward them to the DOM node.
+
+If the component you're attempting to target does not support `ref`
+forwarding, please use the `Tooltip` component with the `target` prop,
+which must correspond to the target component's DOM id.
+
+## Use cases
+
+Below are some common use cases for the `UncontrolledTooltip` component.
+
+### Basic use
+
+By default, the the `UncontrolledTooltip` will appear when the target
+element is either focused on or hovered over. Similarly, the
+`UncontrolledTooltip` will disappear when the the target element is
+blurred or left with a mouse, whichever happens first.
+
+<Canvas>
+  <Story id="core-overlay-uncontrolledtooltip--basic-use" />
+</Canvas>
+
+### Trigger on click
+
+By setting the `triggers` and `untriggers` props to `["click"]`,
+you can make the `UncontrolledTooltip` open and close only when
+the children is clicked.
+
+<Canvas>
+  <Story id="core-overlay-uncontrolledtooltip--trigger-only-on-click" />
+</Canvas>
+
+### Trigger on focus
+
+By setting the `triggers` prop to `["focus"]` and `untriggers`
+to `["blur"]`, you can make the `UncontrolledTooltip` open when
+its children is focused and close when it is blurred.
+
+<Canvas>
+  <Story id="core-overlay-uncontrolledtooltip--trigger-only-on-focus" />
+</Canvas>
+
+### Trigger on hover
+
+By setting the `triggers` prop to `["mouseenter"]` and `untriggers`
+to `["mouseleave"]`, you can make the `UncontrolledTooltip`
+open when the children is hovered and close when it is no
+longer hovered.
+
+<Canvas>
+  <Story id="core-overlay-uncontrolledtooltip--trigger-only-on-hover" />
+</Canvas>
+
+## Usage
+
+```javascript
+import { UncontrolledTooltip } from "@braze/beacon-core";
+```
+
+## Properties
+
+| propName          | propType                                                                                                                      | defaultValue              | isRequired | Description                                                                                      |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ---------- | ------------------------------------------------------------------------------------------------ |
+| `children`        | oneOfType( node )                                                                                                             | -                         | -          | children to be passed into component; must be a single child or will throw error                 |
+| `className`       | string                                                                                                                        | -                         | -          | class name of the component                                                                      |
+| `delay`           | oneOfType( `[number OR null, number OR null]`, `number` )                                                                     | -                         | -          | indicates the amount of time, if any, to delay opening and/or closing the popper by              |
+| `id`              | string                                                                                                                        | -                         | -          | id to be passed to the DOM                                                                       |
+| `label`           | string                                                                                                                        | -                         | +          | value to be displayed inside the tooltip                                                         |
+| `distance`        | number                                                                                                                        | `8`                       | -          | desired offset from bottom of `target` component                                                 |
+| `skidding`        | number                                                                                                                        | `0`                       | -          | desired offset from left of `target` component                                                   |
+| `placement`       | `top-start`, `top`, `top-end`, `right-start`, `right`, `right-end`, `bottom-end`, `bottom`, `left-end`, `left`, `left-start`, | `bottom`                  | -          | desired placement of Tooltip relative to target                                                  |
+| `popperStyle`     | object                                                                                                                        | -                         | -          | style object override to be passed to the parent popper component                                |
+| `popperStyledCss` | return value of the `css` function exported by `styled-components`                                                            | -                         | -          | prop passed to popper to interpolate the returned value of a `css` call within styled-components |
+| `portalRef`       | `RefObject`                                                                                                                   | -                         | -          | ref of Portal inside which Tooltip will be rendered                                              |
+| `targetRef`       | func                                                                                                                          | -                         | -          | ref object to pass down to the target object                                                     |
+| `triggers`        | arrayOf( `click`, `mouseenter`, `focus` )                                                                                     | `['focus', 'mouseenter']` | -          | array containing desired trigger(s) for popper on behavior                                       |
+| `untriggers`      | arrayOf( `click`, `mouseleave`, `blur` )                                                                                      | `['blur', 'mouseleave']`  | -          | array containing desired trigger(s) for popper off behavior                                      |
+| `zIndex`          | number                                                                                                                        | 1                         | -          | z-index for the component and its sub-components                                                 |

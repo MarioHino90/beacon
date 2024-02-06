@@ -1,0 +1,4 @@
+{
+  "root": "apps/storybook/storybook-static/",
+  "https_only": true
+}

@@ -1,0 +1,33 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+
+# Label
+
+A label component is typically used alongside form fields, radio buttons, and
+checkboxes to denote their purpose. Many components incorporate this component
+directly via a `label` prop, so please check the documentation to see if a
+component already supports rendering `Label` natively.
+
+## Use cases
+
+Below are some common use cases for the `Label` component.
+
+### Basic use
+
+<Canvas>
+  <Story id="core-text-label--basic-use" />
+</Canvas>
+
+```javascript
+import { Label } from "@braze/beacon-core";
+```
+
+## Properties
+
+| propName    | propType                           | defaultValue | isRequired | Description                                                |
+| ----------- | ---------------------------------- | ------------ | ---------- | ---------------------------------------------------------- |
+| `children`  | oneOfType( node, arrayOf( node ) ) | -            | -          | children to be passed into component                       |
+| `className` | string                             | -            | -          | class name of the component                                |
+| `htmlFor`   | string                             | -            | -          | `id` value of the object the label should be associated to |
+| `id`        | string                             | -            | -          | id to be passed to the DOM                                 |
+| `style`     | object                             | -            | -          | style object to be passed into component                   |
+| `name`      | string                             | -            | -          | name to be passed to the DOM                               |

@@ -1,0 +1,130 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+
+# Flex
+
+`Flex` component renders a one-dimensional layout component with
+`display: flex` and related attributes for convenient access and
+vendor prefixing out of the box.
+
+Note that if the children of the `Flex` component need to specify
+their own flex attributes, such as `flex: 1`, it is up to those
+components to do so-- `Flex` will not manage these attributes.
+
+## Use cases
+
+Below are some common use cases for the `Flex` component.
+
+### Basic use
+
+A `Flex` component provides an easy way to provide powerful layout
+options to your pages via the `display: flex` CSS attribute. Used
+with no props, it simply defines a flexbox.
+
+<Canvas>
+  <Story id="core-layout-flex--basic-use" />
+</Canvas>
+
+### Justify content
+
+The `Flex` component supports adjusting content distribution along the
+main axis via the `justifyContent` prop, which is mapped to the
+`justify-content` CSS attribute. See `knobs` in the `Canvas` tab to
+see the effect of the various values.
+
+<Canvas>
+  <Story id="core-layout-flex--justify-content" />
+</Canvas>
+
+### Align items
+
+The `Flex` component supports adjusting content distribution along the
+cross axis via the `alignItems` prop, which is mapped to the
+`align-items` CSS attribute. See `knobs` in the `Canvas` tab to
+see the effect of the various values.
+
+<Canvas>
+  <Story id="core-layout-flex--align-items" />
+</Canvas>
+
+### Direction
+
+The `Flex` component supports adjusting the direction of the main axis
+via the `direction` prop, which is mapped to the `flex-direction`
+CSS attribute. See `knobs` in the `Canvas` tab to see the effect of the
+various values.
+
+<Canvas>
+  <Story id="core-layout-flex--direction" />
+</Canvas>
+
+### Inline flex
+
+By default, the `display: flex` attribute behaves like as a `block` scoped
+element. You can override this behavior and make it inline by setting the
+`inline` prop to true, which will set the CSS attribute to `display: inline-flex`.
+
+<Canvas>
+  <Story id="core-layout-flex--inline" />
+</Canvas>
+
+### Text alignment
+
+The `Flex` component supports adjusting the alignment of the text content
+via the `textAlign` prop, which is mapped to the `text-align`
+CSS attribute. See `knobs` in the `Canvas` tab to see the effect of the
+various values.
+
+<Canvas>
+  <Story id="core-layout-flex--text-alignment" />
+</Canvas>
+
+### Wrap
+
+The `Flex` component supports adjusting the wrapping behavior of its
+content via the `wrap` prop, which is mapped to the `flex-wrap`
+CSS attribute. See `knobs` in the `Canvas` tab to see the effect of the
+various values.
+
+<Canvas>
+  <Story id="core-layout-flex--wrap" />
+</Canvas>
+
+### All together
+
+Of course, multiple props can be combined together to create complex layouts.
+
+<Canvas>
+  <Story id="core-layout-flex--combined-props" />
+</Canvas>
+
+### invalid custom styles
+
+Flex supports the `stlye` attribute that common to all html componets, and this style gets applied to the flex container.
+However, if you need to apply a margin or padding please use the `FlexBox` component instead.
+If you attempt to set margin or padding of a `Flex`, there will be a warning in the browser console (on your local environment only).
+
+<Canvas>
+  <Story id="core-layout-flex--invalid-custom-styles" />
+</Canvas>
+
+## Usage
+
+```javascript
+import { Flex } from "@braze/beacon-core";
+```
+
+## Properties
+
+| propName         | propType                                                                                     | defaultValue | isRequired | Description                                                                                           |
+| ---------------- | -------------------------------------------------------------------------------------------- | ------------ | ---------- | ----------------------------------------------------------------------------------------------------- |
+| `alignItems`     | oneOf( `stretch`, `flex-start`, `flex-end`, `center`, `baseline`)                            | `stretch`    | -          | defines the behavior for how items are laid out along the cross axis (perpendicular to the main axis) |
+| `as`             | node                                                                                         | `div`        | -          | element / component to render as flex                                                                 |
+| `children`       | oneOfType( node, arrayOf( node ) )                                                           | -            | -          | children to be passed into component                                                                  |
+| `className`      | string                                                                                       | -            | -          | class name of the component                                                                           |
+| `direction`      | oneOf( `row`, `column`, `row-reverse`, `column-reverse` )                                    | `row`        | -          | specified the direction of the items inside the flex element                                          |
+| `id`             | string                                                                                       | -            | -          | id to be passed to the DOM                                                                            |
+| `inline`         | boolean                                                                                      | -            | -          | indicates that the flex element should be inline                                                      |
+| `justifyContent` | oneOf( `flex-start`, `flex-end`, `center`, `space-between`, `space-around`, `space-evenly` ) | `flex-start` | -          | defines the behavior for how items are laid out along the main axis                                   |
+| `styledCss`      | return value of the `css` function exported by `styled-components`                           | -            | -          | prop to interpolate the returned value of a `css` call within styled-components                       |
+| `textAlign`      | oneOf( `left`, `center`, `right`, `justify`)                                                 | `left`       | -          | horizontally aligns text within a DOM element                                                         |
+| `wrap`           | oneOf( `wrap`, `nowrap`, `wrap-reverse` )                                                    | `nowrap`     | -          | specifies whether the flexed items should wrap                                                        |

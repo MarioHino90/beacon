@@ -1,0 +1,236 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+
+# Popover
+
+The `Popover` component opens a box that overlays other content to provide
+contextual help to a user. `Popover` provides the ability to display
+additional contextual information or functionality. It can house various
+elements such as header, scrollable content, text links or buttons.
+`Popover` can be dismissed via a close icon, clicking the control that
+opened it, or by clicking anywhere outside of the popover.
+
+> If you need to provide simple context and/or have no need for
+> interactivity, please use the `Tooltip` component instead
+
+> NOTE: The `Popover` component has a `30vh` max-height by default, which
+> is to encourage limiting the amount of content placed in `Popover`s.
+
+> WARNING: The `Popover` component should only be used in conjunction with a `button` or `input`
+> element. Behavior with other elements is undefined and may not function correctly.
+
+## Use cases
+
+Below are some common use cases for the `Popover` component.
+
+### Basic use: trigger on click
+
+By default, the `Popover` component is set to open only by clicking on
+its target element. If you wish to override this behavior, please read
+on for customization options below.
+
+To facilitate usage, we also export a `usePopover` hook that manages
+the `Popover`s state for you. Simply invoke the hook, assign it to a
+variable, and use the object spread notation in `Popover` to use it,
+as shown below!
+
+<Canvas>
+  <Story id="core-overlay-popover--basic-use" />
+</Canvas>
+
+<Canvas>
+  <Story id="core-overlay-popover--small-target" />
+</Canvas>
+
+### Trigger on focus
+
+By setting the `triggers` prop to `['focus']` and `untriggers` to `['blur']`,
+you can make the `Popover` open when the `target` is focused and close
+when it is blurred. To test this functionality, we recommend tabbing into
+the box rather than clicking on the button to clearly see the behavior on
+`focus` and `blur`.
+
+<Canvas>
+  <Story id="core-overlay-popover--trigger-on-focus" />
+</Canvas>
+
+### Trigger on hover
+
+By setting the `triggers` prop to `['mouseenter', 'mouseleave']`, you
+can make the `Popover` open when the `target` is hovered and close when
+it is no longer hovered.
+
+<Canvas>
+  <Story id="core-overlay-popover--trigger-on-hover" />
+</Canvas>
+
+### Use with target DOM id
+
+Depending on your target component, it may not always be possible to use refs
+to get access to the DOM node. In such cases, the `target` prop is provided as
+an escape hatch. The `target` prop must correspond to the DOM id of the `target`
+element. Note that this requires that no two DOM ids are the same.
+
+<Canvas>
+  <Story id="core-overlay-popover--use-with-dom-id" />
+</Canvas>
+
+### Interactive: prevent close when hovering over or clicking into popover
+
+Especially within `Popover`s, it is often useful to allow your user to mouse
+over the contents of the `Popover` and interact with them. To enable this
+functionality, set the `interactive` prop to `true`.
+
+<Canvas>
+  <Story id="core-overlay-popover--interactive" />
+</Canvas>
+
+### With close button
+
+By setting `isCloseEnabled` prop to `true`, you can ensure that an `X`
+button appears, which closes the `Popover` upon clicking.
+
+<Canvas>
+  <Story id="core-overlay-popover--with-close-button" />
+</Canvas>
+
+### Automatic placement: dynamic positioning of popover
+
+In some cases, it is not known in advance where a popover's target element will be located in the viewport.
+Leave placement undefined to trigger auto-positioning.
+
+> Tip: When `Popover` is placed inside a container with overflow, it is recommended that you define an inner
+> container with `position: relative;` and pass a ref into it as well as into the `Popover` as `portalRef`. this
+> will ensure that the `Popover` is portalled into the container with relative positioning, allowing the `Popover`
+> to use the coordinates of its target relative to the `portalRef` parent. See below for example.
+
+<Canvas>
+  <Story id="core-overlay-popover--auto-placement" />
+</Canvas>
+
+### Modal Use
+
+`Popover` will automatically calculate the z-index needed to display over a
+`Modal` it is inside of. Note that the `Modal` z-index is well above the
+`Popover`'s base z-index, but the `Popover` still renders above it.
+
+<Canvas>
+  <Story id="core-overlay-popover--modal-use" />
+</Canvas>
+
+### Prevent close on outside click for specified elements with class
+
+Sometimes, you may want your `Popover` to _not_ close when a user clicks on
+specific elements. To denote elements that should not cause your `Popover`
+to close, either give them the a `className` of `bcl-popper-ignore-click`.
+
+<Canvas>
+  <Story id="core-overlay-popover--prevent-close-on-outside-click-for-element-with-class" />
+</Canvas>
+
+### Prevent close on outside click for specified elements with custom class
+
+You can also pick your own className by passing a value to the
+`ignoreCloseOnClickOutsideClassName` prop for your `Popover` component; this
+same className should then be given to your ignored elements as desired.
+
+<Canvas>
+  <Story id="core-overlay-popover--prevent-close-on-outside-click-for-element-with-custom-class" />
+</Canvas>
+
+## Keyboard interactivity and accessibility inside the Popover
+
+When a Popover has interactive content, making it keyboard accessible is very important. Popover will
+remain open, detecting when an internal interactive element has focus, and then trigger the close
+action when focus tabs out of the popper.
+
+<Canvas>
+  <Story id="core-overlay-popover--keyboard-accessibility" />
+</Canvas>
+
+## Usage
+
+```javascript
+import {
+  Popover,
+  PopoverBody,
+  PopoverHeading,
+  usePopover,
+} from "@braze/beacon-core";
+```
+
+## Properties
+
+### `Popover`
+
+| propName                             | propType                                                                                                                                                    | defaultValue              | isRequired | Description                                                                                                     |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ---------- | --------------------------------------------------------------------------------------------------------------- | --- | -------- | ------ | --- | --- | ----------------------------- |
+| `children`                           | oneOfType( node, arrayOf( node ) )                                                                                                                          | -                         | -          | children to be passed into component                                                                            |
+| `className`                          | string                                                                                                                                                      | -                         | -          | class name of the component                                                                                     |
+| `closeOnClickOutside`                | boolean                                                                                                                                                     | `true`                    | -          | indicates that the popper should be closed when a user clicks outside the target or the popper (if interactive) |
+| `defaultPlacement`                   | `top-start`, `top`, `top-end`, `right-start`, `right`, `right-end`, `bottom-end`, `bottom`, `bottom`, `left-end`, `left`, `left-start`                      | `bottom`                  | -          | if automatically placing the popover, the placement to use when the popover is in the middle of the viewport    |
+| `delay`                              | oneOfType( `[number OR null, number OR null]`, `number` )                                                                                                   | -                         | -          | indicates the amount of time, if any, to delay opening and/or closing the popper by                             |
+| `id`                                 | string                                                                                                                                                      | -                         | -          | id to be passed to the DOM                                                                                      |
+| `ignoreCloseOnClickOutsideClassName` | string                                                                                                                                                      | `bcl-popper-ignore-click` | -          | the className that should cause an element containing it to be ignored when determining whether to close popper |
+| `interactive`                        | boolean                                                                                                                                                     | `false`                   | -          | indicates that the popper can be hovered/clicked/focused/etc. into                                              |
+| `isIgnoreCloseOnClickOutsideEnabled` | boolean                                                                                                                                                     | `true`                    | -          | indicates that the ignore close on outside click behavior using specific classNames is enabled                  |
+| `isCloseEnabled`                     | boolean                                                                                                                                                     | -                         | -          | indicates whether close button should be displayed                                                              |
+| `isOpen`                             | boolean                                                                                                                                                     | -                         | -          | determines if the component should be rendered                                                                  |
+| `distance`                           | number                                                                                                                                                      | `8`                       | -          | desired offset from bottom of `target` component                                                                |
+| `skidding`                           | number                                                                                                                                                      | `0`                       | -          | desired offset from left of `target` component                                                                  |
+| `onOpen`                             | `(event: React.MouseEvent , React.FocusEvent , Event) => void`                                                                                              | -                         | +          | function to call when the tooltip should be opened                                                              |
+| `onClose`                            | `(event: React.MouseEvent , React.FocusEvent , Event) => void`                                                                                              | -                         | +          | function to call when the tooltip should be closed                                                              |
+| `placement`                          | `auto`, `top-start`, `top`, `top-end`, `right-start`, `right`, `right-end`, `bottom-end`, `bottom`, `bottom`, `left-end`, `left`, `left-start`, `undefined` | `auto` (automatic)        | -          | desired placement of Popover relative to target                                                                 |
+| `portalRef`                          | `RefObject`                                                                                                                                                 | -                         | -          | ref of Portal inside which Popover will be rendered                                                             |
+| `popperClassName`                    | string                                                                                                                                                      | -                         | -          | class name to be passed to the parent popper element                                                            |
+| `popperId`                           | string                                                                                                                                                      | -                         | -          | DOM id to be passed to the parent popper element                                                                |
+| `popperStyle`                        | object                                                                                                                                                      | -                         | -          | style object override to be passed to the parent popper component                                               |
+| `popperStyledCss`                    | return value of the `css` function exported by `styled-components`                                                                                          | -                         | -          | prop passed to popper to interpolate the returned value of a `css` call within styled-components                |     | `target` | string | -   | +   | desired target component's ID |
+| `targetRef`                          | `React.RefObject`                                                                                                                                           | -                         | -          | ref object to pass down to the target object                                                                    |
+| `triggers`                           | arrayOf( `click`, `mouseenter`, `focus` )                                                                                                                   | `['click']`               | -          | array containing desired trigger(s) for popper on behavior                                                      |
+| `untriggers`                         | arrayOf( `click`, `mouseleave`, `blur` )                                                                                                                    | `['click']`               | -          | array containing desired trigger(s) for popper off behavior                                                     |
+| `zIndex`                             | number                                                                                                                                                      | `1031`                    | -          | z-index for the component and its sub-components                                                                |
+
+### `PopoverBody`
+
+| propName    | propType                           | defaultValue | isRequired | Description                          |
+| ----------- | ---------------------------------- | ------------ | ---------- | ------------------------------------ |
+| `children`  | oneOfType( node, arrayOf( node ) ) | -            | -          | children to be passed into component |
+| `className` | string                             | -            | -          | class name of the component          |
+| `id`        | string                             | -            | -          | id to be passed to the DOM           |
+
+### `PopoverHeading`
+
+| propName    | propType                           | defaultValue | isRequired | Description                          |
+| ----------- | ---------------------------------- | ------------ | ---------- | ------------------------------------ |
+| `children`  | oneOfType( node, arrayOf( node ) ) | -            | -          | children to be passed into component |
+| `className` | string                             | -            | -          | class name of the component          |
+| `id`        | string                             | -            | -          | id to be passed to the DOM           |
+
+### `usePopover`
+
+`usePopover` is a utility hook that aims to simplify your life when using
+a `Popover` in your project. The function conveniently manages the `Popover`
+state and the necessary refs for you, making getting started with a `Popover`
+a breeze.
+
+The following are arguments accepted by `usePopover`:
+
+- `targetRef`: `React.RefObject`
+  - optional
+  - ref object to be passed to both the target component via its `ref` and the `Popover` via its `targetRef`
+- `initialState`: `boolean`
+  - optional; `false` by default
+  - sets the initial state of the `Popover`
+
+`usePopover` returns the an array that can be destructured to reveal the following:
+
+- `state`: `object`
+  - exposes the state of the `Popover` and handlers
+  - can be passed into the `Popover` via object destructuring (e.g. `{...state}`)
+  - contains the following:
+    - `isOpen`: boolean; indicates current state of the `Popover`
+    - `onOpen`: func; changes `isOpen` to `true` when called
+    - `onClose`: func; changes `isOpen` to `false` when called
+- `ref`: `React.RefObject`
+  - if an argument was passed to `targetRef`, then this is identical to that argument
+  - if an argument was NOT passed to `targetRef`, this will be a newly instantiated ref object to be passed to both the target component via its `ref` and the `Popover` via its `targetRef`

@@ -1,0 +1,65 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { select } from "@storybook/addon-knobs";
+import styled from "styled-components";
+
+import { BrazeIcon, spotIcons } from ".";
+
+<Meta title="Core/Icons/BrazeIcon" component={BrazeIcon} />
+
+# BrazeIcon
+
+`BrazeIcon` is a component that allows easy and convenient access to
+Braze's custom "spot icons".
+
+> NOTE: This component does **NOT** render FontAwesome icons. Please
+> use the `Icon` component also exported in `@braze/beacon-core` if
+> that is what you're looking for.
+
+## Use cases
+
+Below are some common use cases for the `BrazeIcon` component.
+
+### Basic use
+
+To use a spot icon, simply pass in a valid icon name as the `name` prop.
+To see a full list of available icons, see the bottom of this page.
+
+> TIP: Head over to the `Canvas` tab to see a list of all available
+> icons via the provided knob.
+
+export const iconKeys = Object.keys(spotIcons);
+
+<Canvas>
+  <Story id="core-icons-brazeicon--basic-use" />
+</Canvas>
+
+## Usage
+
+```javascript
+import { BrazeIcon } from "@braze/beacon-core";
+```
+
+## Properties
+
+| propName    | propType                           | defaultValue | isRequired | Description                          |
+| ----------- | ---------------------------------- | ------------ | ---------- | ------------------------------------ |
+| `children`  | oneOfType( node, arrayOf( node ) ) | -            | -          | children to be passed into component |
+| `className` | string                             | -            | -          | class name of the component          |
+| `id`        | string                             | -            | -          | id to be passed to the DOM           |
+| `name`      | oneOf( \* see list below )         | -            | -          | icon to be displayed to user         |
+
+### Icons
+
+The following is a list of icon `name` properties supported by `BrazeIcon`:
+
+- `add-document`
+- `add-image-or-document`
+- `arrow-toggle`
+- `campaign-comparison`
+- `content`
+- `email-settings`
+- `funnel-report`
+- `mms`
+- `preview`
+- `retention-report`
+- `sms`

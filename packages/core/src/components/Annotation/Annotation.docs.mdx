@@ -1,0 +1,53 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { boolean, select, withKnobs } from "@storybook/addon-knobs";
+import { action } from "@storybook/addon-actions";
+
+import { Button } from "../Button";
+import { UncontrolledTooltip } from "../Popper";
+
+import { Annotation } from "./Annotation";
+
+<Meta title="Core/Overlay/Annotation" component={Annotation} />
+
+# Annotation
+
+An annotation decorates a block element with an icon indicating a state
+or giving the user a hint about an interaction.
+
+Annotations should be used in conjunction with `Tooltip`s or `Popover`s.
+
+## Use cases
+
+Below are some common use cases for the `Annotation` component.
+
+### Basic use
+
+<Canvas>
+  <Story id="core-overlay-annotation--basic-use" />
+</Canvas>
+
+### Disabled use
+
+The `Annotation` component can be disabled via the `disabled` prop. This allows
+you to only show the annotation when needed without having to duplicate a bunch of 
+code.
+
+<Canvas>
+  <Story id="core-overlay-annotation--disabled-use" />
+</Canvas>
+
+## Usage
+
+```javascript
+import { Annotation } from "@braze/beacon-core";
+```
+
+## Properties
+
+| propName    | propType                            | defaultValue | isRequired | Description                                                          |
+| ----------- | ----------------------------------- | ------------ | ---------- | -------------------------------------------------------------------- |
+| `children`  | oneOfType( node, arrayOf( node ) )  | -            | -          | children to be passed into component                                 |
+| `className` | string                              | -            | -          | class name of the component                                          |
+| `disabled`  | boolean                             | -            | -          | indicates that the annotation tooltip and its icon should be visible |
+| `id`        | string                              | -            | -          | id to be passed to the DOM                                           |
+| `variant`   | oneOf( `info`, `warning`, `error` ) | `info`       | -          | variant that toggles the color and icon of the component             |

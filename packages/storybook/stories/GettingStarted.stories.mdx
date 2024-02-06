@@ -1,0 +1,120 @@
+import LinkTo from "@storybook/addon-links/react";
+
+import corePkgJson from "@braze/beacon-core/../package.json";
+import commonsPkgJson from "@braze/beacon-commons/../package.json";
+import hooksPkgJson from "@braze/beacon-hooks/../package.json";
+
+<Meta title="Welcome/Getting Started" />
+
+# Beacon Product System
+
+<div>
+  <a
+    href="https://buildkite.com/braze/branch-beacon"
+    target="_blank"
+    style={{ marginRight: "0.5rem" }}
+  >
+    <img
+      alt="Build status"
+      src="https://badge.buildkite.com/f5c8f03f23bd44c4122f4f754f1db91b75471ab7f2e280bd50.svg?branch=main"
+    />
+  </a>
+  <a
+    href={`https://www.npmjs.com/package/${corePkgJson.name}`}
+    target="_blank"
+    style={{ marginRight: "0.5rem" }}
+  >
+    <img
+      alt="npm"
+      src={`https://img.shields.io/badge/${encodeURIComponent(
+        corePkgJson.name + "@latest"
+      ).replace("-", "--")}-v${corePkgJson.version.replace("-", "--")}-blue`}
+    />
+  </a>
+  <a
+    href={`https://www.npmjs.com/package/${commonsPkgJson.name}`}
+    target="_blank"
+    style={{ marginRight: "0.5rem" }}
+  >
+    <img
+      alt="npm"
+      src={`https://img.shields.io/badge/${encodeURIComponent(
+        commonsPkgJson.name + "@latest"
+      ).replace("-", "--")}-v${commonsPkgJson.version.replace("-", "--")}-blue`}
+    />
+  </a>
+  <a
+    href={`https://www.npmjs.com/package/${hooksPkgJson.name}`}
+    target="_blank"
+    style={{ marginRight: "0.5rem" }}
+  >
+    <img
+      alt="npm"
+      src={`https://img.shields.io/badge/${encodeURIComponent(
+        hooksPkgJson.name + "@latest"
+      ).replace("-", "--")}-v${hooksPkgJson.version.replace("-", "--")}-blue`}
+    />
+  </a>
+</div>
+
+Welcome to Beacon, Braze's product design system! The system serves as a foundation and curation of components, guidelines, and tools to enable autonomy, efficiency, and cohesion across product teams. It aims to resolve repetitive challenges or solutions in the product in order to create a uniform and accessible product experience.
+
+## Getting started ✨
+
+### First-time users read this 👇
+
+If you have not done so already, you must gain access to the `@braze` private scope on NPM. The steps to do can be found [here](https://confluence.braze.com/display/DASHINFRA/NPM+at+Braze).
+
+Once you are able to see the [`@braze/beacon-core` package via the NPM website](https://www.npmjs.com/package/@braze/beacon-core), you will be able to install the dependencies locally. To do so, run:
+
+```bash
+npm login
+```
+
+> Note that this is the **ONLY** time you should be running any `npm` commands via the CLI when working with Beacon ([why?](#why-do-i-have-to-use-npm-login-instead-of-yarn-login)); after you are logged in successfully, you **MUST** use `yarn` for all future actions to avoid having compatibility issues.
+
+### Adding the Beacon library to your project dependencies 📚
+
+The following command will add the latest version of the library to your application:
+
+```bash
+yarn add @braze/beacon-core
+```
+
+Note that you will also need the following peer dependencies if you don't have them installed already:
+
+```bash
+yarn add @braze/beacon-theme @braze/beacon-styling @braze/beacon-hooks @braze/beacon-translations @braze/i18n-core react-i18next i18next pseudo-localization
+```
+
+Additionally, you may choose to install/upgrade the following to get access to more of what Beacon has to offer to simplify your dev workflow:
+
+```bash
+yarn add @braze/beacon-commons
+```
+
+You will also need to add styled-components to your application, since it is a peer dependency of the library:
+
+```bash
+yarn add styled-components
+```
+
+### To use components from the library 🚀
+
+In your React components:
+
+```tsx
+import { Component } from "@braze/beacon-core";
+```
+
+## What is going on in this library? 🤔
+
+For a statement of values and purpose, please refer to the [project philosophy page](https://github.com/braze-inc/beacon/blob/main/PHILOSOPHY.md).
+
+## To contribute 🛠
+
+Please read the <LinkTo kind="welcome-contributing-overview--page">contribution guidelines</LinkTo> before proceeding.
+
+## FAQs ❓
+
+See <LinkTo kind="welcome-faqs">FAQs page</LinkTo>.

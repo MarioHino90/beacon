@@ -1,0 +1,173 @@
+<Meta title="Welcome/Contributing/Component Styling" />
+
+# Component Styling
+
+One of the ultimate goals of Beacon is to to create an environment for application development that seldom relies on custom styling. To enable
+this, we need to make sure that not only do the Beacon components are styled according to brand and design guidelines, but that they also
+interoperate in a way that minimizes the need for additional styling on the part of the end user.
+
+To take full advantage of the power of JavaScript and SASS-like CSS, Beacon uses the `styled-components` library.
+
+## `styled-components`
+
+The approach of `styled-components` is known as 'CSS-in-JS'. As the name suggests, there is some form of runtime evaluation to actually provide
+styling to your elements - and you can join any arbitrary logic with your styling.
+
+The main advantage of `styled-components` is that it eliminates the indirection of using DOM classes for styling only. In other words, you can
+write styles that are driven by _props_, as demonstrated below.
+
+Another important benefit of styled-components is that it automatically creates vendor prefixing for style attributes wherever necessary. For
+instance, writing:
+
+```css
+display: inline-flex;
+```
+
+gets transpiled to:
+
+```css
+display: -webkit-inline-box;
+display: -webkit-inline-flex;
+display: -ms-inline-flexbox;
+display: inline-flex;
+```
+
+For these reasons and more, `styled-components` is the preferred method of styling components in Beacon and should be the preferred method for
+applications that use Beacon.
+
+### Basic mechanics
+
+`styled-components`' API uses [tagged template literals](https://www.styled-components.com/docs/api#styled) to write SASS-like CSS. The two
+primary exports are `styled` and `css`. These, respectively, return a base React element and encapsulate arbitrary styling that can be reused:
+
+```js
+import styled, { css } from "styled-components";
+
+const border = css`
+  border: 1px solid black;
+`;
+
+export const StyledContainer = styled.div`
+  margin: 0.5rem 0;
+
+  /* tagged templates let you specify functions where you have access to components' props */
+  padding: ${(props) => (props.hasInset ? "5px" : 0)};
+
+  /* you can include css snippets in this way */
+  ${(props) => props.hasBorder && border};
+`;
+```
+
+And in your component file:
+
+```tsx
+const MyComponent = () => (
+  <StyledContainer hasInset hasBorder={false}>
+    Lorem Ipsum Componentum Examplum
+  </StyledContainer>
+);
+```
+
+### Referencing other `styled-components`
+
+As you build more and more complex components, it is likely and encouraged that you will reuse existing components to put them together. 
+While you should always build components with composability and interoperability in mind, it is possible that certain component 
+combinations require specific styling adjustments.
+
+One way of doing this is by simply extending another component when building your new `styled-component`, like so:
+
+```tsx
+import Component from "../Component";
+
+const MyDerivedComponent = styled(Component)`
+  position: absolute;
+`;
+```
+
+Alternatively, if the component you're creating _contains_ the `styled-component` you want to reference, you can also do the following:
+
+```tsx
+import { StyledComponent } from "../Component";
+
+const MyContainerComponent = styled.div`
+  ${StyledComponent} {
+    position: absolute;
+  }
+`;
+```
+
+Note above that the component being referenced this way must be the `styled-component` export, NOT the main component that uses it. 
+This is a common gotcha among beginners of `styled-components`.
+
+### Theme / styling tokens
+
+Styling tokens are basic key-value pairs that drive the product system. They are defined within the [`theme` library](../packages/theme/README.md) and handled via the [`styling` library](../packages/styling/README.md) functions. The theme is meant to be imported into the `styled-component`s wherever applicable. Please seek guidance from your design partner about what these key-value pairs should be.
+
+For instance, a `styled-component` using our theme may look like this:
+
+```js
+import { getBorderWidth, getColor } from "@braze/beacon-styling";
+
+const borderCSS = css`
+  border: ${getBorderWidth("thin")} solid ${getColor("gray", 900)};
+`;
+```
+
+### Organization
+
+Every component that has its own styles has a nested `StyledComponent` directory that accompanies it (this directory and its contents 
+are produced by the [scaffolding tool](https://beacon-storybook.braze.com/?path=/story/welcome-contributing-contributing-code--page#creating-a-new-component)). 
+This is where all styling information should reside.
+
+## About the other approaches to styling
+
+While `styled-components` is the preferred method for styling components, there are alternatives that may be used sparingly for 
+escape-hatch situations or simple style overrides where creating an entirely new `styled-component` may create undesirable overhead.
+
+### Inline
+
+It is entirely possible to not write a single line of CSS in routine React development using inline styles. If you _do_ wish to 
+use them however, you may note that all DOM-level React elements have a `style` prop, which let you do things like:
+
+```tsx
+const ColorfulText = ({ color, children }) => (
+  <p style={{ fontColor: color }}>{children}</p>
+);
+```
+
+You will notice that a `style` prop is an object keyed by strings corresponding to object-safe tokens (think `fontColor` instead 
+of `font-color`) and whose values are also strings. Although this works, it does not allow you to take advantage of the other 
+features of CSS, like state pseudoselectors, animations, cascades, vendor prefixing, etc.
+
+Note that `style` props can also be used with `styled-components` for inline overrides, should the need arise.
+
+Although there is a place for inline styling, this is not desirable in much the same way that you would not prefer writing inline 
+styles in HTML.
+
+### External CSS/LESS
+
+In a platonic form of CSS, styles are contained in well-named classes that are organized for minimal conflict and high specificity. 
+Taking this approach, any visual changes to a component are brokered through the addition and removal of `className`s, like:
+
+```tsx
+const Select = ({ options, disabled }) => (
+  <ul className={`bcl-Select ${disabled ? "bcl-Select__disabled" : ""}`}>
+    {/* snip */}
+  </ul>
+);
+```
+
+and in the resulting less file:
+
+```less
+.bcl-Select {
+  &.bcl-Select__disabled {
+    color: gray;
+    cursor: not-allowed;
+  }
+}
+```
+
+This is sufficient, and given a build process, outputs some built CSS that you will need to include in your web application's `<head>`. 
+Consequently your job now includes maintaining `className`s and ensuring cascades and class conventions are correct. To that end, 
+custom CSS/LESS files should generally be avoided in favor of `styled-component` implementations.

@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UntransitionedBannerAlert should render correctly for intent danger 1`] = `
+<IntentContextProvider
+  intent="danger"
+>
+  <SimpleBannerAlert
+    className="bcl-banner-alert-untransitioned"
+  >
+    <StyledBannerContent>
+      <BannerAlertBody>
+        <BannerAlertTitle>
+          Lorem ipsum dolor sit amet
+        </BannerAlertTitle>
+      </BannerAlertBody>
+    </StyledBannerContent>
+  </SimpleBannerAlert>
+</IntentContextProvider>
+`;
+
+exports[`UntransitionedBannerAlert should render correctly for intent info 1`] = `
+<IntentContextProvider
+  intent="info"
+>
+  <SimpleBannerAlert
+    className="bcl-banner-alert-untransitioned"
+  >
+    <StyledBannerContent>
+      <BannerAlertBody>
+        <BannerAlertTitle>
+          Lorem ipsum dolor sit amet
+        </BannerAlertTitle>
+      </BannerAlertBody>
+    </StyledBannerContent>
+  </SimpleBannerAlert>
+</IntentContextProvider>
+`;
+
+exports[`UntransitionedBannerAlert should render correctly for intent success 1`] = `
+<IntentContextProvider
+  intent="success"
+>
+  <SimpleBannerAlert
+    className="bcl-banner-alert-untransitioned"
+  >
+    <StyledBannerContent>
+      <BannerAlertBody>
+        <BannerAlertTitle>
+          Lorem ipsum dolor sit amet
+        </BannerAlertTitle>
+      </BannerAlertBody>
+    </StyledBannerContent>
+  </SimpleBannerAlert>
+</IntentContextProvider>
+`;
+
+exports[`UntransitionedBannerAlert should render correctly for intent warning 1`] = `
+<IntentContextProvider
+  intent="warning"
+>
+  <SimpleBannerAlert
+    className="bcl-banner-alert-untransitioned"
+  >
+    <StyledBannerContent>
+      <BannerAlertBody>
+        <BannerAlertTitle>
+          Lorem ipsum dolor sit amet
+        </BannerAlertTitle>
+      </BannerAlertBody>
+    </StyledBannerContent>
+  </SimpleBannerAlert>
+</IntentContextProvider>
+`;
+
+exports[`UntransitionedBannerAlert should render correctly if passed a className 1`] = `
+<IntentContextProvider
+  intent="success"
+>
+  <SimpleBannerAlert
+    className="bcl-banner-alert-untransitioned new-banner"
+  >
+    <StyledBannerContent>
+      <BannerAlertBody>
+        <BannerAlertTitle>
+          Some banner information here...
+        </BannerAlertTitle>
+      </BannerAlertBody>
+    </StyledBannerContent>
+  </SimpleBannerAlert>
+</IntentContextProvider>
+`;
+
+exports[`UntransitionedBannerAlert should render correctly if passed a description 1`] = `
+<IntentContextProvider
+  intent="success"
+>
+  <SimpleBannerAlert
+    className="bcl-banner-alert-untransitioned"
+  >
+    <StyledBannerContent>
+      <BannerAlertBody>
+        <BannerAlertTitle>
+          Lorem ipsum dolor sit amet
+        </BannerAlertTitle>
+        <BannerAlertDescription>
+          <BannerAlertDescriptionText>
+            Some more information about the banner...
+          </BannerAlertDescriptionText>
+        </BannerAlertDescription>
+      </BannerAlertBody>
+    </StyledBannerContent>
+  </SimpleBannerAlert>
+</IntentContextProvider>
+`;
+
+exports[`UntransitionedBannerAlert should render correctly if passed link info 1`] = `
+<IntentContextProvider
+  intent="success"
+>
+  <SimpleBannerAlert
+    className="bcl-banner-alert-untransitioned"
+  >
+    <StyledBannerContent>
+      <BannerAlertBody>
+        <BannerAlertTitle>
+          Lorem ipsum dolor sit amet
+        </BannerAlertTitle>
+        <BannerAlertLink
+          onClick={[MockFunction onClick]}
+        >
+          Click Me!
+        </BannerAlertLink>
+      </BannerAlertBody>
+    </StyledBannerContent>
+  </SimpleBannerAlert>
+</IntentContextProvider>
+`;

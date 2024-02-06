@@ -1,0 +1,317 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+
+# BannerAlert
+
+A `BannerAlert` is a component for showing inline user alerts.
+
+> Use the knobs tab in the canvas to explore different intents and interactions!
+
+Click the "Close" button to see the `BannerAlert` transition in action!
+
+<Canvas>
+  <Story id="core-alerts-banneralert--basic-use" />
+</Canvas>
+
+## Use cases
+
+Below are some common use cases for the `BannerAlert` component.
+
+### Multiline
+
+The `BannerAlert` can handle multiple lines of text.
+
+<Canvas>
+  <Story id="core-alerts-banneralert--multiline" />
+</Canvas>
+
+### Title and Description
+
+The `BannerAlert` can show description text along with a title.
+
+<Canvas>
+  <Story id="core-alerts-banneralert--title-and-description" />
+</Canvas>
+
+### Custom Link Component
+
+The `BannerAlert` can show a custom link component. This can be useful if you
+want to use an `a` tag to indicate a navigation change.
+
+The `BannerAlertLink` has the ability to render as either a `button` or an `a`,
+and it is encouraged to use this component as it is pre-styled.
+
+> The `BannerAlertLink` pulls it's intent from the parent by default, but can be overridden
+> by passing the intent prop
+
+<Canvas>
+  <Story id="core-alerts-banneralert--custom-link-component" />
+</Canvas>
+
+### Optional Link
+
+Having a link in the `BannerAlert` is completely optional. If no link is passed,
+no link will be rendered.
+
+<Canvas>
+  <Story id="core-alerts-banneralert--optional-link" />
+</Canvas>
+
+### Optional Close Button
+
+Having a close botton in the `BannerAlert` is completely optional. If the
+`onClose` prop is not passed to `BannerAlertBody`, no button will be rendered.
+
+<Canvas>
+  <Story id="core-alerts-banneralert--optional-close-button" />
+</Canvas>
+
+### Icon Override
+
+If you need to display an icon other than the default for the `BannerAlert`
+intent, you can pass a node into the `Icon` prop on `BannerAlertBody`.
+
+<Canvas>
+  <Story id="core-alerts-banneralert--icon-override" />
+</Canvas>
+
+### Accordion
+
+You can add an accordion with more information to the `BannerAlert` using the
+`BannerAlertAccordion`.
+
+> Go to the canvas tab knobs to see opening and closing of accordions, as well
+> as the intents!
+
+<Canvas>
+  <Story id="core-alerts-banneralert--accordion" />
+</Canvas>
+
+#### Different Accordion Intent
+
+The `BannerAlertAccordion` intent pulls from the parent intent by default. However this can
+be overridden by passing the intent prop in.
+
+<Canvas>
+  <Story id="core-alerts-banneralert--accordion-with-different-intent" />
+</Canvas>
+
+#### Optional Title
+
+The accordion title is completely optional. You can remove it by not passing in
+a title to `BannerAlertAccordion`.
+
+<Canvas>
+  <Story id="core-alerts-banneralert--accordion-without-title" />
+</Canvas>
+
+#### Optional Action
+
+The accordion action is completely optional. You can remove it by not passing in
+an action to `BannerAlertAccordion`.
+
+<Canvas>
+  <Story id="core-alerts-banneralert--accordion-without-action" />
+</Canvas>
+
+#### Custom Actions
+
+The accordion can also accommodate custom actions. You can pass in a custom
+action to the `BannerAlertAccordionFooter`. The `BannerAlertAction`
+component is available for use for this purpose.
+
+> The `BannerAlertAction` pulls it's intent from the parent by default, but can be overridden
+> by passing the intent prop
+
+<Canvas>
+  <Story id="core-alerts-banneralert--accordion-with-custom-action" />
+</Canvas>
+
+### Multiple Accordions
+
+You can supply multiple `BannerAlertAccordionHeader` components within the same `BannerAlertAccordion` to create separation between multiple related notices.
+
+<Canvas>
+  <Story id="core-alerts-banneralert--multiple-accordion-bodies" />
+</Canvas>
+
+### Without Transition
+
+If you do not want the default fade-in-and-out transition on the `BannerAlert`,
+you can use the `UntransitionedBannerAlert` component. It functions the same as
+`BannerAlert`, but does not have open and close states - that has to be added
+manually.
+
+<Canvas>
+  <Story id="core-alerts-banneralert--without-transition" />
+</Canvas>
+
+### Inside a `Modal`
+
+Often, it may be useful to have a `BannerAlert` inside a `Modal` to alert
+the user in the correct context. You can do this as shown in the following
+example:
+
+<Canvas>
+  <Story id="core-alerts-banneralert--inside-a-modal" />
+</Canvas>
+
+### Inside a `Form`
+
+Often, it may be useful to have a `BannerAlert` inside a `Form`.
+You can do this as shown in the following example:
+
+<Canvas>
+  <Story id="core-alerts-banneralert--inside-a-form" />
+</Canvas>
+
+## Usage
+
+```javascript
+import { BannerAlert } from "@braze/beacon-core";
+import { UntransitionedBannerAlert } from "@braze/beacon-core";
+import { BannerAlertLink } from "@braze/beacon-core";
+import {
+  BannerAlertBody,
+  BannerAlertTitle,
+  BannerAlertDescription,
+  BannerAlertDescriptionText,
+} from "@braze/beacon-core";
+import {
+  BannerAlertAccordion,
+  BannerAlertAccordionHeader,
+  BannerAlertAccordionBody,
+  BannerAlertAccordionFooter,
+} from "@braze/beacon-core";
+import { BannerAlertAction } from "@braze/beacon-core";
+```
+
+## Properties
+
+### BannerAlert
+
+The top level `BannerAlert` component. Comes with built in open/close transition.
+
+| propName    | propType                                      | defaultValue | isRequired | Description                                      |
+| ----------- | --------------------------------------------- | ------------ | ---------- | ------------------------------------------------ |
+| `intent`    | oneOf("success", "warning", "danger", "info") | -            | true       | intent of banner to display                      |
+| `children`  | oneOfType( node, arrayOf( node ) )            | -            | true       | children - generally `BannerAlert` subcomponents |
+| `isOpen`    | boolean                                       | -            | true       | indicates if the banner is visible               |
+| `className` | string                                        | -            | -          | class name of the component                      |
+
+### UntransitionedBannerAlert
+
+A top level `BannerAlert` component. No transitions.
+
+**Note:** it is discourged to use this component. Only use if the transitions on
+`BannerAlert` should be removed or overwritten.
+
+| propName    | propType                                      | defaultValue | isRequired | Description                                      |
+| ----------- | --------------------------------------------- | ------------ | ---------- | ------------------------------------------------ |
+| `intent`    | oneOf("success", "warning", "danger", "info") | -            | true       | intent of banner to display                      |
+| `children`  | oneOfType( node, arrayOf( node ) )            | -            | true       | children - generally `BannerAlert` subcomponents |
+| `className` | string                                        | -            | -          | class name of the component                      |
+
+### BannerAlertBody
+
+Body component for the `BannerAlert`. Handles styling, icon, and close button.
+
+| propName   | propType                                      | defaultValue | isRequired | Description                                          |
+| ---------- | --------------------------------------------- | ------------ | ---------- | ---------------------------------------------------- |
+| `intent`   | oneOf("success", "warning", "danger", "info") | -            | -          | overrides intent of banner to display                |
+| `children` | oneOfType( node, arrayOf( node ) )            | -            | true       | children - generally `BannerAlertBody` subcomponents |
+| `Icon`     | node                                          | -            | -          | icon to display - will override default for intent   |
+| `onClose`  | () => void                                    | -            | -          | callback for the close button                        |
+
+### BannerAlertTitle
+
+Body Title component for the `BannerAlert`. This is the primary text component
+for the `BannerAlert`. Provides styling.
+
+| propName   | propType                           | defaultValue | isRequired | Description               |
+| ---------- | ---------------------------------- | ------------ | ---------- | ------------------------- |
+| `children` | oneOfType( node, arrayOf( node ) ) | -            | true       | children - generally text |
+
+### BannerAlertDescription
+
+Body text component for the `BannerAlert`. This is the secondary text component
+for the `BannerAlert`. Provides styling.
+
+| propName   | propType                           | defaultValue | isRequired | Description                                      |
+| ---------- | ---------------------------------- | ------------ | ---------- | ------------------------------------------------ |
+| `children` | oneOfType( node, arrayOf( node ) ) | -            | true       | children - generally `BannerAlert` subcomponents |
+
+### BannerAlertDescriptionText
+
+Body text component for the `BannerAlert`. This component provides correct
+styling for description text that also has a link. Intended for use inside a
+`BannerAlertDescription`.
+
+| propName   | propType                           | defaultValue | isRequired | Description               |
+| ---------- | ---------------------------------- | ------------ | ---------- | ------------------------- |
+| `children` | oneOfType( node, arrayOf( node ) ) | -            | true       | children - generally text |
+
+### BannerAlertLink
+
+Body link component for the `BannerAlert`. This should be used either next to a
+`BannerAlertTitle` or inside a `BannerAlertDescription`.
+
+| propName   | propType                                      | defaultValue | isRequired | Description                                             |
+| ---------- | --------------------------------------------- | ------------ | ---------- | ------------------------------------------------------- |
+| `intent`   | oneOf("success", "warning", "danger", "info") | -            | -          | overrides intent of banner to display                   |
+| `children` | oneOfType( node, arrayOf( node ) )            | -            | true       | children - generally text - to display in link          |
+| `onClick`  | () => void                                    | -            | true       | callback on click of link                               |
+| `as`       | oneOf("button", "a")                          | "button"     | -          | indicates which tag the link should render as           |
+| `caret`    | oneOf("up", "down")                           | -            | -          | renders a caret icon - intended for use with accordions |
+
+### BannerAlertAccordion
+
+Accordion component for the `BannerAlert`. This should be used _next_ to a
+`BannerAlertBody` component.
+
+| propName    | propType                                      | defaultValue | isRequired | Description                                               |
+| ----------- | --------------------------------------------- | ------------ | ---------- | --------------------------------------------------------- |
+| `intent`    | oneOf("success", "warning", "danger", "info") | -            | -          | overrides intent of banner to display                     |
+| `isOpen`    | boolean                                       | -            | true       | indicates if the accordion is visible                     |
+| `children`  | oneOfType( node, arrayOf( node ) )            | -            | true       | children - generally `BannerAlertAccordion` subcomponents |
+| `className` | string                                        | -            | -          | class name of the component                               |
+
+### BannerAlertAccordionHeader
+
+Text heading component for the `BannerAlertAccordion`. This should be used
+inside of a `BannerAlertAccordion` component.
+
+| propName   | propType                           | defaultValue | isRequired | Description               |
+| ---------- | ---------------------------------- | ------------ | ---------- | ------------------------- |
+| `children` | oneOfType( node, arrayOf( node ) ) | -            | true       | children - generally text |
+
+### BannerAlertAccordionBody
+
+Text component for the `BannerAlertAccordion`. This should be used inside of a
+`BannerAlertAccordion` component.
+
+| propName   | propType                           | defaultValue | isRequired | Description               |
+| ---------- | ---------------------------------- | ------------ | ---------- | ------------------------- |
+| `children` | oneOfType( node, arrayOf( node ) ) | -            | true       | children - generally text |
+
+### BannerAlertAccordionFooter
+
+Action section for the `BannerAlertAccordion`. This should be used inside of a
+`BannerAlertAccordion` component. Provides styling.
+
+| propName   | propType                           | defaultValue | isRequired | Description                                         |
+| ---------- | ---------------------------------- | ------------ | ---------- | --------------------------------------------------- |
+| `children` | oneOfType( node, arrayOf( node ) ) | -            | true       | children - generally `BannerAlertAction` components |
+
+### BannerAlertAction
+
+Button component for `BannerAlertAccordion` component. Overrides `Button` styles
+to provide styling based on intent.
+
+**Note:** can take all props from `Button` EXCEPT for `intent`.
+
+| propName    | propType                                      | defaultValue | isRequired | Description                           |
+| ----------- | --------------------------------------------- | ------------ | ---------- | ------------------------------------- |
+| `intent`    | oneOf("success", "warning", "danger", "info") | -            | -          | overrides intent of banner to display |
+| `children`  | oneOfType( node, arrayOf( node ) )            | -            | true       | children - generally text             |
+| `onClick`   | () => void                                    | -            | true       | callback on click of button           |
+| `className` | string                                        | -            | -          | class name of the component           |

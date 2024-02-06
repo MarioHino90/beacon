@@ -1,0 +1,115 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { number, text } from "@storybook/addon-knobs";
+
+import { FieldLabel } from "../FieldLabel";
+import { FormGroupLegend } from "../FormGroupLegend";
+import { Input } from "../Input";
+
+import { FormGroup } from ".";
+
+<Meta title="Core/Forms/FormGroup" component={FormGroup} />
+
+# FormGroup
+
+`FormGroup` organizes form elements together with an optional
+legend.
+
+## Use cases
+
+Below are some common use cases for the `FormGroup` component.
+
+### Basic use
+
+`FormGroup` is used to wrap input components to group them together.
+
+<Canvas>
+  <Story name="basic use">
+    <FormGroup>
+      <FormGroupLegend>
+        This is a legend: a group of related fields!
+      </FormGroupLegend>
+      <FieldLabel htmlFor="input-1" label="A form element!">
+        <Input id="input-1" />
+      </FieldLabel>
+      <FieldLabel htmlFor="input-2" label="Another form element!">
+        <Input id="input-2" />
+      </FieldLabel>
+    </FormGroup>
+  </Story>
+</Canvas>
+
+### No legend
+
+`FormGroup` can also be used without a legend by omitting the prop,
+as seen here.
+
+<Canvas>
+  <Story name="no legend">
+    <FormGroup>
+      <FieldLabel htmlFor="input-3" label="A form element!">
+        <Input id="input-3" />
+      </FieldLabel>
+      <FieldLabel htmlFor="input-4" label="Another form element!">
+        <Input id="input-4" />
+      </FieldLabel>
+    </FormGroup>
+  </Story>
+</Canvas>
+
+### Stacking
+
+Adjacent `FormGroup`s will be stacked with proper spacing and
+a horizontal border between them
+
+<Canvas>
+  <Story name="stacking">
+    <React.Fragment>
+      <FormGroup>
+        <FormGroupLegend>
+          This is a legend: A group of related fields!
+        </FormGroupLegend>
+        <FieldLabel htmlFor="input-5" label="A form element!">
+          <Input id="input-5" />
+        </FieldLabel>
+        <FieldLabel htmlFor="input-6" label="Another form element!">
+          <Input id="input-6" />
+        </FieldLabel>
+      </FormGroup>
+      <FormGroup>
+        <FormGroupLegend>
+          This is a legend: another second group of related fields!
+        </FormGroupLegend>
+        <FieldLabel htmlFor="input-7" label="A form element!">
+          <Input id="input-7" />
+        </FieldLabel>
+        <FieldLabel htmlFor="input-8" label="Another form element!">
+          <Input id="input-8" />
+        </FieldLabel>
+      </FormGroup>
+    </React.Fragment>
+  </Story>
+</Canvas>
+
+## Usage
+
+```javascript
+import { FormGroup } from "@braze/beacon-core";
+```
+
+## Properties
+
+### `FormGroup`
+
+| propName    | propType                           | defaultValue | isRequired | Description                          |
+| ----------- | ---------------------------------- | ------------ | ---------- | ------------------------------------ |
+| `children`  | oneOfType( node, arrayOf( node ) ) | -            | -          | children to be passed into component |
+| `className` | string                             | -            | -          | class name of the component          |
+| `id`        | string                             | -            | +          | id to be passed to the DOM           |
+
+### `FormGroupLegend`
+
+| propName    | propType                           | defaultValue | isRequired | Description                          |
+| ----------- | ---------------------------------- | ------------ | ---------- | ------------------------------------ |
+| `children`  | oneOfType( node, arrayOf( node ) ) | -            | -          | children to be passed into component |
+| `className` | string                             | -            | -          | class name of the component          |
+| `id`        | string                             | -            | +          | id to be passed to the DOM           |

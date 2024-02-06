@@ -1,0 +1,85 @@
+import { useState } from "react";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Button, placementTypes, IconButton, MenuActionButton, MenuCategoryButton, MenuGroup, Menu, useMenu } from "@braze/beacon-core";
+
+import { ScreenReaderText } from ".";
+
+<Meta
+  title="Core/Content Display/ScreenReaderText"
+  component={ScreenReaderText}
+/>
+
+## Use cases
+
+The `ScreenReaderText` component is used to display information to users of screen readers that should be
+invisible to sighted users. Note that in most cases, `aria-label` should be used to set the text to read
+to screen readers. `ScreenReaderText` is only to be used for complex instructions, such as explaining how
+to open and close the menu.
+
+### Basic use
+
+Here is an example of using an `aria-label` on an `IconButton` and a `ScreenReaderText` to explain
+how to access a `Menu` using an `aria-labelledby` attribute on the `Menu`
+
+<Canvas>
+  <Story name="basic use">
+    {() => {
+      const [menuState, targetRef] = useMenu();
+      return (
+        <div>
+          <h1 id="info-header">Info</h1>
+          <IconButton aria-label="Get Help." name="cog" />
+          <ScreenReaderText id="menu-label">
+            Click the button to open the menu, click outside of the menu to close.
+          </ScreenReaderText>
+          <div>
+            <Button
+              ref={targetRef}
+              className="open-close-button"
+              id="menu1-button"
+              aria-haspopup="true"
+              aria-controls="menu1"
+              aria-expanded={menuState.isOpen}
+            >
+              Open
+            </Button>
+          </div>
+          <Menu
+            {...menuState}
+            targetRef={targetRef}
+            placement={"bottom-start"}
+            closeOnClickInside={false}
+            id="menu1"
+            aria-labelledby="menu1-button menu-label"
+          >
+            <MenuActionButton id="mi1">User Preview</MenuActionButton>
+            <MenuActionButton id="mi2">CSV Export User Data</MenuActionButton>
+            <MenuActionButton id="mi3">
+              CSV Export Email Address
+            </MenuActionButton>
+            <MenuActionButton id="mi4">
+              Export as Facebook Audience
+            </MenuActionButton>
+            <MenuActionButton disabled id="mi32">
+              Export as Google+ Audience
+            </MenuActionButton>
+          </Menu>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Usage
+
+```javascript
+import { ScreenReaderText } from "@braze/beacon-labs-screen-reader-text";
+```
+
+## Properties
+
+| propName    | propType                           | defaultValue | isRequired | Description                          |
+| ----------- | ---------------------------------- | ------------ | ---------- | ------------------------------------ |
+| `children`  | oneOfType( node, arrayOf( node ) ) | -            | -          | children to be passed into component |
+| `className` | string                             | -            | -          | class name of the component          |
+| `id`        | string                             | -            | -          | id to be passed to the DOM           |

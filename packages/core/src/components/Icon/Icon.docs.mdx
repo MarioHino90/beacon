@@ -1,0 +1,96 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { boolean, text } from "@storybook/addon-knobs";
+import { getIntentColor } from "@braze/beacon-styling";
+
+import { Button } from "../Button";
+import { UncontrolledTooltip } from "../UncontrolledTooltip";
+
+import { Icon } from "./Icon";
+import { brazeIcons } from "./braze-icons";
+
+# Icon
+
+<Meta title="Core/Primitives/Icon" component={Icon} />
+
+A `Icon` you can interact with.
+
+Icons use the free [Fontawesome](https://fontawesome.com/icons?d=gallery&m=free)
+icon set or our own custom svg icons. You can specify the icon using the `name`
+prop.
+
+## Use cases
+
+See below for some sample use cases on how the `Icon` component can be used
+in different ways.
+
+### Basic Use
+
+<Canvas>
+  <Story id="core-primitives-icon--basic-use" />
+</Canvas>
+
+### With color
+
+Icons can also be given Braze theme colors using the `color` prop.
+
+<Canvas>
+  <Story id="core-primitives-icon--with-color" />
+</Canvas>
+
+### Icon Buttons
+
+Buttons can have an `Icon` displayed alongside text. To use an icon like this,
+simply pass in an `Icon` component as a child of `Button`. Note that in order for
+the spacing to work well, you should wrap your button text in an element, like
+`span`, as shown below. To see this in more detail, refer to examples in `Button`.
+
+<Canvas>
+  <Story id="core-primitives-icon--button-with-icons" />
+</Canvas>
+
+## Font Awesome icon pack icons
+
+Font Awesome provides different icon styles and packs. As documented in
+[Adding Additional Styles](https://fontawesome.com/v5/docs/web/use-with/react#adding-additional-styles)
+on the font awesome site, you can use these icons by passing in the icon as an array `["fab", "github"]`,
+or as an object `{ prefix: "fab", iconName: "github" }`.
+
+<Canvas>
+  <Story id="core-primitives-icon--using-icon-packs" />
+</Canvas>
+
+## Braze Defined Icons
+
+We use the Fontawesome JS API to define custom svg icons by adding a file to the
+[braze-icons](https://github.com/braze-inc/beacon/tree/prod/src/components/Icon/braze-icons)
+folder and importing it using the existing pattern.
+
+For the `name` property, make sure you choose a name that&apos;s not already
+used by a Fontawesome icon. Do the same for the `unicode` property, while also
+making sure that the unicode character you pick is invalid (so that it
+doesn&apos;t conflict with an actual unicode entity).
+
+If the `path` you&apos;re using for your new icon doesn&apos;t approximate a
+square, just center it using [this tool](https://aydos.com/svgedit/) and add the
+tool&apos;s output `path`, `width`, and `height` instead.
+
+Here is a list of all the custom Braze icons we&apos;ve added:
+
+<Canvas>
+  <Story id="core-primitives-icon--braze-icon-list" />
+</Canvas>
+
+## Usage
+
+```javascript
+import { Icon } from "@braze/beacon-core";
+```
+
+## Properties
+
+| propName    | propType                                                                             | defaultValue | isRequired | Description                                                          |
+| ----------- | ------------------------------------------------------------------------------------ | ------------ | ---------- | -------------------------------------------------------------------- |
+| `className` | string                                                                               | -            | -          | is the class name of the component                                   |
+| `name`      | oneOf(string, `[string, string]`, `{ prefix: string, iconName: string }`)            | -            | +          | is the name key of the icon to display                               |
+| `size`      | oneOf(`xs`, `lg`, `sm`, `1x`, `2x`, `3x`, `4x`, `5x`, `6x`, `7x`, `8x`, `9x`, `10x`) | `lg`         | -          | visual size of the icon                                              |
+| `color`     | oneOf(valueOf(colors), getColor TokenGetter)                                         | -            | -          | color of the icon; should be the return of the getColor token getter |

@@ -1,0 +1,45 @@
+{
+  "name": "@braze/beacon-i18n-dev",
+  "version": "15.4.4",
+  "description": "A package for running i18n services in development for Beacon",
+  "author": "Haldun Anil <haldun.anil@braze.com>",
+  "homepage": "https://github.com/braze-inc/beacon#readme",
+  "license": "UNLICENSED",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "./README.md"
+  ],
+  "bugs": {
+    "url": "https://github.com/braze-inc/beacon/issues"
+  },
+  "scripts": {
+    "precommit": "TZ=UTC lint-staged",
+    "lint": "eslint --max-warnings=0 --ext .js,.jsx,.ts,.tsx src",
+    "lint:ci": "eslint --max-warnings=0 --ext .js,.jsx,.ts,.tsx src --quiet",
+    "lint:fix": "eslint src --ext .ts,.tsx src --fix",
+    "prebuild": "rimraf dist",
+    "build": "run-p build-js build-i18n-config build-types",
+    "prebuild-i18n-config": "mkdir -p dist",
+    "build-i18n-config": "cp src/.i18nConfig.json dist/",
+    "build-js": "babel src -d dist --extensions \".ts,.tsx\" --ignore \"src/**/*.test.tsx\",\"src/**/*.test.ts\",\"src/**/*.stories.jsx\"",
+    "build-types": "tsc --emitDeclarationOnly -p tsconfig.json",
+    "cypress": "cypress open --project ../../integration-tests --config integrationFolder='../packages/i18n-dev'",
+    "cypress:cli": "cypress run --project ../../integration-tests --config integrationFolder='../packages/i18n-dev'",
+    "cypress:ci": "yarn cypress:cli --config-file cypress-ci.json"
+  },
+  "devDependencies": {
+    "@braze/beacon-translations": "^15.2.16",
+    "@braze/i18n-core": "15.0.33",
+    "i18next": "21.10.0"
+  },
+  "peerDependencies": {
+    "@braze/beacon-translations": "^5.1.2",
+    "@braze/i18n-core": "^9.0.0 || ^10.0.0 || ^11.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0",
+    "@braze/i18n-scripts": "^9.0.0 || ^10.0.0 || ^11.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0"
+  },
+  "contributors": [
+    "Haldun Anil <haldun.anil@braze.com>"
+  ]
+}

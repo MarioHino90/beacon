@@ -1,0 +1,296 @@
+import {
+  BodyText,
+  Box,
+  Button,
+  Heading,
+  Flex,
+  FlexBox,
+} from "@braze/beacon-core";
+import styled from "styled-components";
+
+<Meta title="Welcome/Content Strategy" />
+
+export const HeaderRow = styled.div`
+  display: grid;
+  margin: 1rem 0;
+  padding: 1rem;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
+  gap: 0;
+  background: #2e3c47;
+  & > div:not(:last-of-type) {
+    padding-right: 1.5rem;
+    margin-right: 1.5rem;
+    border-right: 1px solid lightgrey;
+  }
+`;
+
+export const LeftSideRow = styled.div`
+  display: grid;
+  margin: 1rem 0;
+  padding: 1rem;
+  grid-template-columns: 1fr 3fr;
+`;
+
+export const HeaderItem = ({ title, children }) => {
+  return (
+    <div>
+      <Heading level={4} style={{ color: "white" }}>
+        {title}
+      </Heading>
+      <Box boxMargin={{ top: "sm" }}>
+        <BodyText style={{ color: "white" }}>{children}</BodyText>
+      </Box>
+    </div>
+  );
+};
+
+export const LeftSideDesc = ({ title, subtitle, children }) => {
+  return (
+    <LeftSideRow>
+      <Box
+        boxPadding={{ right: "xxl" }}
+        boxMargin={{ right: "xxl" }}
+        style={{ borderRight: "1px solid lightgrey", marginRight: "1.5rem" }}
+      >
+        <Heading level={4}>{title}</Heading>
+        <Box boxMargin={{ top: "sm" }}>
+          <BodyText>{subtitle}</BodyText>
+        </Box>
+      </Box>
+      <div style={{ marginLeft: "1.5rem" }}>{children}</div>
+    </LeftSideRow>
+  );
+};
+
+export const DoDont = ({ children, helpText, isDo }) => {
+  return (
+    <div style={{ width: "47.5%" }}>
+      <div
+        style={{
+          border: "1px solid black",
+          padding: "1rem",
+          marginBottom: "1rem",
+        }}
+      >
+        {children}
+      </div>
+      <div
+        style={{
+          borderTop: `3px solid ${isDo ? "green" : "red"}`,
+          marginTop: "0.25rem",
+          paddingTop: "0.25rem",
+        }}
+      >
+        <BodyText
+          fontWeight="bold"
+          style={{
+            color: isDo ? "green" : "red",
+            marginRight: "0.25rem",
+          }}
+        >
+          {isDo ? "Do" : "Don't"}
+        </BodyText>
+        <BodyText variant="hint">{helpText}</BodyText>
+      </div>
+    </div>
+  );
+};
+
+## Content Strategy Differentiators
+
+<br />
+
+| Brand & Content                                                                                                                        | Documentation                                                                                                                                                                                                                                   | Product Copy                                                                                                                                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Suited for marketing material, Braze brand & content copy paints the strengths of the company to prospective and existing customers.   | Meant to be as informative as possible, documentation copy explains how the platform works from a holistic POV. Think of a patient and informative professor.                                                                                | Similar to documentation copy, product copy is meant to be as informative as possible. Unlike documentation copy, product copy is localized to the platform area in question with an extra emphasis on conciseness. Think of traffic signs. |
+| "_Build dynamic audiences in minutes (or less) and deploy personalized customer journeys with our intuitive drag-and-drop interface._" | "_When a user profile is first recognized via the SDK, an ‘anonymous’ user profile is created with an associated `braze_id`: a unique user identifier that is set by Braze. This identifier can be used to delete users through the REST API._" | "_Select at least one Content Test Group or individual user to receive this test message. Messages will be customized with recipients' attributes by default._"                                                                             |
+
+<br />
+
+## Product Copy Principles
+
+Principles are the high-level goals we’re hoping to achieve with product copy. These help establish the “tone” of product copy.
+
+<HeaderRow>
+  <HeaderItem title="Empower">
+    Give readers the tools they need to use the Braze platform by using language
+    that informs them and leaves them feeling confident in their ability to use
+    our products.
+  </HeaderItem>
+  <HeaderItem title="Educate">
+    Give readers the information that they need in the immediate.
+  </HeaderItem>
+  <HeaderItem title="Guide">
+    Help your readers navigate the platform in a way that’s informative and
+    friendly.
+  </HeaderItem>
+  <HeaderItem title="Respect">
+    Meet readers where they are and assume best intent. Put yourselves in their
+    position and communicate appropriately. Be inclusive and considerate of
+    their time and effort.
+  </HeaderItem>
+</HeaderRow>
+
+<LeftSideDesc
+  title="Empower"
+  subtitle="Here we anticipate the question “can I add campaigns to this report after it’s created?” to **empower** users in their decision making."
+>
+  <img src="/content-strategy/Empower.png" alt="Empower example screenshot" />
+</LeftSideDesc>
+
+<LeftSideDesc
+  title="Educate"
+  subtitle="Here we use placeholder copy to **educate** users on examples of acceptable form inputs."
+>
+  <img src="/content-strategy/Educate.png" alt="Educate example screenshot" />
+</LeftSideDesc>
+
+<LeftSideDesc
+  title="Guide"
+  subtitle="Here we use an empty state to **guide** users to create a Global Control Group—a prerequisite to viewing this report."
+>
+  <img src="/content-strategy/Guide.png" alt="Guide example screenshot" />
+</LeftSideDesc>
+
+<LeftSideDesc
+  title="Respect"
+  subtitle="Here we give the user a heads up that this action might not work as expected with their current user count, but **respect** their decision to create it anyways."
+>
+  <img src="/content-strategy/Respect.png" alt="Respect example screenshot" />
+</LeftSideDesc>
+
+## Guidelines
+
+Guidelines are the boxes to check off when writing any product copy. If a piece of copy adheres to the following guidelines, it will help achieve our goals:
+
+<HeaderRow>
+  <HeaderItem title="Clear">
+    Use simple words and sentences to communicate the topic you’re writing
+    about. Avoid jargon and excessive use of acronyms.
+  </HeaderItem>
+  <HeaderItem title="Concise">
+    Keep your writing short and sweet. Try and use as small an amount of words
+    as you can to get your point across.
+  </HeaderItem>
+  <HeaderItem title="Useful">
+    Make sure you know what the purpose of your content is before writing. What
+    problem are you trying to solve and how does this content help?
+  </HeaderItem>
+  <HeaderItem title="Human">
+    Talk to the user like a human. Try and strike an optimistic and
+    conversational tone—imagine yourself explaining something to a friend. The
+    only exceptions are for error messages and financial transactions.
+  </HeaderItem>
+</HeaderRow>
+
+<LeftSideDesc
+  title="Clear"
+  subtitle="Use simple words and sentences to communicate the topic you’re writing about. Avoid jargon and excessive use of acronyms."
+>
+  <FlexBox boxMargin={{ vertical: "xxl" }} justifyContent="space-between">
+    <DoDont
+      isDo
+      helpText="use button verbs that reinforce the action the user is taking."
+    >
+      <BodyText>Deactivate this campaign?</BodyText>
+      <FlexBox boxMargin={{ top: "lg" }}>
+        <Button
+          style={{ marginLeft: "auto", marginRight: "0.5rem" }}
+          variant="secondary"
+          size="sm"
+        >
+          Cancel
+        </Button>
+        <Button size="sm">Deactivate</Button>
+      </FlexBox>
+    </DoDont>
+    <DoDont helpText="use words and phrases that don't directly connect to the action.">
+      <BodyText>Deactivate this campaign?</BodyText>
+      <FlexBox boxMargin={{ top: "lg" }}>
+        <Button
+          style={{ marginLeft: "auto", marginRight: "0.5rem" }}
+          variant="secondary"
+          size="sm"
+        >
+          Cancel
+        </Button>
+        <Button size="sm">OK</Button>
+      </FlexBox>
+    </DoDont>
+  </FlexBox>
+</LeftSideDesc>
+
+<LeftSideDesc
+  title="Concise"
+  subtitle="Keep your writing short and sweet. Try and use as small an amount of words as you can to get your point across."
+>
+  <FlexBox boxMargin={{ vertical: "xxl" }} justifyContent="space-between">
+    <DoDont isDo helpText="keep UI text short.">
+      <BodyText>Archive News Feed card?</BodyText>
+    </DoDont>
+    <DoDont helpText="use filter introductions in confirmations, like 'Are you sure?'.">
+      <BodyText>
+        Are you sure you want to archive this Archive News Feed card?
+      </BodyText>
+    </DoDont>
+  </FlexBox>
+  <FlexBox boxMargin={{ vertical: "xxl" }} justifyContent="space-between">
+    <DoDont isDo helpText="get to the point.">
+      <BodyText>Leaving this page will delete all unsaved changes.</BodyText>
+    </DoDont>
+    <DoDont helpText="write instructions that are longer than necessary.">
+      <BodyText>
+        If you leave this page, all unsaved changes will be lost. Are you sure
+        you want to leave this page?
+      </BodyText>
+    </DoDont>
+  </FlexBox>
+</LeftSideDesc>
+
+<LeftSideDesc
+  title="Useful"
+  subtitle="Make sure you know what the purpose of your content is before writing. What problem are you trying to solve and how does this content help?"
+>
+  <FlexBox boxMargin={{ vertical: "xxl" }} justifyContent="space-between">
+    <DoDont
+      isDo
+      helpText="communicate essential details needed to understand a state or action."
+    >
+      <BodyText>
+        Track user behavior (sessions, purchases, custom events) by segment for
+        up to 25 segments.
+      </BodyText>
+    </DoDont>
+    <DoDont helpText="sacrifice clarity for brevity.">
+      <BodyText>Track user behavior by segment.</BodyText>
+    </DoDont>
+  </FlexBox>
+</LeftSideDesc>
+
+<LeftSideDesc
+  title="Human"
+  subtitle="Talk to the user like a human. Try and strike an optimistic and conversational tone—imagine yourself explaining something to a friend. The only exceptions are for error messages and financial transactions."
+>
+  <FlexBox boxMargin={{ vertical: "xxl" }} justifyContent="space-between">
+    <DoDont isDo helpText="give the user solutions instead of problems.">
+      <BodyText>Adjust your filters to continue.</BodyText>
+    </DoDont>
+    <DoDont helpText="blame the user for an error (especially if they really did do something wrong).">
+      <BodyText>You need to adjust your filters.</BodyText>
+    </DoDont>
+  </FlexBox>
+  <FlexBox boxMargin={{ vertical: "xxl" }} justifyContent="space-between">
+    <DoDont isDo helpText="speak directly to the user in the second person.">
+      <BodyText>
+        As an Admin, you have full access to everything on the Dashboard.
+      </BodyText>
+    </DoDont>
+    <DoDont helpText="refer to the user in the third person.">
+      <BodyText>
+        This is an Admin account. Admins have full access to everything on the
+        Dashboard.
+      </BodyText>
+    </DoDont>
+  </FlexBox>
+</LeftSideDesc>

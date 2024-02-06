@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "sourceMap": false,
+    "baseUrl": "./packages",
+    "types": [
+      "react",
+      "cypress",
+      "@testing-library/cypress",
+      "cypress-real-events",
+      "@applitools/eyes-cypress"
+    ]
+  },
+  "include": ["**/integration_tests/**/*", "**/component_tests/**/*", "**/test-utils/**/*", "integration-tests/cypress/**/*.ts"]
+}

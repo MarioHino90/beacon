@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StyledMenuButton should match the snapshot 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem 1.5rem;
+  text-align: left;
+}
+
+.c0:hover:not(:disabled),.c0:focus:not(:disabled) {
+  background-color: #E9EBED;
+}
+
+<button
+  className="c0 Direct"
+  id="Account"
+>
+  Borders
+</button>
+`;

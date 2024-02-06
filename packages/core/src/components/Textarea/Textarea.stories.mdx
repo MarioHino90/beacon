@@ -1,0 +1,161 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { text } from "@storybook/addon-knobs";
+
+import { FieldLabel } from "../FieldLabel";
+
+import { Textarea } from ".";
+
+<Meta title="Core/Forms/Textarea" component={Textarea} />
+
+# Textarea
+
+Similar to an `Input` component, `Textarea` lets the user input free alphanumeric
+strings. Unlike `Input`, `Textarea` allows for multiline content and is ideal
+for longer text.
+
+## Use cases
+
+Below are some common use cases for the `Textarea` component.
+
+### Basic use
+
+Like the `Input` component, `Textarea` can be used very simply like so.
+
+<Canvas>
+  <Story name="basic use">
+    {() => {
+      const [value, setState] = React.useState("");
+      const handleChange = (event) => {
+        setState(event.target.value);
+      };
+      return (
+        <>
+          <Textarea
+            placeholder="Enter text in me!"
+            value={value}
+            onChange={handleChange}
+          />
+          <pre>
+            <code>value: </code>
+            <code className="textarea-value">{value}</code>
+          </pre>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Sizes
+
+`TextArea` comes in three sizes controlled by the `vSize` prop:
+* `"md"` for one-line `TextAreas` that are the same size as other `vSize={"md"}` Beacon fields
+* `"lg"` for a typlically sized `TextArea` (default)
+* `"xl"` for a larger `TextArea`
+
+See all three sizes below
+
+<Canvas>
+  <Story name="different sizes">
+    <FieldLabel
+      label="Size &quot;md&quot;"
+      htmlFor="md-size"
+    >
+      <Textarea id="md-size" vSize="md" placeholder="Enter text in me!" />
+    </FieldLabel>
+    <FieldLabel
+      label="Size &quot;lg&quot;"
+      htmlFor="lg-size"
+    >
+      <Textarea id="lg-size" vSize="lg" placeholder="Enter text in me!" />
+    </FieldLabel>
+    <FieldLabel
+      label="Size &quot;xl&quot;"
+      htmlFor="xl-size"
+    >
+      <Textarea id="xl-size" vSize="xl" placeholder="Enter text in me!" />
+    </FieldLabel>
+  </Story>
+</Canvas>
+
+### Disabled
+
+`Textarea` can be disabled to prevent user input/changing existing
+content.
+
+<Canvas>
+  <Story name="disabled">
+    {() => {
+      const [value, setState] = React.useState("");
+      const handleChange = (event) => {
+        setState(event.target.value);
+      };
+      return (
+        <>
+          <Textarea
+            placeholder="Enter text in me!"
+            value={value}
+            onChange={handleChange}
+            disabled
+          />
+          <pre>
+            <code>value: </code>
+            <code className="textarea-value">{value}</code>
+          </pre>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Invalid
+
+If the content entered (or not entered) is invalid, you can pass
+an `invalid` prop into `Textarea` to display a red box.
+
+> Add a descriptive error message to the field's label to tell your user what went wrong.
+
+<Canvas>
+  <Story name="invalid">
+    <FieldLabel
+      label="Field Label"
+      htmlFor="invalidInput"
+      status="danger"
+      statusText={text(
+        "Error Message",
+        "Please enter a valid value in this field"
+      )}
+    >
+      <Textarea placeholder="Enter text in me!" invalid />
+    </FieldLabel>
+  </Story>
+</Canvas>
+
+### Full width
+
+Use prop `fullWidth` to make the textarea span the full
+width of its parent container:
+
+<Canvas>
+  <Story name="full width">
+    <Textarea placeholder="Enter text in me!" fullWidth />
+  </Story>
+</Canvas>
+
+## Usage
+
+```javascript
+import { Textarea } from "@braze/beacon-core";
+```
+
+## Properties
+
+| propName               | propType                               | defaultValue | isRequired | Description                                            |
+| ---------------------- | -------------------------------------- | ------------ | ---------- | ------------------------------------------------------ |
+| `bclSize` (deprecated) | oneOf( `sm`, `md` )                    | `sm`         | -          | size of the textarea component                         |
+| `vSize`                | oneOf( `md`, `lg`, `xl` )              | `lg`         | -          | size of the textarea component                         |
+| `className`            | string                                 | -            | -          | class name of the component                            |
+| `fullWidth`            | boolean                                | -            | -          | takes up 100% of the width of the container            |
+| `id`                   | string                                 | -            | +          | id to be passed to the DOM                             |
+| `invalid`              | boolean                                | -            | -          | indicates that the currently inputted value is invalid |
+| `ref`                  | `React.RefObject<HTMLTextAreaElement>` | -            | -          | ref to get access to the DOM node                      |
+| `value`                | oneOfType( string, number, string[] )  | -            | -          | value to be rendered in the textarea field             |

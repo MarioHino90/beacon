@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RetentionReport should match the snapshot 1`] = `
+<svg
+  className="bcl-retention-report Legacy"
+  fill="none"
+  height="24"
+  id="matrix"
+  viewBox="0 0 24 24"
+  width="24"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <g
+    clipPath="url(#clip0)"
+  >
+    <rect
+      fill="white"
+      height="4"
+      stroke="black"
+      strokeLinejoin="round"
+      width="22.425"
+      x="0.799988"
+      y="2"
+    />
+    <rect
+      fill="white"
+      height="4"
+      stroke="black"
+      strokeLinejoin="round"
+      width="15.6"
+      x="0.799988"
+      y="10"
+    />
+    <rect
+      fill="white"
+      height="4"
+      stroke="black"
+      strokeLinejoin="round"
+      width="7.8"
+      x="0.799988"
+      y="18"
+    />
+    <g
+      style={
+        {
+          "mixBlendMode": "multiply",
+        }
+      }
+    >
+      <rect
+        fill="#B5EDFF"
+        height="4"
+        width="3.9"
+        x="0.799988"
+        y="2"
+      />
+    </g>
+    <g
+      style={
+        {
+          "mixBlendMode": "multiply",
+        }
+      }
+    >
+      <rect
+        fill="#B5EDFF"
+        height="4"
+        width="3.9"
+        x="0.799988"
+        y="10"
+      />
+    </g>
+    <g
+      style={
+        {
+          "mixBlendMode": "multiply",
+        }
+      }
+    >
+      <rect
+        fill="#B5EDFF"
+        height="4"
+        width="3.9"
+        x="0.799988"
+        y="18"
+      />
+    </g>
+  </g>
+  <defs>
+    <clipPath
+      id="clip0"
+    >
+      <rect
+        fill="white"
+        height="24"
+        width="24"
+      />
+    </clipPath>
+  </defs>
+</svg>
+`;

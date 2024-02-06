@@ -1,0 +1,17 @@
+{
+  "locales": [
+    "en",
+    "ja"
+  ],
+  "translationsPaths": [
+    "packages/translations/translations"
+  ],
+  "savePath": "packages/translations/translations",
+  "typescriptDefinitionPath": "packages/translations/src/types.ts",
+  "mergedTranslationsPath": "packages/translations/src",
+  "indexDTsInterfaceName": "BeaconTranslations",
+  "translationRepoPaths": [],
+  "devRepo": "",
+  "devMainBranch": "main",
+  "gitRootPath": ""
+}

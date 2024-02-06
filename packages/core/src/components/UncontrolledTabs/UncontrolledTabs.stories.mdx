@@ -1,0 +1,285 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { select, withKnobs } from "@storybook/addon-knobs";
+import { action } from "@storybook/addon-actions";
+
+import { BodyText } from "../BodyText";
+import { Box } from "../Box";
+import { UncontrolledTabsContextProvider } from "../UncontrolledTabsContext";
+import { UncontrolledTabContent } from "../UncontrolledTabContent";
+import { UncontrolledTab } from "../UncontrolledTab";
+
+import { UncontrolledTabs } from "./UncontrolledTabs";
+
+# UncontrolledTabs
+
+<Meta
+  title="Commons/Content Display/UncontrolledTabs"
+  component={UncontrolledTabs}
+/>
+
+`UncontrolledTabs` allow users to see multiple different sections of content grouped by labels.
+It handles the state for the `Tabs` component
+
+## Use cases
+
+Below are some common use cases for the `UncontrolledTabs` component.
+
+### Basic use
+
+`UncontrolledTabs` are used to create fixed, navigable sections of a page.
+
+> The `UncontrolledTabsContextProvider` is required
+
+<Canvas>
+  <Story name="basic use">
+    <UncontrolledTabsContextProvider defaultTab={2} onChange={action("click")}>
+      <UncontrolledTabs>
+        <UncontrolledTab tabId={1}>Section 1</UncontrolledTab>
+        <UncontrolledTab tabId={2}>Section 2</UncontrolledTab>
+        <UncontrolledTab tabId={3}>Section 3</UncontrolledTab>
+      </UncontrolledTabs>
+      <UncontrolledTabContent tabId={1}>
+        <Box boxMargin={{ bottom: "sm" }}>
+          <BodyText>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin metus
+            magna, elementum ac scelerisque et, aliquam sit amet mi. Sed semper
+            diam ac tortor commodo vehicula. Phasellus mi velit, sollicitudin
+            nec rhoncus nec, ullamcorper in risus. Quisque nec orci in neque
+            egestas porta. Vivamus dui urna, vestibulum et erat et, luctus
+            imperdiet dolor. Ut mollis tortor sed sem suscipit, porttitor
+            dignissim dolor aliquam. Vivamus at mi feugiat, dapibus metus in,
+            volutpat neque. Sed egestas condimentum orci, ac finibus urna
+            sodales ac.
+          </BodyText>
+        </Box>
+        <Box boxMargin={{ bottom: "sm" }}>
+          <BodyText>
+            Nullam turpis nisi, luctus in augue at, suscipit posuere mauris. In
+            ut efficitur nunc. Proin orci odio, pretium vitae augue a, maximus
+            porta tellus. Sed tincidunt quam orci. Cras elementum luctus turpis,
+            eget tincidunt arcu luctus consequat. Etiam fringilla ultrices ipsum
+            vel placerat. Maecenas odio nibh, commodo non mi eu, vehicula
+            vulputate orci. Curabitur pretium nisl non vehicula mattis. Fusce a
+            dui nec ex imperdiet pretium. Sed tempor nulla ac egestas
+            vestibulum. Praesent venenatis gravida dolor quis fermentum.
+            Vestibulum vestibulum eu urna eget elementum. Nullam rhoncus orci a
+            diam euismod iaculis.
+          </BodyText>
+        </Box>
+      </UncontrolledTabContent>
+      <UncontrolledTabContent tabId={2}>
+        <Box boxMargin={{ bottom: "sm" }}>
+          <BodyText>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin metus
+            magna, elementum ac scelerisque et, aliquam sit amet mi. Sed semper
+            diam ac tortor commodo vehicula. Phasellus mi velit, sollicitudin
+            nec rhoncus nec, ullamcorper in risus. Quisque nec orci in neque
+            egestas porta. Vivamus dui urna, vestibulum et erat et, luctus
+            imperdiet dolor. Ut mollis tortor sed sem suscipit, porttitor
+            dignissim dolor aliquam. Vivamus at mi feugiat, dapibus metus in,
+            volutpat neque. Sed egestas condimentum orci, ac finibus urna
+            sodales ac.
+          </BodyText>
+        </Box>
+      </UncontrolledTabContent>
+      <UncontrolledTabContent tabId={3}>
+        <Box boxMargin={{ bottom: "sm" }}>
+          <BodyText>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin metus
+            magna, elementum ac scelerisque et, aliquam sit amet mi. Sed semper
+            diam ac tortor commodo vehicula. Phasellus mi velit, sollicitudin
+            nec rhoncus nec, ullamcorper in risus. Quisque nec orci in neque
+            egestas porta. Vivamus dui urna, vestibulum et erat et, luctus
+            imperdiet dolor. Ut mollis tortor sed sem suscipit, porttitor
+            dignissim dolor aliquam. Vivamus at mi feugiat, dapibus metus in,
+            volutpat neque. Sed egestas condimentum orci, ac finibus urna
+            sodales ac.
+          </BodyText>
+        </Box>
+        <Box boxMargin={{ bottom: "sm" }}>
+          <BodyText>
+            Nullam turpis nisi, luctus in augue at, suscipit posuere mauris. In
+            ut efficitur nunc. Proin orci odio, pretium vitae augue a, maximus
+            porta tellus. Sed tincidunt quam orci. Cras elementum luctus turpis,
+            eget tincidunt arcu luctus consequat. Etiam fringilla ultrices ipsum
+            vel placerat. Maecenas odio nibh, commodo non mi eu, vehicula
+            vulputate orci. Curabitur pretium nisl non vehicula mattis. Fusce a
+            dui nec ex imperdiet pretium. Sed tempor nulla ac egestas
+            vestibulum. Praesent venenatis gravida dolor quis fermentum.
+            Vestibulum vestibulum eu urna eget elementum. Nullam rhoncus orci a
+            diam euismod iaculis.
+          </BodyText>
+        </Box>
+        <Box boxMargin={{ bottom: "sm" }}>
+          <BodyText>
+            Cras arcu velit, aliquet at odio vitae, volutpat lobortis sapien.
+            Pellentesque habitant morbi tristique senectus et netus et malesuada
+            fames ac turpis egestas. Curabitur mollis mi non ante vestibulum
+            maximus. Suspendisse potenti. Quisque sagittis, tellus ut interdum
+            rutrum, ex ligula vehicula dui, eget volutpat eros nulla at nunc.
+            Morbi interdum in elit consequat volutpat. Sed at augue in arcu
+            interdum luctus. Nunc pretium neque et bibendum malesuada. Aliquam
+            et enim a enim dictum porta non vitae sem. Nullam sit amet placerat
+            mauris, sed pretium arcu. Nunc finibus neque ac velit euismod, non
+            fermentum nibh auctor. Suspendisse vitae arcu molestie, dapibus dui
+            vel, varius quam. Orci varius natoque penatibus et magnis dis
+            parturient montes, nascetur ridiculus mus. Donec sit amet lorem
+            vitae dolor ullamcorper feugiat imperdiet in tellus. Sed et risus
+            condimentum, vulputate nulla quis, mattis magna.
+          </BodyText>
+        </Box>
+      </UncontrolledTabContent>
+    </UncontrolledTabsContextProvider>
+  </Story>
+</Canvas>
+
+### Disabled use
+
+Sections can be disabled.
+
+<Canvas>
+  <Story name="disabled use">
+    <UncontrolledTabsContextProvider defaultTab={1} onChange={action("click")}>
+      <UncontrolledTabs>
+        <UncontrolledTab tabId={1}>Section 1</UncontrolledTab>
+        <UncontrolledTab disabled tabId={2}>Section 2</UncontrolledTab>
+        <UncontrolledTab tabId={3}>Section 3</UncontrolledTab>
+      </UncontrolledTabs>
+      <UncontrolledTabContent tabId={1}>
+        <Box boxMargin={{ bottom: "sm" }}>
+          <BodyText>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin metus
+            magna, elementum ac scelerisque et, aliquam sit amet mi. Sed semper
+            diam ac tortor commodo vehicula. Phasellus mi velit, sollicitudin
+            nec rhoncus nec, ullamcorper in risus. Quisque nec orci in neque
+            egestas porta. Vivamus dui urna, vestibulum et erat et, luctus
+            imperdiet dolor. Ut mollis tortor sed sem suscipit, porttitor
+            dignissim dolor aliquam. Vivamus at mi feugiat, dapibus metus in,
+            volutpat neque. Sed egestas condimentum orci, ac finibus urna
+            sodales ac.
+          </BodyText>
+        </Box>
+        <Box boxMargin={{ bottom: "sm" }}>
+          <BodyText>
+            Nullam turpis nisi, luctus in augue at, suscipit posuere mauris. In
+            ut efficitur nunc. Proin orci odio, pretium vitae augue a, maximus
+            porta tellus. Sed tincidunt quam orci. Cras elementum luctus turpis,
+            eget tincidunt arcu luctus consequat. Etiam fringilla ultrices ipsum
+            vel placerat. Maecenas odio nibh, commodo non mi eu, vehicula
+            vulputate orci. Curabitur pretium nisl non vehicula mattis. Fusce a
+            dui nec ex imperdiet pretium. Sed tempor nulla ac egestas
+            vestibulum. Praesent venenatis gravida dolor quis fermentum.
+            Vestibulum vestibulum eu urna eget elementum. Nullam rhoncus orci a
+            diam euismod iaculis.
+          </BodyText>
+        </Box>
+      </UncontrolledTabContent>
+      <UncontrolledTabContent tabId={2}>
+        <Box boxMargin={{ bottom: "sm" }}>
+          <BodyText>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin metus
+            magna, elementum ac scelerisque et, aliquam sit amet mi. Sed semper
+            diam ac tortor commodo vehicula. Phasellus mi velit, sollicitudin
+            nec rhoncus nec, ullamcorper in risus. Quisque nec orci in neque
+            egestas porta. Vivamus dui urna, vestibulum et erat et, luctus
+            imperdiet dolor. Ut mollis tortor sed sem suscipit, porttitor
+            dignissim dolor aliquam. Vivamus at mi feugiat, dapibus metus in,
+            volutpat neque. Sed egestas condimentum orci, ac finibus urna
+            sodales ac.
+          </BodyText>
+        </Box>
+      </UncontrolledTabContent>
+      <UncontrolledTabContent tabId={3}>
+        <Box boxMargin={{ bottom: "sm" }}>
+          <BodyText>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin metus
+            magna, elementum ac scelerisque et, aliquam sit amet mi. Sed semper
+            diam ac tortor commodo vehicula. Phasellus mi velit, sollicitudin
+            nec rhoncus nec, ullamcorper in risus. Quisque nec orci in neque
+            egestas porta. Vivamus dui urna, vestibulum et erat et, luctus
+            imperdiet dolor. Ut mollis tortor sed sem suscipit, porttitor
+            dignissim dolor aliquam. Vivamus at mi feugiat, dapibus metus in,
+            volutpat neque. Sed egestas condimentum orci, ac finibus urna
+            sodales ac.
+          </BodyText>
+        </Box>
+        <Box boxMargin={{ bottom: "sm" }}>
+          <BodyText>
+            Nullam turpis nisi, luctus in augue at, suscipit posuere mauris. In
+            ut efficitur nunc. Proin orci odio, pretium vitae augue a, maximus
+            porta tellus. Sed tincidunt quam orci. Cras elementum luctus turpis,
+            eget tincidunt arcu luctus consequat. Etiam fringilla ultrices ipsum
+            vel placerat. Maecenas odio nibh, commodo non mi eu, vehicula
+            vulputate orci. Curabitur pretium nisl non vehicula mattis. Fusce a
+            dui nec ex imperdiet pretium. Sed tempor nulla ac egestas
+            vestibulum. Praesent venenatis gravida dolor quis fermentum.
+            Vestibulum vestibulum eu urna eget elementum. Nullam rhoncus orci a
+            diam euismod iaculis.
+          </BodyText>
+        </Box>
+        <Box boxMargin={{ bottom: "sm" }}>
+          <BodyText>
+            Cras arcu velit, aliquet at odio vitae, volutpat lobortis sapien.
+            Pellentesque habitant morbi tristique senectus et netus et malesuada
+            fames ac turpis egestas. Curabitur mollis mi non ante vestibulum
+            maximus. Suspendisse potenti. Quisque sagittis, tellus ut interdum
+            rutrum, ex ligula vehicula dui, eget volutpat eros nulla at nunc.
+            Morbi interdum in elit consequat volutpat. Sed at augue in arcu
+            interdum luctus. Nunc pretium neque et bibendum malesuada. Aliquam
+            et enim a enim dictum porta non vitae sem. Nullam sit amet placerat
+            mauris, sed pretium arcu. Nunc finibus neque ac velit euismod, non
+            fermentum nibh auctor. Suspendisse vitae arcu molestie, dapibus dui
+            vel, varius quam. Orci varius natoque penatibus et magnis dis
+            parturient montes, nascetur ridiculus mus. Donec sit amet lorem
+            vitae dolor ullamcorper feugiat imperdiet in tellus. Sed et risus
+            condimentum, vulputate nulla quis, mattis magna.
+          </BodyText>
+        </Box>
+      </UncontrolledTabContent>
+    </UncontrolledTabsContextProvider>
+  </Story>
+</Canvas>
+
+## Usage
+
+```javascript
+import {
+  UncontrolledTabs,
+  UncontrolledTab,
+  UncontrolledTabContent,
+  UncontrolledTabsContextProvider,
+} from "@braze/beacon-lab-commons-uncontrolled-tabs";
+```
+
+## Properties for `UncontrolledTabs`
+
+| propName    | propType                         | defaultValue | isRequired | Description                          |
+| ----------- | -------------------------------- | ------------ | ---------- | ------------------------------------ |
+| `children`  | oneOf(ReactNode, ReactNodeArray) | -            | -          | children to be passed into component |
+| `className` | string                           | -            | -          | class name of the component          |
+| `id`        | string                           | -            | -          | id to be passed to the DOM           |
+
+## Properties for `UncontrolledTab`
+
+| propName    | propType                         | defaultValue | isRequired | Description                          |
+| ----------- | -------------------------------- | ------------ | ---------- | ------------------------------------ |
+| `children`  | oneOf(ReactNode, ReactNodeArray) | -            | -          | children to be passed into component |
+| `className` | string                           | -            | -          | class name of the component          |
+| `disabled`  | boolean                          | -            | -          | indicates that the tab is disabled   |
+| `id`        | string                           | -            | -          | id to be passed to the DOM           |
+
+## Properties for `UncontrolledTabContent`
+
+| propName    | propType                         | defaultValue | isRequired | Description                          |
+| ----------- | -------------------------------- | ------------ | ---------- | ------------------------------------ |
+| `children`  | oneOf(ReactNode, ReactNodeArray) | -            | -          | children to be passed into component |
+| `className` | string                           | -            | -          | class name of the component          |
+| `id`        | string                           | -            | -          | id to be passed to the DOM           |
+
+## Properties for `UncontrolledTabsContextProvider`
+
+| propName     | propType                         | defaultValue | isRequired | Description                          |
+| ------------ | -------------------------------- | ------------ | ---------- | ------------------------------------ |
+| `children`   | oneOf(ReactNode, ReactNodeArray) | -            | -          | children to be passed into component |
+| `defaultTab` | oneOf(string, number)            | -            | -          | the default active tab               |
+| `onChange`   | (id: number) => void             | -            | -          | callback on active tab change        |

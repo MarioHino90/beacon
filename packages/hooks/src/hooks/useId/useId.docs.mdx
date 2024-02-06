@@ -1,0 +1,32 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+
+# useId Hook
+
+The useId hook is used to auto-generate ids for an element that is not provided as a prop.
+The id will remain consistent the entire time that the calling component remains mounted,
+but if the component unmounded and remounted, then there will be a new id.
+You can pass in a prefix to make the id easier to human identify, and reduce the chance of collision.
+
+## Use cases
+
+Below are some common use cases for the `Portal` component.
+
+### Basic use
+
+<Canvas>
+  <Story id="core-hooks-useid--basic-use" />
+</Canvas>
+
+### no prefix
+
+It is recommended to always use a prefix when generating an id. However, you can generate an id without a prefix by not passing a parameter to useId().
+
+<Canvas>
+  <Story id="core-hooks-useid--no-prefix" />
+</Canvas>
+
+## Properties
+
+| propName | propType | defaultValue | isRequired | Description                             |
+| -------- | -------- | ------------ | ---------- | --------------------------------------- |
+| `prefix` | string   | `null`       | no         | a prefix to prepend to the generated id |

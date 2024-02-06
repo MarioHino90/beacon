@@ -1,0 +1,43 @@
+{
+  "name": "@braze/beacon-translations",
+  "version": "15.2.16",
+  "description": "Package containing translations for Beacon components",
+  "author": "Haldun Anil <haldun.anil@braze.com>",
+  "homepage": "https://github.com/braze-inc/beacon#readme",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/braze-inc/beacon.git"
+  },
+  "bugs": {
+    "url": "https://github.com/braze-inc/beacon/issues"
+  },
+  "main": "dist/index-node.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "./README.md"
+  ],
+  "scripts": {
+    "lint": "eslint --max-warnings=0 --ext .js,.jsx,.ts,.tsx src",
+    "lint:ci": "eslint --max-warnings=0 --ext .js,.jsx,.ts,.tsx src --quiet",
+    "lint:fix": "eslint src --ext .ts,.tsx src --fix",
+    "precommit": "TZ=UTC lint-staged",
+    "prebuild": "rimraf dist",
+    "build": "run-p build-js build-translations build-types",
+    "build-js": "babel src -d dist --extensions \".ts,.tsx\" --ignore \"src/**/*.test.tsx\",\"src/**/*.test.ts\"",
+    "prebuild-translations": "mkdir -p dist",
+    "build-translations": "cp src/translations.braze.json dist/",
+    "build-types": "tsc --emitDeclarationOnly -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/react-i18next": "8.1.0"
+  },
+  "peerDependencies": {
+    "@braze/i18n-core": "^9.0.0 || ^10.0.0 || ^11.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0"
+  },
+  "contributors": [
+    "Haldun Anil <haldun.anil@braze.com>"
+  ]
+}

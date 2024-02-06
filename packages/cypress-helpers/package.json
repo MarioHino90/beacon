@@ -1,0 +1,45 @@
+{
+  "name": "@braze/beacon-cypress-helpers",
+  "description": "Beacon component package for Cypress helpers",
+  "version": "15.5.1",
+  "author": "Braze",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/braze-inc/beacon.git",
+    "directory": "packages/Helpers"
+  },
+  "homepage": "https://github.com/braze-inc/beacon#readme",
+  "bugs": {
+    "url": "https://github.com/braze-inc/beacon/issues"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "./README.md"
+  ],
+  "scripts": {
+    "precommit": "TZ=UTC lint-staged",
+    "lint": "eslint --max-warnings=0 --ext .js,.jsx,.ts,.tsx src",
+    "lint:ci": "eslint --max-warnings=0 --ext .js,.jsx,.ts,.tsx src --quiet",
+    "lint:fix": "eslint src --ext .ts,.tsx src --fix",
+    "prebuild": "rimraf dist",
+    "build": "run-p build-js build-types",
+    "build-js": "babel src -d dist --extensions \".ts,.tsx\" --ignore \"src/**/*.test.tsx\",\"src/**/*.test.ts\",\"src/**/*.stories.jsx\",\"integration_tests/**/*\"",
+    "build-types": "tsc --emitDeclarationOnly -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@braze/beacon-i18n-dev": "^15.4.4"
+  },
+  "peerDependencies": {
+    "@braze/beacon-styling": "^4.0.0",
+    "@braze/beacon-theme": "^4.0.0",
+    "react": "^16.8.0 || ^17",
+    "react-dom": "^16.8.0 || ^17",
+    "styled-components": "^5.0.0"
+  },
+  "contributors": [
+    "Gregory Beaver <gregory.beaver@braze.com>"
+  ]
+}

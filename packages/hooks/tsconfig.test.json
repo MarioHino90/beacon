@@ -1,0 +1,7 @@
+{
+  "extends": "../../tsconfig.test.json",
+  "compilerOptions": {
+    "sourceMap": false,
+    "baseUrl": "./src"
+  }
+}

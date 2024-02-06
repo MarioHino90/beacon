@@ -1,0 +1,46 @@
+{
+  "name": "@braze/beacon-commons",
+  "version": "15.5.2",
+  "description": "A collection of common components for Braze built on top of Beacon",
+  "author": "Braze",
+  "license": "UNLICENSED",
+  "homepage": "https://github.com/braze-inc/beacon#readme",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "./README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/braze-inc/beacon.git"
+  },
+  "scripts": {
+    "precommit": "TZ=UTC lint-staged",
+    "lint": "eslint --max-warnings=0 --ext .js,.jsx,.ts,.tsx src",
+    "lint:ci": "eslint --max-warnings=0 --ext .js,.jsx,.ts,.tsx src --quiet",
+    "lint:fix": "eslint src --ext .ts,.tsx src --fix",
+    "prebuild": "rimraf dist",
+    "build": "run-p build-js build-types",
+    "build-js": "babel src -d dist --extensions \".ts,.tsx\" --ignore \"src/**/*.test.tsx\",\"src/**/*.test.ts\"",
+    "build-types": "tsc --emitDeclarationOnly -p tsconfig.json"
+  },
+  "dependencies": {
+    "@braze/beacon-core": "^15.5.2"
+  },
+  "devDependencies": {
+    "@braze/beacon-cypress-helpers": "^15.5.1",
+    "@braze/beacon-test-utils": "^15.5.2"
+  },
+  "peerDependencies": {
+    "@braze/beacon-fonts": "^4.0.0",
+    "@braze/beacon-styling": "^4.0.0",
+    "@braze/beacon-theme": "^3.0.0 || ^4.0.0",
+    "react": "^16.8.0 || ^17",
+    "react-dom": "^16.8.0 || ^17",
+    "styled-components": "^5.0.0"
+  },
+  "contributors": [
+    "Hal Anil <haldun.anil@braze.com>"
+  ]
+}

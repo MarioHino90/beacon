@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UncontrolledTooltip should match snapshot when 'styledCss' is defined 1`] = `
+<Fragment>
+  <div
+    key=".0"
+  >
+    Hi
+  </div>
+  <Tooltip
+    className="bcl-uncontrolled-tooltip"
+    id="Ghana"
+    isOpen={false}
+    name="Mountains"
+    onClose={[Function]}
+    onOpen={[Function]}
+    styledCss={
+      [
+        "background-color:maroon;",
+      ]
+    }
+    targetRef={
+      {
+        "current": null,
+      }
+    }
+    value="generating"
+  />
+</Fragment>
+`;
+
+exports[`UncontrolledTooltip should match the snapshot 1`] = `
+<Fragment>
+  <div
+    key=".0"
+  >
+    Hi
+  </div>
+  <Tooltip
+    className="bcl-uncontrolled-tooltip"
+    id="lime"
+    isOpen={false}
+    name="Product"
+    onClose={[Function]}
+    onOpen={[Function]}
+    targetRef={
+      {
+        "current": null,
+      }
+    }
+    value="Denar"
+  />
+</Fragment>
+`;

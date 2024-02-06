@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.build.json",
+  "compilerOptions": {
+    "target": "ES2019",
+    "outDir": "dist",
+    "rootDir": "src",
+    "baseUrl": "src",
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true
+  },
+  "exclude": ["src/**/*.test.ts", "src/**/*.test.tsx"]
+}

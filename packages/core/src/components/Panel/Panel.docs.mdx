@@ -1,0 +1,98 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+
+# Panel
+
+A `Panel` organizes your content and contains page elements that
+are related to each other.
+
+## Use cases
+
+Below are some common use cases for the `Panel` component.
+
+### Basic use
+
+Panels can have insets according to our sizing scale via the
+`PanelBody` component. This can be specified using the `inset`
+prop. See `canvas` tab to access the knob for the inset value.
+
+<Canvas>
+  <Story id="core-content-display-panel--basic-use" />
+</Canvas>
+
+### No header
+
+By omitting the `PanelHeader` component, you can render a `Panel`
+without a header.
+
+<Canvas>
+  <Story id="core-content-display-panel--no-header" />
+</Canvas>
+
+### Stacking
+
+Adjacent panels will stack with proper spacing:
+
+<Canvas>
+  <Story id="core-content-display-panel--stacking" />
+</Canvas>
+
+### Text alignment
+
+The text alignment of `PanelBody` contentcan be specified via the
+`textAlign` prop. Tab over to the `canvas` section to access the
+knob that controls `textAlign` to see it for yourself!
+
+<Canvas>
+  <Story id="core-content-display-panel--text-alignment" />
+</Canvas>
+
+### Light background
+
+The background of a `Panel` can be adjusted to a light color via the
+`background` prop.
+
+<Canvas>
+  <Story id="core-content-display-panel--light-background" />
+</Canvas>
+
+Form elements on `light` backgrounds should render their default
+backgrounds and have visible focus styling.
+
+<Canvas>
+  <Story id="core-content-display-panel--light-background-with-form-elements" />
+</Canvas>
+
+## Usage
+
+```javascript
+import { Panel, PanelBody, PanelHeader } from "@braze/beacon-core";
+```
+
+## Properties
+
+### `Panel`
+
+| propName     | propType                           | defaultValue | isRequired | Description                          |
+| ------------ | ---------------------------------- | ------------ | ---------- | ------------------------------------ |
+| `background` | oneOf( `default`, `light` )        | `default`    | -          | background color for panel           |
+| `children`   | oneOfType( node, arrayOf( node ) ) | -            | -          | children to be passed into component |
+| `className`  | string                             | -            | -          | class name of the component          |
+| `id`         | string                             | -            | +          | id to be passed to the DOM           |
+
+### `PanelBody`
+
+| propName    | propType                                                  | defaultValue | isRequired | Description                          |
+| ----------- | --------------------------------------------------------- | ------------ | ---------- | ------------------------------------ |
+| `children`  | oneOfType( node, arrayOf( node ) )                        | -            | -          | children to be passed into component |
+| `className` | string                                                    | -            | -          | class name of the component          |
+| `id`        | string                                                    | -            | +          | id to be passed to the DOM           |
+| `inset`     | oneOf( `none`, `xs`, `s`, `m`, `l`, `xl`, `xxl`, `xxxl` ) | `xl`         | -          | inner spacing for the panel body     |
+| `textAlign` | oneOf( `center`, `left`, `right` )                        | -            | -          | text alignment within the panel body |
+
+### `PanelHeader`
+
+| propName    | propType                           | defaultValue | isRequired | Description                          |
+| ----------- | ---------------------------------- | ------------ | ---------- | ------------------------------------ |
+| `children`  | oneOfType( node, arrayOf( node ) ) | -            | -          | children to be passed into component |
+| `className` | string                             | -            | -          | class name of the component          |
+| `id`        | string                             | -            | +          | id to be passed to the DOM           |

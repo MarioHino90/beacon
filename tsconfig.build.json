@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["node", "react", "jest", "mdx"],
+    "typeRoots": ["node_modules", "types"]
+  },
+  "exclude": ["node_modules", "build", "scripts", "coverage"]
+}

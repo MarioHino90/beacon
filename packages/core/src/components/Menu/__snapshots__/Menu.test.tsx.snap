@@ -1,0 +1,1470 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu should match snapshot when 'hideTopMargin' is defined 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  style={
+    {
+      "borderTop": 0,
+    }
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={false}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match snapshot when 'size' prop is 'lg' 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={true}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={true}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match snapshot when 'size' prop is 'sm' 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={true}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={true}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match snapshot when 'styledCss' is defined 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={false}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'auto' and 'isOpen' is false 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={false}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  placement="auto"
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={false}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'auto' and 'isOpen' is true 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={true}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  placement="auto"
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={true}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'bottom' and 'isOpen' is false 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={false}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  placement="bottom"
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={false}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'bottom' and 'isOpen' is true 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={true}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  placement="bottom"
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={true}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'bottom-end' and 'isOpen' is false 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={false}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  placement="bottom-end"
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={false}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'bottom-end' and 'isOpen' is true 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={true}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  placement="bottom-end"
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={true}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'bottom-start' and 'isOpen' is false 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={false}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  placement="bottom-start"
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={false}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'bottom-start' and 'isOpen' is true 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={true}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  placement="bottom-start"
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={true}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'left' and 'isOpen' is false 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={false}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  placement="left"
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={false}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'left' and 'isOpen' is true 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={true}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  placement="left"
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={true}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'left-end' and 'isOpen' is false 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={false}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  placement="left-end"
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={false}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'left-end' and 'isOpen' is true 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={true}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  placement="left-end"
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={true}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'left-start' and 'isOpen' is false 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={false}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  placement="left-start"
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={false}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'left-start' and 'isOpen' is true 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={true}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  placement="left-start"
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={true}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'right' and 'isOpen' is false 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={false}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  placement="right"
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={false}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'right' and 'isOpen' is true 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={true}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  placement="right"
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={true}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'right-end' and 'isOpen' is false 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={false}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  placement="right-end"
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={false}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'right-end' and 'isOpen' is true 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={true}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  placement="right-end"
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={true}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'right-start' and 'isOpen' is false 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={false}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  placement="right-start"
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={false}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'right-start' and 'isOpen' is true 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={true}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  placement="right-start"
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={true}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'top' and 'isOpen' is false 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={false}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  placement="top"
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={false}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'top' and 'isOpen' is true 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={true}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  placement="top"
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={true}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'top-end' and 'isOpen' is false 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={false}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  placement="top-end"
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={false}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'top-end' and 'isOpen' is true 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={true}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  placement="top-end"
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={true}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'top-start' and 'isOpen' is false 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={false}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  placement="top-start"
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={false}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'top-start' and 'isOpen' is true 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={true}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  placement="top-start"
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={true}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'undefined' and 'isOpen' is false 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={false}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={false}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;
+
+exports[`Menu should match the snapshot when placement is 'undefined' and 'isOpen' is true 1`] = `
+<Popper
+  className="someOtherClassName"
+  id="someId"
+  interactive={true}
+  isOpen={true}
+  noArrow={true}
+  onClose={[MockFunction]}
+  onOpen={[MockFunction]}
+  popperStyledCss={
+    [
+      "box-sizing:border-box;max-width:460px;background:transparent;",
+    ]
+  }
+  triggers={
+    [
+      "click",
+    ]
+  }
+  untriggers={
+    [
+      "click",
+    ]
+  }
+>
+  <Transition
+    appear={true}
+    enter={true}
+    exit={true}
+    in={true}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <Component />
+  </Transition>
+</Popper>
+`;

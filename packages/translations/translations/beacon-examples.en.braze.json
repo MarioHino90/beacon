@@ -1,0 +1,10 @@
+{
+  "en": {
+    "braze": {
+      "beacon-examples": {
+        "hello-world": "Hello { place } number {num, number, ::currency/USD}",
+        "simple": "This is a is simple translation"
+      }
+    }
+  }
+}

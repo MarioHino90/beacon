@@ -1,0 +1,207 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { number } from "@storybook/addon-knobs";
+import { action } from "@storybook/addon-actions";
+
+import { Box } from "../Box";
+import { Button } from "../Button";
+import { FieldLabel } from "../FieldLabel";
+import { Input } from "../Input";
+import { Link } from "../Link";
+
+import { Toaster, makeToast } from ".";
+
+<Meta title="Core/Alerts/Toaster" component={Toaster} />
+
+# Toaster
+
+The `Toaster` component is used to display "notification"-like alert messages
+that are added on top of the main content, with the goal of not displacing the
+primary page content and avoiding being too disruptive.
+
+Since individual `Toast`s are short-lived and may happen with high frequency,
+the `Toaster` component also exposes a `makeToast` function that automatically
+creates new `Toasts` rather than requiring the user to keep track of their
+rendering as React components directly.
+
+## Use cases
+
+Below are some common use cases for the `Toaster` component.
+
+> NOTE: Because of the way Storybook renders stories, a more representative
+> use of the `Toaster` component can be seen via the `Canvas` tab.
+
+### Basic use
+
+To use the `Toaster`, simply place it somewhere near the root of your React
+tree. Once that is available, you can then use the `makeToast` function to
+display individual toasts programmatically within your app. Click the
+`Make toast` button in the story below to see how it works in practice.
+
+<Canvas>
+  <Story id="core-alerts-toaster--basic-use" />
+</Canvas>
+
+### With no auto-close
+
+If you need toasts to remain open until the user dismisses them, you can
+turn off auto-close functionality by setting `autoClose` to `false`.
+
+<Canvas>
+  <Story id="core-alerts-toaster--no-auto-close" />
+</Canvas>
+
+### With onClick
+
+Toasts support click behavior via the `options` object passed as the last
+argument of the `makeToast` function. As shown in the story below, you can
+add an `onClick` listener in `Toasts` to listen to when a user clicks into
+it and perform an action.
+
+See the Properties section below for more info on the usage of the
+`makeToast` function.
+
+<Canvas>
+  <Story id="core-alerts-toaster--with-onclick" />
+</Canvas>
+
+### With link
+
+Toasts also supports `Link`s inside a toast when the user
+should be redirected to a different page upon clicking.
+Any links must use the `Link` component exported from
+`@braze/beacon-core` to correctly get the visual
+styles within the `Toast`.
+
+<Canvas>
+  <Story id="core-alerts-toaster--with-link" />
+</Canvas>
+
+### With quaternary button
+
+Toasts also supports `Button`s inside a toast when the user
+can perform an action by clicking on the `Button` in the
+`Toast`. Any buttons must use the `Button` component exported
+from `@braze/beacon-core` with the `quaternary` prop to correctly
+get the visual styles within the `Toast`.
+
+<Canvas>
+  <Story id="core-alerts-toaster--with-quaternary-button" />
+</Canvas>
+
+### With programmatic dismissal
+
+In certain cases, we may not want the toast to automatically
+close itself after a certian period and only allow it to be
+dismissed programmatically (e.g. loading state). The example
+below shows how this can be achieved with the use of `dismissToast`.
+
+<Canvas>
+  <Story id="core-alerts-toaster--with-programmatic-dismissal" />
+</Canvas>
+
+## Usage
+
+```javascript
+import { Toaster, makeToast } from "@braze/beacon-core";
+```
+
+## Properties
+
+### `Toaster`
+
+| propName    | propType | defaultValue | isRequired | Description                                                                      |
+| ----------- | -------- | ------------ | ---------- | -------------------------------------------------------------------------------- |
+| `className` | string   | -            | -          | class name of the component                                                      |
+| `id`        | string   | -            | -          | id to be passed to the DOM                                                       |
+| `autoClose` | number   | -            | -          | number of seconds to wait before automatically closing the Toast; in miliseconds |
+| `limit`     | number   | 3            | -          | Limit the number of toast displayed at the same time                             |
+
+### `makeToast`
+
+Creates and immediately displays a new `Toast` component on invocation. A `Toaster`
+component _MUST_ already be rendered on the page for this function to work properly.
+
+- `intent`: required; must be one of `danger`, `info`, `success`, or `warning`
+- `content`: required; can be a string or a React component
+- `options`: optional; an object that can contain any of the following props:
+  - `onClick`: called when the `Toast` is clicked on
+  - `onOpen`: called when the notification appears
+  - `onClose`: called when the notification appears
+  - `toastId`: sets a custom id for the `Toast` rendered
+  - `containerId`: container to render `Toast` inside
+  - `autoClose`: indicates whether the toast should close automatically after a defined period of time (`number` in ms); `false` if toast should only close programmatically
+
+Example usage:
+
+```ts
+const handleClick = () => {
+  makeToast("info", "Your request has been received.");
+};
+```
+
+Example usage 2:
+
+```tsx
+const handleClick = () => {
+  makeToast(
+    "info",
+    <span>
+      Your request has been received. <a>Click me</a>
+    </span>
+  );
+};
+```
+
+Example usage 3:
+
+```tsx
+const handleClick = () => {
+  makeToast("info", <span>Your request has been received.</span>, {
+    onClick: () => history.push("/request-statuses"),
+  });
+};
+```
+
+### `dismissToast`
+
+Dismisses either one or all currently displayed `Toast`s. This behavior
+is controlled by whether or not the function is called with a `toastId`
+returned by `makeToast`.
+
+Example usage 1:
+
+```tsx
+const toastId = useRef<string | number | null>(null);
+
+const handleToast = () => {
+  toastId.current = makeToast(
+    "info",
+    <span>Your request has been received.</span>,
+    {
+      onClick: () => history.push("/request-statuses"),
+    }
+  );
+};
+
+const handleDismiss = () => {
+  if (toastId.current) {
+    dismissToast(toastId);
+
+    toastId.current = null;
+  }
+};
+```
+
+Example usage 2:
+
+```tsx
+const handleToast = () => {
+  makeToast("info", <span>Your request has been received.</span>, {
+    onClick: () => history.push("/request-statuses"),
+  });
+};
+
+const handleDismissAllToasts = () => {
+  dismissToast();
+};
+```

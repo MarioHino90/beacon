@@ -1,0 +1,210 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { boolean } from "@storybook/addon-knobs";
+import { BodyText, FieldLabel, Icon } from "@braze/beacon-core";
+import { getColor } from "@braze/beacon-styling";
+
+import { Input } from "../Input";
+import { InputGroupAddon } from "../InputGroupAddon";
+import { NumberInput } from "../NumberInput";
+
+import { InputGroup } from ".";
+
+<Meta title="Core/Forms/InputGroup" component={InputGroup} />
+
+# InputGroup
+
+The `InputGroup`, along with `InputGroupAddon` allows you to add
+icons, text, and more seamlessly into an `Input` field.
+
+To use, import `InputGroup` and `InputGroupAddon`, wrap
+your `Input` field in an `InputGroup` and place the `InputGroupAddon`
+where you need it to appear relative to the `Input` field. See
+examples below for more details on how to use.
+
+> NOTE: You must use the `Input` field exported from the
+> `@braze/beacon-components-input-group` library for the styles to work
+> correctly. The props used for `Input` are identical, so it should
+> be a simple switchover of imports to get started.
+
+> STYLING: If you want to put custom styles on an `InputGroupAddon`
+> please use the provided `styledCss`
+> prop, rather that calling `styled-components`
+> directly on `InputGroupAddon`, to prevent unintended changes.
+
+## Use cases
+
+Below are some common use cases for the `InputGroup` component.
+
+### Basic use
+
+The most common use for `InputGroup` and `InputGroupAddon` is
+with an icon.
+
+<Canvas>
+  <Story name="basic use">
+    {() => {
+      const [value, setValue] = React.useState("");
+      const handleChange = (event) => {
+        setValue(event.target.value);
+      };
+      return (
+        <>
+          <FieldLabel label="Type here">
+            <InputGroup disabled={boolean("Disabled", false)}>
+              <Input value={value} onChange={handleChange} />
+              <InputGroupAddon>
+                <Icon size="1x" name="key" color={getColor("gray", 300)} />
+              </InputGroupAddon>
+            </InputGroup>
+          </FieldLabel>
+          <pre>
+            <code>value: </code>
+            <code className="input-value">{value}</code>
+          </pre>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Secondary use
+
+You can also combine multiple addons to make more complex
+visual cues.
+
+<Canvas>
+  <Story name="secondary use">
+    <FieldLabel label="Type here">
+      <InputGroup>
+        <InputGroupAddon>
+          <Icon size="1x" name="dollar-sign" color={getColor("gray", 300)} />
+        </InputGroupAddon>
+        <Input type="number" />
+        <InputGroupAddon>
+          <BodyText>.00</BodyText>
+        </InputGroupAddon>
+      </InputGroup>
+    </FieldLabel>
+  </Story>
+</Canvas>
+
+### Invalid use
+
+To properly display an `InputGroup` as `invalid`, you must
+pass an `invalid` prop to both `InputGroup` and `Input`.
+
+<Canvas>
+  <Story name="invalid use">
+    <FieldLabel
+      label="Type here"
+      status="danger"
+      statusText="Oh no, something went wrong"
+    >
+      <InputGroup invalid>
+        <Input />
+        <InputGroupAddon>
+          <Icon size="1x" name="envelope" color={getColor("gray", 300)} />
+        </InputGroupAddon>
+      </InputGroup>
+    </FieldLabel>
+  </Story>
+</Canvas>
+
+### Disabled use
+
+To properly display an `InputGroup` as `disabled`, you must
+pass an `disabled` prop to both `InputGroup` and `Input`.
+
+<Canvas>
+  <Story name="disabled use">
+    <FieldLabel label="Type here">
+      <InputGroup disabled>
+        <Input type="number" placeholder="e.g. 5/10/2030" />
+        <InputGroupAddon>
+          <Icon size="1x" name="calendar" color={getColor("gray", 300)} />
+        </InputGroupAddon>
+      </InputGroup>
+    </FieldLabel>
+  </Story>
+</Canvas>
+
+### With 'NumberInput'
+
+`InputGroup` also works with the `NumberInput` component to provide similar styling.
+
+<Canvas>
+  <Story name="with number input">
+    <FieldLabel label="Type here">
+      <InputGroup fullWidth>
+        <InputGroupAddon>
+          <Icon size="1x" name="dollar-sign" color={getColor("gray", 300)} />
+        </InputGroupAddon>
+        <NumberInput />
+        <InputGroupAddon>
+          <BodyText>.00</BodyText>
+        </InputGroupAddon>
+      </InputGroup>
+    </FieldLabel>
+  </Story>
+</Canvas>
+
+### Full width
+
+Use prop `fullWidth` to make the `InputGroup` span the full width of its parent container:
+
+<Canvas>
+  <Story name="full width">
+    <FieldLabel label="Type here">
+      <InputGroup fullWidth>
+        <Input type="number" placeholder="e.g. 5/10/2030" />
+        <InputGroupAddon>
+          <Icon size="1x" name="calendar" color={getColor("gray", 300)} />
+        </InputGroupAddon>
+      </InputGroup>
+    </FieldLabel>
+  </Story>
+</Canvas>
+
+### Different vertical sizes
+
+Use prop `vSize` to make the `InputGroup` vertical size change to fit its parent container:
+
+<Canvas>
+  <Story name="vertical size">
+    <React.Fragment>
+      <FieldLabel label="Type here (md)">
+        <InputGroup vSize="md">
+          <Input type="number" placeholder="e.g. 5/10/2030" />
+          <InputGroupAddon>
+            <Icon size="1x" name="calendar" color={getColor("gray", 300)} />
+          </InputGroupAddon>
+        </InputGroup>
+      </FieldLabel>
+      <FieldLabel label="Type here (sm)">
+        <InputGroup vSize="sm">
+          <Input type="number" placeholder="e.g. 5/10/2030" />
+          <InputGroupAddon>
+            <Icon size="1x" name="calendar" color={getColor("gray", 300)} />
+          </InputGroupAddon>
+        </InputGroup>
+      </FieldLabel>
+    </React.Fragment>
+  </Story>
+</Canvas>
+
+## Usage
+
+```javascript
+import { InputGroup, InputGroupAddon, Input } from "@braze/beacon-core";
+```
+
+## Properties
+
+| propName    | propType                           | defaultValue | isRequired | Description                                                               |
+| ----------- | ---------------------------------- | ------------ | ---------- | ------------------------------------------------------------------------- |
+| `children`  | oneOfType( node, arrayOf( node ) ) | -            | -          | children to be passed into component                                      |
+| `className` | string                             | -            | -          | class name of the component                                               |
+| `disabled`  | boolean                            | -            | -          | indicates that the input group and the contained input value are disabled |
+| `fullWidth` | boolean                            | -            | -          | takes up 100% of the width of the container                               |
+| `id`        | string                             | -            | -          | id to be passed to the DOM                                                |
+| `invalid`   | boolean                            | -            | -          | indicates that the input group and the contained input value are invalid  |

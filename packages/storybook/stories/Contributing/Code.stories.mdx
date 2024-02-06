@@ -1,0 +1,475 @@
+import LinkTo from "@storybook/addon-links/react";
+
+<Meta title="Welcome/Contributing/Code" />
+
+# Contributing code to Beacon
+
+Beacon's code lives in 4 repositories on GitHub:
+
+- https://github.com/braze-inc/beacon
+- https://github.com/braze-inc/beacon-labs
+- https://github.com/braze-inc/beacon-styling
+- https://github.com/braze-inc/beacon-charts
+
+Helper scripts for internal use can be found here:
+
+- https://github.com/braze-inc/beacon-scripts
+
+The internationalization (i18n) libraries and scripts used across Braze, including Beacon, live here:
+
+- https://github.com/braze-inc/i18n
+
+## Setting up a development environment
+
+Beacon's code is written in <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer">Typescript</a>, and
+components are authored using the <a href="https://reactjs.org/" target="_blank" rel="noopener noreferrer">React</a> framework. CSS
+styling is handled by <a href="https://styled-components.com/" target="_blank" rel="noopener noreferrer">Styled components</a>. To
+get started, we recommend using <a href="https://github.com/nvm-sh/nvm/blob/master/README.md#about" target="_blank" rel="noopener noreferrer">nvm</a>
+to manage your node version, and <a href="https://yvm.js.org/docs/overview" target="_blank" rel="noopener noreferrer">yvm</a> to manage your
+version of yarn. With these two tools installed, the beacon repository will automatically select the supported version of node and of yarn.
+
+### Installing nvm, yvm, and lerna
+
+To get started, clone the Beacon repo if you have not already:
+
+```bash
+git clone git@github.com:braze-inc/beacon.git
+```
+
+Once cloned, set up your development environment (installs node, yarn, lerna) by `cd`ing into the `/beacon` directory and running:
+
+```bash
+scripts/dev-env-setup.sh
+```
+
+Or you can install `nvm` manually via:
+
+- <a
+    href="https://github.com/nvm-sh/nvm/blob/master/README.md#about"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    nvm
+  </a>
+
+To enable auto-install of the pinned version of `yarn`, run:
+
+```bash
+corepack enable
+```
+
+To install `lerna` manually, run:
+
+```bash
+yarn global add lerna
+```
+
+### Getting storybook up locally
+
+After the two tools are installed, clone these additional repo(es) if you need them:
+
+```bash
+git clone git@github.com:braze-inc/beacon-labs.git
+git clone git@github.com:braze-inc/beacon-charts.git
+git clone git@github.com:braze-inc/beacon-styling.git
+git clone git@github.com:braze-inc/beacon-scripts.git
+git clone git@github.com:braze-inc/i18n.git
+```
+
+Next, get the lastest version of branch `main` (we recommend pulling the lastest
+down before creating any new branches):
+
+> _Note:_ we use `main` as our default branch as the historical terminology
+> uses, frankly, racist terms. While the tech community uses this
+> terminology widely, we thought it best to change it to be more inclusive.
+
+```bash
+git checkout main
+git pull origin main
+```
+
+To finish, close your shell and open a new one or run `source ~/.zshrc`. Next,
+install the project dependencies and compile:
+
+```bash
+yarn setup
+```
+
+> Note: If you get 404s when running this command, you need to ensure that you have
+> [access to the Beacon NPM repo](https://confluence.braze.com/display/DASHINFRA/NPM+at+Braze) and are logged in on the
+> CLI via `npm login`.
+
+Finally, run our Storybook to see the library in action. We use [Storybook](https://storybook.js.org/)
+as an environment to both actively develop and demonstrate the compoents of this component library.
+
+```bash
+yarn storybook
+```
+
+> NOTE: This command is the same across all Beacon libraries and can also be used in the
+> `beacon-labs`, `beacon-charts`, and `beacon-styling` repos.
+
+This will serve a Storybook instance at [http://localhost:6006](http://localhost:6006).
+This will allow viewing the components that already exist, and also the storybook story
+of components you are contributing as you author them. Making changes to components or
+story files will hot-reload the page, so you can see those changes without having to refresh it.
+
+### Optional steps
+
+You may also want to install the following Chrome extensions if this is your browser of choice:
+
+- [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
+- [axe](https://chrome.google.com/webstore/detail/axe/lhdoppojpmngadmnindnejefpokejbdd?hl=en-US)
+
+To style your components, you will write tagged template literals with css in them. For ease of use, we recommend installing one of the following plugins, based on your IDE:
+
+- **VSCode**: [vscode-style-components](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components)
+- **JetBrains** (WebStorm, RubyMine, et al.): [Styled Components plugin](https://plugins.jetbrains.com/plugin/9997-styled-components)
+
+Additional extensions recommended for VSCode:
+
+- Linting: [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- Code formatting: [Prettier - Code Formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- MDX code highlighting: [MDX](https://marketplace.visualstudio.com/items?itemName=silvenon.mdx)
+
+### Running tests
+
+Beacon supports 3 different testing systems:
+
+- <a href="https://jestjs.io/" target="_blank" rel="noopener noreferrer">
+    Jest
+  </a> unit tests
+- <a
+    href="https://docs.cypress.io/guides/overview/why-cypress"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Cypress integration tests
+  </a>
+- <a
+    href="https://docs.cypress.io/guides/component-testing/introduction"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Cypress component unit tests
+  </a> <b>(EXPERIMENTAL)</b>
+
+The three different testing systems can be executed with 3 distinct commands:
+
+- `yarn test` for Jest testing (note: you can use `yarn workspace @braze/&lt;packagename&gt; test` like `yarn workspace @braze/beacon-core test` to run tests for a single package at a time). These snapshots can be updated by running `yarn test -- -- -u`
+- `yarn cypress` for Cypress integration tests. Note: `storybook` must be running for integration tests to pass.
+- `yarn cypress:unit` for Cypress unit tests **(EXPERIMENTAL)**
+
+## Source control conventions
+
+Please be mindful of the following git conventions for this repo - we strive to make changes easy to track and much of it is used for automatic versioning and changelog generation (more on this below).
+
+### Branch scope
+
+Please commit related work to separate branches. Unrelated changes should not be grouped on a single branch; conversely, highly-related changes should not span multiple, non-sequential branches. In short, your commits as a whole should be atomic.
+
+Avoid refactoring commits when working on a specific component or patch that are outside the scope of that component. Instead, file a separate pull request for that refactor _before_ committing changes for that component.
+
+### Branch naming
+
+- Generally speaking, all branches for new components should be prefixed the key of the JIRA ticket they're addressing, if applicable (e.g. `DASHI-1`)
+- The remaining part of your branch should be pithy but descriptive of the thing you are adding or changing:
+
+Example: if you are adding a `Dialog` component for the `DASHI-1` issue:
+
+```
+git checkout -b DASHI-1-add-dialog
+```
+
+### Local dependency management
+
+Beacon is a monorepo that contains many packages that are separately published to NPM and that depend on each other either via devDependencies or runtime dependencies. To keep things loosely coupled, all the packages that are runtime dependencies should be added as both `peerDependencies` and `devDependencies`. If you are unfamiliar with what `peerDependencies` are and how they work, please
+[read this](https://nodejs.org/es/blog/npm/peer-dependencies/) before continuing.
+
+To ensure that our dependencies not become a bottleneck for development on platform, the following rules should be followed:
+
+- All dependencies that are within the monorepo should be `devDependencies` and `peerDependencies` instead of `dependencies`, because:
+  - `peerDependencies` allow npm/yarn to not install multiple versions of the same package, which is especially important given beacons multitude of independent packages
+  - `peerDependencies` are not used when lerna resolves local dependencies, so it's important to keep `devDependencies` to make sure that the packages are built in the correct order
+- `peerDependencies` **won't** be synced on every version bump, but **should** be synced manually when there's a MAJOR version bump and always point to ^x.0.0 for a given local package
+- `devDependencies` will be used wherever local `peerDependencies` are used to ensure that the dependency graph can be generated correctly (which matters primarily when we do `yarn build`)
+
+The above guidelines are meant to ensure that we:
+
+- keep the impact of version reconciliation on day-to-day changes to a minimum (ie no headaches), while also preserving the important aspects of local dependency management
+- are able to liberally change versions of individual packages in platform, etc. without running into the issue of possibly conflicting dependencies (i.e. loose coupling)
+
+### Pull requests
+
+Please open a pull request if you wish to merge your changes on your branch for general availability. You cannot merge your commits directly to `main` without at least a single approval. Make judicious use of the PR description/summary field and annotate your commits after opening the PR if needed.
+
+### Versioning and Changelog
+
+The Beacon CHANGELOG.md files are generated automatically as part of our versioning process
+within each directory inside `/packages`. To generate our changelogs and determine which version
+to upgrade `Beacon` to, we use the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+standard. This means that _EVERY_ commit **MUST** adhere to this standard, otherwise it'll be
+rejected by the linter.
+
+We recommend going to the link above and familiarizing yourself with the way conventional
+commits work, but here's a quick summary to get you started.
+
+The commit message is structured as follows:
+
+```
+<type>[optional scope]: <description>
+[optional body]
+[optional footer]
+```
+
+Rules:
+
+- Commits that include substantial new features should use the `feat:` type; this will trigger a feature version increase, like version `1.2.2` -> `1.3.0`.
+- Commits that include bug fixes should use the `fix:` type; this will trigger a minor version increase, like version `1.2.2` -> `1.2.3`.
+- If a commit breaks backwards compatibility, it should have an exclamation point in its prefix before the colon (e.g. `feat!:`) and the commit description should include a line `BREAKING CHANGE:`
+  that describes the break and how to upgrade to the new major version. This will trigger a major version bump `1.2.2` -> `2.0.0`.
+- Commits that are not consequential enough to be mentioned in the CHANGELOG in and of themselves should use the `chore:` type, this will have no effect on the version
+- All other commits may use one of the `build:`, `ci:`, `docs:`, `style:`, `refactor:`, `perf:`, or `test:` types, these will have no effect on the version
+- Every PR should include at least 1 commit that uses the `feat:` or `fix:` type to correctly capture the impact of the changes in versioning
+- If the optional scope is used, it should mention the specific package within Beacon that is being impacted by the change(s)-- for example, `feat(core): new component`
+
+Your commit messages should therefore look like the following:
+
+```markdown
+### Changed
+
+- feat: add a 'bar' prop to the Foo component
+- fix: fix the value of the `bps-baz-spacing` token
+```
+
+### Before merging
+
+When the PR is finalized, pull down the latest from `main` and then merge `main` into your feature branch. Address all conflicts, and take special care merging conflicts with `package.json`; there might have been PRs that were created and merged after you created yours.
+
+### Tags
+
+We primarly use Git tags to denote versions for release; these tags follow [semver](https://semver.org/). Tagging for a version release is done as an atomic commit that bumps up the `package.json` version.
+
+## How to work on this library
+
+To contribute your code to Beacon, you will need to open a pull request against one of the Beacon repos. All new components start in
+`beacon-labs`. When they reach API maturity, components are moved to `beacon` by members of the DASHI team.
+
+Please reach out on slack before you begin development, DASHI can be reached
+on <a href="https://brazetechnology.slack.com/archives/CBDKVUF2P" target="_blank" rel="noopener noreferrer">#beacon-product-system</a>.
+
+If you are contributing to this library, you are doing one of a few category of tasks. The following sections describe these at a high level:
+
+### Add a new component
+
+We have written a [scaffolding tool](https://github.com/braze-inc/scaffold) to set up the required directory structure, component files,
+and pull in the necessary dependencies for your new component. We keep this updated based on current conventions with helpful annotations
+to get you started.
+
+There are certain conventions that must be followed when creating new components:
+
+1. All types must go into the `{ComponentName}/types.ts` file or `{ComponentName}/types/*.ts`
+2. All exports must be named (default exports are not allowed)
+3. Styled components must be in their own files alongside the component and follow the naming convention `Styled{ComponentName}`
+4. Every component must have a props interface that follows the naming convention `{ComponentName}Props`
+5. All hooks must live in `{ComponentName}/hooks/useHookName`
+6. All services must live in `{ComponentName}/services/serviceName`
+7. Additional utility functions should live in `{ComponentName}/utils/*`
+
+New beacon components must be created in the `beacon-labs` repository and concordantly, the following command will only work there. All
+React components use `PascalCase` for their naming convention, so given `MyComp`, run:
+
+```bash
+yarn new-component MyComp
+```
+
+which will create:
+
+```
+Ⱶ package.json
+Ⱶ .eslintrc
+Ⱶ .npmignore
+Ⱶ tsconfig.json
+Ⱶ README.md
+Ⱶ src/
+  Ⱶ index.ts
+  Ⱶ components/
+    Ⱶ MyComp/
+      Ⱶ index.ts
+      Ⱶ types.ts
+      Ⱶ MyComp.tsx
+      Ⱶ MyComp.test.tsx
+      Ⱶ MyComp.stories.mdx
+      Ⱶ StyledMyComp.ts
+      Ⱶ StyledMyComp.test.tsx
+      Ⱶ hooks/
+      Ⱶ services/
+      Ⱶ utils/
+```
+
+inside the `packages/` directory of `beacon-labs`.
+
+#### Adding a component to an existing package
+
+If you wish to create a sub-component used by the main component (for example, `PivotTableRow`), run the command
+`yarn new-inner-component <SubComponentName>`, as in `yarn new-inner-component PivotTableRow`. This command can
+be used in both `beacon` and `beacon-labs`.
+
+### Develop new or existing components
+
+Follow the instructions in [Getting Started](#getting-started) to run Storybook. As mentioned there, we use this to actively develop components in a context-free environment that reloads on any change. Because of the highly visual nature of component development, we recommend tiling a browser window and your IDE side-by-side in your display.
+
+Each component has a corresponding `.stories.mdx` file that is displayed via Storybook. Each story in that file will look something like:
+
+```tsx
+<Preview>
+  <Story name="basic use">
+    <Component prop={value} />
+  </Story>
+</Preview>
+```
+
+How you write each story depends on what you are attempting to demonstrate. As a guideline, each distinct component use case should have its own story of how it addresses that use case, like:
+
+```js
+<Preview>
+  <Story name="basic use">
+    <Button />
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="disabled">
+    <Button disabled />
+  </Story>
+</Preview>
+```
+
+Because a story can mount any arbitrary React component(s), it is possible to wrap your target component in, or mount it adjcent to, other components that help you demonstrate what it does. Moreover, you can make the component stories interactive with stateful logic:
+
+```tsx
+const TooltipDemonstrator = () => {
+  const [text, setText] = React.useState("content");
+  return (
+    <>
+      <TextField value={text} onChange={setText} />
+      <Tooltip>{text}</Tooltip>
+    </>
+  );
+};
+
+<Preview>
+  <Story name="story name">
+    <TooltipDemonstrator />
+  </Story>
+</Preview>;
+```
+
+We describe this experience as "Storybook-driven development" and reiterate that all component functionality should be encoded in its `.stories.mdx` files.
+
+### Work with styling tokens
+
+Styling tokens are basic key-value pairs that drive the mainuct system. They are exported from a single file and are meant to be imported
+into the `styled-components` files. For more information on this, see <LinkTo kind="welcome-contributing-component-styling">the documentation</LinkTo>.
+
+### Writing tests
+
+In Beacon, there are 2 kinds of tests: functional tests and visual tests. Functional tests verify the correctness of a component's behavior
+over time in response to external input, which includes both props and events. Visual tests verify the appearance of a component in relation
+to a baseline as defined by previous tests.
+
+When writing functional tests, use this basic decision tree to decide what kind of test to write:
+
+1. Is it a React component?
+   - Does it have a public storybook story?
+     - yes ✅ -> write a Cypress integration test
+     - no 🛑 -> write a Cypress component test
+2. Is it a React hook?
+   - Does it have a public storybook story?
+     - yes ✅ -> write a Cypress integration test
+     - no 🛑 -> write a Cypress component test
+3. Is it a pure utility function? -> write a Jest test
+4. Is it a utility function that interacts with external side effects (setTimeout is one example)?
+   - prefer Cypress component test, use Jest test if it makes more sense. This is a gray area!
+
+When writing visual tests, we have a couple of choices. The first is jest snapshot tests using enzyme, and the other is true visual snapshot
+testing using Applitools. Applitools testing is new to Braze, and is experimental. DASHI engineers currently are the only developers with access
+to the Applitools dashboard. If you are not a DASHI engineer, you should write Jest snapshot tests. DASHI engineers should add visual testing
+to Cypress tests.
+
+### Ensure the code quality of your contributions
+
+We use [eslint](https://eslint.org/) to lint our code and [prettier](https://prettier.io/) to format it. Although both are run as a pre-commit
+hook, it is helpful to run these manually if you wish to clean up between commits:
+
+```bash
+yarn lint
+yarn lint:fix
+```
+
+Style rules are enforced on the CI step programmatically, so please refer to the [eslint config](.eslintrc) for the current ruleset. We encourage
+you to write eslint rules specific to this repo.
+
+After running cypress tests, you can verify the code coverage exceeds 95% by viewing the code coverage report. `yarn coverage:view:cypress` will
+open the report in your default web browser, and then you can click through the directory hierarchy to find the component you are working on.
+Note that coverage will not reflect all tests, unless you execute them on the command line using `yarn cypress:cli`, but you can mentally extrapolate
+to ensure lines are covered between tests.
+
+## Documentation
+
+Storybook creates a publishable artifact that serves as documentation for this library. This can be done by running `yarn build-storybook` and
+inspecting the contents of `/storybook-static`. This directory _can_ be published to any number of static hosting sites, however, doing this
+by hand is not recommended.
+
+A publically-available Storybook will automatically be published by a Heroku CI job for each pull request. All subsequent changes after the PR
+is cut will also be published. The link is exposed on the pull request conversation page:
+
+1. look for the item in the conversation stream with the header `This branch was successfully deployed`. This will not appear until the build
+   is finished, which might take a few minutes
+2. click on the `Show environments` link
+3. then click on `View deployment`
+
+Share this link with any interested stakeholders to communicate the changes you have made.
+
+### `beacon-storybook.braze.com`
+
+The storybook at [beacon-storybook.braze.com](https://beacon-storybook.braze.com) is built by the same CI job that publishes branches; this job tracks the `HEAD`
+of `main`. **Note** that `HEAD` is not necessarily the latest tagged version of the library.
+
+## Packaging and releasing
+
+This is done automatically with our CI. If, for whatever reason, a manual
+release is needed, the steps below outline what is needed. **This should only be
+done by the admin with the privileges to push directly to main.**:
+
+- Run `yarn build` in the root directory to build all packages
+- Study the `CHANGELOG.md` to determine if the change to communicate is `patch` or `minor`. This will determine the next semver version:
+  - `patch` versions bump the third part, like `3.0.1 -> 3.0.2`. These include bug fixes, changes to token values, etc.
+  - `minor` versions bump the second part, like `3.2.5 -> 3.3.0`. The addition of any new components between versions are considered `minor`.
+  - `major` version bumps connote a breaking change. These look like `3.6.17 -> 4.0.0`
+- based on your observation, run one of:
+  - `yarn version-patch` or
+  - `yarn version-minor`
+  - we have not yet added `version-major` because of the nature of major changes. These should be discussed widely and vetted carefully.
+
+## Updating theme
+
+The `@braze/beacon-theme` library is used to maintain our global theme for the Beacon component library. The goal of the theme library is to
+maintain a centralized repository that can easily be updated to globally change design tokens without significant engineering effort.
+
+An important piece of keeping the theme library maintainable and prevent it from turning a JS version of `styles.css` that micro-manages every
+aspect of styling is to keep it lean. To that end, we only want to introduce new tokens when the two following conditions have been met:
+
+- A specific CSS attribute is used in more than ~3 different components and is not included in the theme (e.g. `border-radius: 5px` when only
+  `2px` and `3px` currently exist)
+- Obvious or non-specific attributes should generally NOT be included in theme, since they are less likely to need to be globally maintained
+  (e.g. `width: 100%`, `display: flex`, etc.)
+- A discussion takes place among the DASHI engineers and designers to determine if that attribute will continue to appear in more places or
+  if it was just a one-off
+  - If the attribute was a one-off OR if there are no clear plans to use it elsewhere, then it should NOT be included in the theme
+  - If the attribute is likely to be needed elsewhere and is a specific value, then it should be given a name that accurately portrays how
+    it fits into the larger scope of its sibling tokens and established token naming conventions throughout the theme (e.g. if we have
+    `xs: "2px"`, `sm: "3px"` and want to add a `"4px"` token, then its name should probably be `md`)
+
+If an update to the theme file is determined to be appropriate, a corresponding update should also be made to the design tokens in Figma such
+that the new token(s) is/(are) accessible to designers.

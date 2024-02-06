@@ -1,0 +1,200 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+
+# FlexBox
+
+The `FlexBox` component is a base-level component you to create visual
+sections with helpful styling tools attached. It can do things like
+calculate spacing and setting styling, as well as render a `display: flex`
+element. You can think of `FlexBox` as the combination of the `Flex`
+and `Box` components.
+
+## Use cases
+
+Below are some common use cases for the `FlexBox` component.
+
+### Basic use
+
+A `FlexBox` component provides an easy way to provide powerful layout
+options to your pages via the `display: flex` CSS attribute. Used
+with no props, it simply defines a flexbox.
+
+Often, a section of the DOM has margin and padding applied to it. The
+`FlexBox` component can set these css properties for all 4 dimensions
+when passed a spacing option.
+
+The teal border shows the margin. The rose border shows the padding.
+
+<Canvas>
+  <Story id="core-layout-flexbox--basic-use" />
+</Canvas>
+
+### Justify content
+
+The `FlexBox` component supports adjusting content distribution along the
+main axis via the `justifyContent` prop, which is mapped to the
+`justify-content` CSS attribute. See `knobs` in the `Canvas` tab to
+see the effect of the various values.
+
+The `FlexBox` component can also set each of the 4 dimensions seperately.
+
+The teal border shows the margin. The rose border shows the padding.
+
+<Canvas>
+  <Story id="core-layout-flexbox--justify-content" />
+</Canvas>
+
+### Align items
+
+The `FlexBox` component supports adjusting content distribution along the
+cross axis via the `alignItems` prop, which is mapped to the
+`align-items` CSS attribute. See `knobs` in the `Canvas` tab to
+see the effect of the various values.
+
+The `FlexBox` component provides `horizontal` and `vertical` sizing props.
+`horizontal` will set the left and right dimensions. `vertical` will set the top
+and bottom dimensions.
+
+The teal border shows the margin. The rose border shows the padding.
+
+<Canvas>
+  <Story id="core-layout-flexbox--align-items" />
+</Canvas>
+
+### Direction
+
+The `FlexBox` component supports adjusting the direction of the main axis
+via the `direction` prop, which is mapped to the `flex-direction`
+CSS attribute. See `knobs` in the `Canvas` tab to see the effect of the
+various values.
+
+<Canvas>
+  <Story id="core-layout-flexbox--direction" />
+</Canvas>
+
+### Inline flex
+
+By default, the `display: flex` attribute behaves like as a `block` scoped
+element. You can override this behavior and make it inline by setting the
+`inline` prop to true, which will set the CSS attribute to `display: inline-flex`.
+
+<Canvas>
+  <Story id="core-layout-flexbox--inline" />
+</Canvas>
+
+### Text alignment
+
+The `FlexBox` component supports adjusting the alignment of the text content
+via the `textAlign` prop, which is mapped to the `text-align`
+CSS attribute. See `knobs` in the `Canvas` tab to see the effect of the
+various values.
+
+<Canvas>
+  <Story id="core-layout-flexbox--text-alignment" />
+</Canvas>
+
+### Wrap
+
+The `FlexBox` component supports adjusting the wrapping behavior of its
+content via the `wrap` prop, which is mapped to the `flex-wrap`
+CSS attribute. See `knobs` in the `Canvas` tab to see the effect of the
+various values.
+
+<Canvas>
+  <Story id="core-layout-flexbox--wrap" />
+</Canvas>
+
+### All together
+
+Of course, multiple props can be combined together to create complex layouts.
+
+<Canvas>
+  <Story id="core-layout-flexbox--combined-props" />
+</Canvas>
+
+### As another element type
+
+The `FlexBox` component can be configured to render any other valid React
+component or HTML element via the `as` prop. This is especially useful
+when you want a semantically correct container.
+
+Note below that the box is being rendered as a `section` instead of the
+default `div`.
+
+<Canvas>
+  <Story id="core-layout-flexbox--as-another-element" />
+</Canvas>
+
+### Passing in custom styling via styled-components
+
+`FlexBox` can accept custom styling via a styled component `css` declaration:
+
+```ts
+import { css } from "styled-components";
+
+const myFancyCss = css`
+  border: 1px solid;
+  border-color: #d32f4c;
+  background-color: palegoldenrod;
+`;
+```
+
+Pass in `myFancyCss` as the `styledCss` prop.
+
+<Canvas>
+  <Story id="core-layout-flexbox--custom-styling" />
+</Canvas>
+
+## Usage
+
+```javascript
+import { FlexBox } from "@braze/beacon-core";
+```
+
+## Types
+
+These type definitions are needed to understand the property types.
+
+#### SpacingOptions
+
+```typescript
+type SpacingOptions =
+  | "none"
+  | "xs"
+  | "sm"
+  | "md"
+  | "lg"
+  | "xl"
+  | "xxl"
+  | "xxxl";
+```
+
+#### BoxSpecs
+
+```typescript
+interface BoxSpecs {
+  left?: SpacingOptions;
+  right?: SpacingOptions;
+  top?: SpacingOptions;
+  bottom?: SpacingOptions;
+  vertical?: SpacingOptions;
+  horizontal?: SpacingOptions;
+}
+```
+
+## Properties
+
+| propName         | propType                                                                                     | defaultValue | isRequired | Description                                                                                           |
+| ---------------- | -------------------------------------------------------------------------------------------- | ------------ | ---------- | ----------------------------------------------------------------------------------------------------- |
+| `alignItems`     | oneOf( `stretch`, `flex-start`, `flex-end`, `center`, `baseline`)                            | `stretch`    | -          | defines the behavior for how items are laid out along the cross axis (perpendicular to the main axis) |
+| `as`             | string                                                                                       | `div`        | -          | indicates what tag what the component should be rendered as                                           |
+| `boxMargin`      | oneOf(SpacingOptions, BoxSpecs)                                                              | -            | -          | margin options to calculate spacing from                                                              |
+| `boxPadding`     | oneOf(SpacingOptions, BoxSpecs)                                                              | -            | -          | padding options to calculate spacing from                                                             |
+| `children`       | oneOfType( node, arrayOf( node ) )                                                           | -            | -          | children to be passed into component                                                                  |
+| `className`      | string                                                                                       | -            | -          | class name of the component                                                                           |
+| `direction`      | oneOf( `row`, `column`, `row-reverse`, `column-reverse` )                                    | `row`        | -          | specified the direction of the items inside the flex element                                          |
+| `id`             | string                                                                                       | -            | -          | id to be passed to the DOM                                                                            |
+| `inline`         | boolean                                                                                      | -            | -          | indicates that the flex element should be inline                                                      |
+| `justifyContent` | oneOf( `flex-start`, `flex-end`, `center`, `space-between`, `space-around`, `space-evenly` ) | `flex-start` | -          | defines the behavior for how items are laid out along the main axis                                   |
+| `styledCss`      | return value of the `css` function exported by `styled-components`                           | -            | -          | prop to interpolate the returned value of a `css` call within styled-components                       |
+| `textAlign`      | oneOf( `left`, `center`, `right`, `justify`)                                                 | `left`       | -          | horizontally aligns text within a DOM element                                                         |
+| `wrap`           | oneOf( `wrap`, `nowrap`, `wrap-reverse` )                                                    | `nowrap`     | -          | specifies whether the flexed items should wrap                                                        |

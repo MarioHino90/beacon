@@ -1,0 +1,10 @@
+{
+  "ja": {
+    "braze": {
+      "beacon-button": {
+        "button-click-error-aria-label": "Button click error",
+        "button-click-success-aria-label": "Button click success"
+      }
+    }
+  }
+}

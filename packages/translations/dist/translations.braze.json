@@ -1,0 +1,60 @@
+{
+  "en": {
+    "braze": {
+      "beacon-button": {
+        "button-click-error-aria-label": "Button click error",
+        "button-click-success-aria-label": "Button click success"
+      },
+      "beacon-examples": {
+        "hello-world": "Hello { place } number {num, number, ::currency/USD}",
+        "simple": "This is a is simple translation"
+      },
+      "beacon-field-label": {
+        "optional-field-notice": "(Optional)",
+        "required-field-notice": "(Required)",
+        "tab-to-enter-popover-close": "Help text available. Tab to view help text, click to close popover",
+        "tab-to-enter-popover-open": "Help text available. Tab to view help text, click to open popover",
+        "open-in-new-tab": "Opening in a new tab"
+      },
+      "beacon-table": {
+        "sort-aria-label-asc": "Column { columnName }. Select to sort ascending",
+        "sort-aria-label-desc": "Column { columnName }. Select to sort descending",
+        "sort-tooltip-asc": "Unsorted, Sort ascending",
+        "sort-tooltip-desc": "Unsorted, Sort descending",
+        "sorted-aria-label-asc": "Sorted column { columnName } ascending. {nextSortDirection, select, desc {Select to sort descending} other {Select to remove sort}}",
+        "sorted-aria-label-desc": "Sorted column { columnName } descending. {nextSortDirection, select, asc {Select to sort ascending} other {Select to remove sort}}",
+        "sorted-tooltip-asc": "Sorted ascending",
+        "sorted-tooltip-desc": "Sorted descending"
+      }
+    }
+  },
+  "ja": {
+    "braze": {
+      "beacon-button": {
+        "button-click-error-aria-label": "Button click error",
+        "button-click-success-aria-label": "Button click success"
+      },
+      "beacon-examples": {
+        "hello-world": "こんにちは { place } 番号 {num, number, ::currency/USD}",
+        "simple": "これは簡単です"
+      },
+      "beacon-field-label": {
+        "optional-field-notice": "(Optional)",
+        "required-field-notice": "(Required)",
+        "tab-to-enter-popover-close": "Help text available. Tab to view help text, click to close popover",
+        "tab-to-enter-popover-open": "Help text available. Tab to view help text, click to open popover",
+        "open-in-new-tab": "Opening in a new tab"
+      },
+      "beacon-table": {
+        "sort-aria-label-asc": "Column { columnName }. Select to sort ascending",
+        "sort-aria-label-desc": "Column { columnName }. Select to sort descending",
+        "sort-tooltip-asc": "Sort ascending",
+        "sort-tooltip-desc": "Sort descending",
+        "sorted-aria-label-asc": "Sorted column { columnName } ascending. {nextSortDirection, select, desc {Select to sort descending} other {Select to remove sort}}",
+        "sorted-aria-label-desc": "Sorted column { columnName } descending. {nextSortDirection, select, asc {Select to sort ascending} other {Select to remove sort}}",
+        "sorted-tooltip-asc": "Sorted ascending",
+        "sorted-tooltip-desc": "Sorted descending"
+      }
+    }
+  }
+}

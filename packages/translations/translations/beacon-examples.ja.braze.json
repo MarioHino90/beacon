@@ -1,0 +1,10 @@
+{
+  "ja": {
+    "braze": {
+      "beacon-examples": {
+        "hello-world": "こんにちは { place } 番号 {num, number, ::currency/USD}",
+        "simple": "これは簡単です"
+      }
+    }
+  }
+}

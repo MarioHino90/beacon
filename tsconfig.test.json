@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "sourceMap": false,
+    "baseUrl": "./packages"
+  },
+  "exclude": ["**/integration_tests/**/*", "**/component_tests/**/*", "**/test_utils/**/*"]
+}

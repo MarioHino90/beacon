@@ -1,0 +1,13 @@
+{
+  "ja": {
+    "braze": {
+      "beacon-field-label": {
+        "open-in-new-tab": "Opening in a new tab",
+        "optional-field-notice": "(Optional)",
+        "required-field-notice": "(Required)",
+        "tab-to-enter-popover-close": "Help text available. Tab to view help text, click to close popover",
+        "tab-to-enter-popover-open": "Help text available. Tab to view help text, click to open popover"
+      }
+    }
+  }
+}

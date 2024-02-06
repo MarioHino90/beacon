@@ -1,0 +1,42 @@
+{
+  "name": "@braze/beacon-test-utils",
+  "version": "15.5.2",
+  "author": "Braze",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/braze-inc/beacon.git"
+  },
+  "homepage": "https://github.com/braze-inc/beacon#readme",
+  "bugs": {
+    "url": "https://github.com/braze-inc/beacon/issues"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "./README.md"
+  ],
+  "scripts": {
+    "precommit": "TZ=UTC lint-staged",
+    "lint": "eslint --max-warnings=0 --ext .js,.jsx,.ts,.tsx src",
+    "lint:ci": "eslint --max-warnings=0 --ext .js,.jsx,.ts,.tsx src --quiet",
+    "lint:fix": "eslint src --ext .ts,.tsx src --fix",
+    "prebuild": "rimraf dist",
+    "build": "run-p build-js build-types",
+    "build-js": "babel src -d dist --extensions \".ts,.tsx\" --ignore \"src/**/*.test.tsx\",\"src/**/*.test.ts\"",
+    "build-types": "tsc --emitDeclarationOnly -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@braze/cypress-utils": "4.0.51"
+  },
+  "peerDependencies": {
+    "@braze/cypress-utils": "^4.0.0"
+  },
+  "contributors": [
+    "Gregory Beaver <gregory.beaver@braze.com>",
+    "Haldun Anil <haldun.anil@braze.com>",
+    "Samantha Abbott <samantha.abbott@braze.com>",
+    "Dan Garrett <daniel.garrett@braze.com>"
+  ]
+}

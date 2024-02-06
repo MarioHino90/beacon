@@ -1,0 +1,36 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+
+# LoremIpsum
+
+`LoremIpsum` generates one or more lorem ipsum paragraphs, up to
+10 paragraphs.
+
+## Use cases
+
+Below are some common use cases for the `LoremIpsum` component.
+
+### Basic use
+
+Without any props, `LoremIpsum` generates a single paragraph.
+
+<Canvas>
+  <Story id="core-text-loremipsum--basic-use" />
+</Canvas>
+
+### Multiple paragraphs
+
+By passing a number for the `paragraph` prop, you can change
+the number of paragraphs rendered by `LoremIpsum`.
+
+<Canvas>
+  <Story id="core-text-loremipsum--secondary-use" />
+</Canvas>
+
+## Properties
+
+| propName     | propType                           | defaultValue | isRequired | Description                           |
+| ------------ | ---------------------------------- | ------------ | ---------- | ------------------------------------- |
+| `children`   | oneOfType( node, arrayOf( node ) ) | -            | -          | children to be passed into component  |
+| `className`  | string                             | -            | -          | class name of the component           |
+| `id`         | string                             | -            | -          | id to be passed to the DOM            |
+| `paragraphs` | number                             | 1            | -          | number of lipsum paragraphs to render |

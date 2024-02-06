@@ -1,0 +1,276 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { action } from "@storybook/addon-actions";
+import { boolean, select } from "@storybook/addon-knobs";
+import { Heading, Checkbox, FieldLabel } from "@braze/beacon-core";
+
+import { InlineInput } from ".";
+
+<Meta title="Core/Forms/InlineInput" component={InlineInput} />
+
+# InlineInput
+
+The `InlineInput` component is one that appears as plaintext until
+the user hovers over it, at which point a pencil icon appears
+indicating that the text can be updated. Clicking anywhere on the
+component will then enable "edit mode", allowing the user to change
+the value.
+
+> **IMPORTANT NOTE ABOUT USAGE:** `InlineInput` will switch to edit mode
+> automatically when it is NOT `disabled` _and_ is `invalid`. This is
+> to ensure that users don't mistakenly see the view mode and think
+> that whatever is currently entered is valid for submission. However,
+> this also creates an edge case that you must resolve yourself. If,
+> for whatever reason, you expect the `invalid` prop to be `true` on load
+> and then switch back to `false`, it's recommended that you set the `disabled`
+> prop of `InlineInput` to `true` until you expect `invalid` to become `false`.
+> This will allow you to disable the automatic switchover to edit mode until
+> it makes sense.
+
+## Use cases
+
+Below are some common use cases for the `InlineInput` component.
+
+### Basic use
+
+By default, `InlineInput` behaves like an `Input` component,
+a `BodyText` component, and a `FieldLabel` component all rolled
+into one.
+
+> TIP: Head over to the `Canvas` tab to play around with some of
+> the knobs for `InlineInput`.
+
+<Canvas>
+  <Story name="basic use">
+    {() => {
+      const [disabled, setDisabled] = React.useState(false);
+      const [invalid, setInvalid] = React.useState(false);
+      const [value, setValue] = React.useState("hello");
+      const handleChange = (event) => {
+        setValue(event.target.value);
+      };
+      return (
+        <>
+          <InlineInput
+            disabled={disabled}
+            invalid={invalid}
+            vSize={select("Vertical size", ["sm", "md"], "md")}
+            value={value}
+            onChange={handleChange}
+            placeholder="Please enter a value"
+          />
+          <hr />
+          <pre>
+            <code>field value: </code>
+            <code className="field-value">{value}</code>
+          </pre>
+          <Checkbox
+            className="disabled-checkbox"
+            onChange={() => setDisabled(!disabled)}
+            checked={disabled}
+          >
+            Disabled
+          </Checkbox>
+          <br />
+          <Checkbox
+            className="invalid-checkbox"
+            onChange={() => setInvalid(!invalid)}
+            checked={invalid}
+          >
+            Invalid
+          </Checkbox>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### With small vertical size
+
+If you want the `InlineInput` to fit into a smaller space,
+you can use the `vSize="sm"` prop.
+
+<Canvas>
+  <Story name="with size sm">
+    {() => {
+      const [value, setValue] = React.useState("hello");
+      const handleChange = (event) => {
+        setValue(event.target.value);
+      };
+      return (
+        <InlineInput
+          vSize="sm"
+          value={value}
+          onChange={handleChange}
+          placeholder="Please enter a value"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### With overflow
+
+When the content overflows inside an `InlineInput`'s `Input` component,
+it will be ellipsesed on blur.
+
+<Canvas>
+  <Story name="with overflow">
+    {() => {
+      const [value, setValue] = React.useState(
+        "hello, world! some of this text should get cut off when editing because it's too long"
+      );
+      const handleChange = (event) => {
+        setValue(event.target.value);
+      };
+      return (
+        <InlineInput
+          invalid={boolean("Invalid", false)}
+          vSize={select("Vertical size", ["sm", "md"], "md")}
+          value={value}
+          onChange={handleChange}
+          placeholder="Please enter a value"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### With errors
+
+The `InlineInput` component can also handle invalid statuses and does
+not additionally need to be wrapped with `FieldLabel` to get this
+functionality.
+
+<Canvas>
+  <Story name="with errors">
+    {() => {
+      const [value, setValue] = React.useState("hello, world!");
+      const [error, setError] = React.useState(undefined);
+      const handleChange = (event) => {
+        // update value state
+        setValue(event.target.value);
+        // update error state based on value
+        if (event.target.value !== "") {
+          setError(undefined);
+        } else {
+          setError("You must enter a value.");
+        }
+      };
+      return (
+        <FieldLabel status="danger" statusText={error}>
+          <InlineInput
+            vSize={select("Vertical size", ["sm", "md"], "md")}
+            value={value}
+            onChange={handleChange}
+            invalid={!!error}
+            placeholder="Please enter a value"
+          />
+        </FieldLabel>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Disabled use
+
+The `InlineInput` component can be disabled via the `disabled` prop
+to prevent the user from editing its contents. When disabled, the
+component will no longer display the pencil on hover or switch to
+the edit mode.
+
+<Canvas>
+  <Story name="disabled use">
+    {() => {
+      const [value, setValue] = React.useState("hello, world!");
+      const handleChange = (event) => {
+        setValue(event.target.value);
+      };
+      return (
+        <InlineInput
+          disabled
+          vSize={select("Vertical size", ["sm", "md"], "md")}
+          value={value}
+          onChange={handleChange}
+          placeholder="Please enter a value"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+### With custom view mode text
+
+Sometimes you may want to render a specific kind of formatting for
+the text of your view mode. To accommodate for this, the `InlineInput`
+component accepts a `children` prop that accepts a function which
+returns React elements. This pattern is commonly referred to as
+[Render Props](https://reactjs.org/docs/render-props.html).
+
+The examples below show how the `Header` component can be used to
+replace the default `BodyText` via the render props method.
+
+**This usage is considered advanced and should be used sparingly due
+to potential issues around edge cases as explained in the note below.**
+
+> NOTE: You should always make sure to render `value || placeholder`
+> or equivalent within the `InlineInput` to ensure that some text is
+> always visible in view mode, as `InlineInput` only displays the
+> current value and a pencil (on hover) when the user is not editing.
+
+<Canvas>
+  <Story name="with custom view mode text">
+    {() => {
+      const [value, setValue] = React.useState("hello, world!");
+      const handleChange = (event) => {
+        setValue(event.target.value);
+      };
+      const placeholder = "Please enter a value";
+      return (
+        <InlineInput
+          invalid={boolean("Invalid", false)}
+          vSize={select("Vertical size", ["sm", "md"], "md")}
+          value={value}
+          onChange={handleChange}
+          placeholder={placeholder}
+          textComponent={Heading}
+        >
+          <Heading id="inline-input-heading-example">
+            {value || placeholder}
+          </Heading>
+        </InlineInput>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Usage
+
+```javascript
+import { InlineInput } from "@braze/beacon-core";
+```
+
+## Properties
+
+| propName        | propType                                                                                    | defaultValue | isRequired | Description                                                                                                                                                   |
+| --------------- | ------------------------------------------------------------------------------------------- | ------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `children`      | `React.ReactNode`                                                                           | -            | -          | render function that returns children to be displayed in view mode                                                                                            |
+| `className`     | string                                                                                      | -            | -          | class name of the component                                                                                                                                   |
+| `disabled`      | boolean                                                                                     | -            | -          | indicates that the value passed to the component is not editable                                                                                              |
+| `fullWidth`     | boolean                                                                                     | -            | -          | takes up 100% of the width of the container                                                                                                                   |
+| `helpText`      | string                                                                                      | -            | -          | help text to be displayed below the field when no error/success present                                                                                       |
+| `id`            | string                                                                                      | -            | -          | id to be passed to the DOM for the label element                                                                                                              |
+| `invalid`       | boolean                                                                                     | -            | -          | indicates that the currently inputted value is invalid                                                                                                        |
+| `inputId`       | string                                                                                      | -            | -          | DOM id to be passed into the input as well as into the label as htmlFor                                                                                       |
+| `label`         | string                                                                                      | -            | -          | label to be displayed on top of the field                                                                                                                     |
+| `max`           | oneOfType( number, string )                                                                 | -            | -          | max value for the input field; only relevant when `type` is either `number` or `date`                                                                         |
+| `min`           | oneOfType( number, string )                                                                 | -            | -          | min value for the input field; only relevant when `type` is either `number` or `date`                                                                         |
+| `onChange`      | `(event: React.ChangeEvent, action: oneOf( "change", "save", "cancel", "clear" ) ) => void` | -            | -          | callback invoked when user makes a change to values; use second `action` param to determine additional behavior (e.g. when to communicate with backend, etc.) |
+| `onSaveClick`   | `(event: React.MouseEvent) => void`                                                         | -            | -          | callback invoked when save button is clicked                                                                                                                  |
+| `onCancelClick` | `(event: React.MouseEvent) => void`                                                         | -            | -          | callback invoked when cancel button is clicked                                                                                                                |
+| `onClearClick`  | `(event: React.MouseEvent) => void`                                                         | -            | -          | callback invoked when clear icon is clicked                                                                                                                   |
+| `ref`           | `React.RefObject<HTMLInputElement>`                                                         | -            | -          | ref to get access to the DOM node                                                                                                                             |
+| `status`        | oneOf( `danger`, `success` )                                                                | -            | -          | indicates the current status of the form, if any                                                                                                              |
+| `statusText`    | string                                                                                      | -            | -          | indicates what message should be displayed as part of the status, if any                                                                                      |
+| `step`          | number                                                                                      | -            | -          | step to use when bumping up numbers                                                                                                                           |
+| `type`          | oneOf( `date`, `number` ,`text` )                                                           | -            | -          | type of the input field                                                                                                                                       |
+| `vSize`         | oneOf( `sm`, `md` )                                                                         | `md`         | -          | vertical size of the input field                                                                                                                              |

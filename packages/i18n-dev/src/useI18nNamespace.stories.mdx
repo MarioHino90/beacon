@@ -1,0 +1,88 @@
+import { useState } from "react";
+import { Meta, Story, Preview } from "@storybook/addon-docs";
+import LinkTo from "@storybook/addon-links/react";
+import { Input } from "@braze/beacon-core";
+import { useI18nNamespace } from "@braze/beacon-translations";
+
+import { name, version } from "@braze/beacon-i18n-dev/../package.json";
+
+import { MockUsage } from "./components/MockUsage";
+
+<Meta title="Core Developers/I18n/useI18nNamespace" component={Input} />
+
+# useI18nNamespace
+
+<a href={`https://www.npmjs.com/package/${name}`} target="_blank">
+  <img
+    alt="npm"
+    src={`https://img.shields.io/badge/npm-v${version.replace("-", "--")}-blue`}
+  />
+</a>
+
+The `useI18nNamespace` hook exported from `"@braze/beacon-translations"` is an alias
+to the <code><LinkTo kind="lab-i18n-usei18nnamespace--usage">useI18nNamespace</LinkTo></code>
+hook that is typed for usage inside Beacon components.
+
+<Preview>
+  <Story name="usage">
+    {() => {
+      const [name, setName] = useState("");
+      const { t, k } = useI18nNamespace("beacon-examples");
+      return (
+        <div>
+          <p>
+            useI18nNamespace can be used in 2 separate contexts: a storybook
+            story or in a component. This story demonstrates both use cases, and
+            can be used as a reference for developing beacon-labs components.
+          </p>
+          <div id="storybook">
+            <h1>Using useI18nNamespace in a storybook story</h1>
+            <ol>
+              <li>
+                translating{" "}
+                <code>
+                  Hello {`{ place }`} number {`{num, number, ::currency/USD}`}
+                </code>{" "}
+                with &quot;5.234&quot;
+              </li>
+              <li>
+                <Input
+                  placeholder="enter your name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </li>
+            </ol>
+            <ul>
+              <li>
+                Translation{" "}
+                <code className="translation">
+                  {t(
+                    "hello-world",
+                    "Hello { place } number {num, number, ::currency/USD}",
+                    { place: name, num: 5.234 }
+                  )}
+                </code>
+              </li>
+              <li>
+                Key <code className="key">{k("hello-world")}</code>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                translating <code>This is a simple translation</code>
+              </li>
+              <li className="simple-translation">
+                {t("simple", "This is a is simple translation")}
+              </li>
+              <li>
+                Key: <code className="simple-key">{k("simple")}</code>
+              </li>
+            </ul>
+          </div>
+          <MockUsage />
+        </div>
+      );
+    }}
+  </Story>
+</Preview>

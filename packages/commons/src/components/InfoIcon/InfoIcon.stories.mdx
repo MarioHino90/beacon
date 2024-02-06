@@ -1,0 +1,84 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { action } from "@storybook/addon-actions";
+import { Box, UncontrolledTooltip } from "@braze/beacon-core";
+
+import { InfoIcon } from "./InfoIcon";
+
+<Meta title="Commons/Icons/InfoIcon" component={InfoIcon} />
+
+# InfoIcon
+
+A common component that handles the different info icon use
+cases. Note that info icon should generally be used inside a
+`Box` component with `inline` set to `true` and `boxPadding`
+props defined for `horizontal` padding, typically with value
+`sm`.
+
+## Use cases
+
+Below are some common use cases for the `InfoIcon` component.
+
+### Regular Use
+
+The basic, default variant for the `InfoIcon`.
+
+<Canvas>
+  <Story name="Regular Use">
+    <Box inline boxPadding={{ horizontal: "sm" }}>
+      <InfoIcon />
+    </Box>
+  </Story>
+</Canvas>
+
+### Muted Use
+
+A muted variant for the `InfoIcon`.
+
+<Canvas>
+  <Story name="Muted Use">
+    <Box inline boxPadding={{ horizontal: "sm" }}>
+      <InfoIcon variant="muted" />
+    </Box>
+  </Story>
+</Canvas>
+
+### Alt Text Use
+
+The aria label can be set by the `altText` prop. It is defaulted to
+`Information`.
+
+<Canvas>
+  <Story name="Alt Text Use">
+    <Box inline boxPadding={{ horizontal: "sm" }}>
+      <InfoIcon altText="Hover for Info!!" />
+    </Box>
+  </Story>
+</Canvas>
+
+### Use with Tooltip
+
+`InfoIcon` can be used with components that require a ref, like an `UncontrolledTooltip`.
+
+<Canvas>
+  <Story name="Use with Tooltip">
+    <Box inline boxPadding={{ horizontal: "sm" }}>
+      <UncontrolledTooltip label="Hover for Info!!">
+        <InfoIcon altText="Hover for Info!!" />
+      </UncontrolledTooltip>
+    </Box>
+  </Story>
+</Canvas>
+
+## Usage
+
+```javascript
+import { InfoIcon } from "@braze/beacon-commons";
+```
+
+## Properties
+
+| propName  | propType                  | defaultValue  | isRequired | Description                    |
+| --------- | ------------------------- | ------------- | ---------- | ------------------------------ |
+| `variant` | oneOf("regular", "muted") | "regular"     | -          | indicates which variant to use |
+| `altText` | string                    | "Information" | -          | alt text for the info icon     |
+| `id`      | string                    | -             | -          | id for the icon                |

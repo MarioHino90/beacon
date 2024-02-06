@@ -1,0 +1,13 @@
+{
+  "baseUrl": "http://localhost:6006",
+  "retries": {
+    "runMode": 2,
+    "openMode": 0
+  },
+  "integrationFolder": "../packages",
+  "testFiles": "**/integration_tests/*.test.tsx",
+  "component": {
+    "componentFolder": "../packages",
+    "testFiles": "**/component_tests/*.test.tsx"
+  }
+}

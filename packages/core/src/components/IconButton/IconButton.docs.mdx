@@ -1,0 +1,90 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+import LinkTo from "@storybook/addon-links/react";
+
+# IconButton
+
+`IconButton`s don't have visible text labels by default. They are used
+to display actions when space in the interface is limited.
+
+## Use cases
+
+Below are some common use cases for the `IconButton` component.
+
+### Basic use
+
+The `IconButton` component natively incorporates the `Icon` component
+and exposes its API via the `name` tag. On top of that, it also provides
+all the button functionality that you would typically expect and renders
+a `Tooltip` that corresponds to the content passed as `children`.
+
+> Go to the canvas tab to interact with the `disabled`,
+> `muted`, `name`, and `children` props!
+
+<Canvas>
+  <Story id="core-primitives-iconbutton--basic-use" />
+</Canvas>
+
+### Muted use
+
+If you need a specific action to be available but not call too
+much attention to itself and/or avoid making the view too
+overwhelming for the user, use the `muted` prop.
+
+<Canvas>
+  <Story id="core-primitives-iconbutton--muted-use" />
+</Canvas>
+
+### Disabled use
+
+If you need to prevent the user from being able to take any
+action (e.g. because they need to fill out all the required fields
+in a form before submitting), you can disable the `IconButton`
+entirely using the `disabled` prop.
+
+When disabled, the `IconButton` will NOT call the `onClick` function
+upon user click nor render the `Tooltip` upon hover.
+
+<Canvas>
+  <Story id="core-primitives-iconbutton--disabled-use" />
+</Canvas>
+
+### With distance
+
+To modify the distance of the tooltip from the `IconButton`,
+use the `distance` prop, as shown below.
+
+<Canvas>
+  <Story id="core-primitives-iconbutton--with-distance" />
+</Canvas>
+
+### Use `aria-label`
+
+Be sure to add an `aria-label` attribute to your `IconButton`. For the time being, we will
+cover for you and automaitically use your passed in label as an `aria-label` if it is text,
+but the next version of Beacon will require an `aria-label`.
+
+<Canvas>
+  <Story id="core-primitives-iconbutton--using-aria-label" />
+</Canvas>
+
+## Usage
+
+```javascript
+import { IconButton } from "@braze/beacon-core";
+```
+
+## Properties
+
+| propName    | propType                                               | defaultValue | isRequired | Description                                                                                                                                                                        |
+| ----------- | ------------------------------------------------------ | ------------ | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `children`  | oneOfType( node, arrayOf( node ) )                     | -            | -          | children to be passed into component                                                                                                                                               |
+| `className` | string                                                 | -            | -          | class name of the component                                                                                                                                                        |
+| `disabled`  | boolean                                                | -            | -          | indicates that the button should be visually and functionally disabled                                                                                                             |
+| `distance`  | number                                                 | `8`          | -          | desired offset from bottom of `target` component                                                                                                                                   |
+| `id`        | string                                                 | -            | -          | id to be passed to the DOM                                                                                                                                                         |
+| `muted`     | boolean                                                | -            | -          | apply muted styles to the component, making it grab less of the user's attention                                                                                                   |
+| `name`      | string                                                 | -            | +          | the name key of the icon to display                                                                                                                                                |
+| `onClick`   | `(event: React.MouseEvent<HTMLButtonElement>) => void` | -            | -          | callback function on button click; will not be called if `disabled` prop is `true`                                                                                                 |
+| `size`      | `sm`, `lg`                                             | `lg`         | -          | size of the icon button. Use `sm` in a table row context, `lg` elsewhere                                                                                                           |
+| `placement` | string                                                 | `bottom`     | -          | value to define the placement for the tooltip <LinkTo to="core-overlay-popper--delay-only-open">Tooltip options</LinkTo>                                                           |
+| `type`      | oneOf( `button`, `submit`, `reset`)                    | `submit`     | -          | type value to pass to DOM to determine button behavior within a form; `submit` automatically submits enclosing form on click whereas `reset` invokes the form's `onReset` callback |

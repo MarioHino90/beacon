@@ -1,0 +1,368 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { select } from "@storybook/addon-knobs";
+
+import { CollapsibleBody } from "../CollapsibleBody";
+import { CollapsibleButton } from "../CollapsibleButton";
+import { CollapsibleHeader } from "../CollapsibleHeader";
+import { CollapsibleHeaderText } from "../CollapsibleHeaderText";
+import { CollapsibleIconButton } from "../CollapsibleIconButton";
+import { CollapsibleList } from "../CollapsibleList";
+import { CollapsibleListItem } from "../CollapsibleListItem";
+
+import { Collapsible } from ".";
+
+<Meta title="Core/Content Display/Collapsible" component={Collapsible} />
+
+# Collapsible
+
+`Collapsible` is a set of components that allow the user to show/hide
+information that may be pertinent to their workflow.
+
+## Use cases
+
+Below are some common use cases for the `Collapsible` component.
+
+### Basic use
+
+By using `CollapsibleButton`, you can easily hook into the context
+that contains the `isOpen` and `toggle` states.
+
+<Canvas>
+  <Story name="basic use">
+    {() => {
+      const [isOpen, setState] = React.useState(false);
+      const toggle = () => setState(!isOpen);
+      return (
+        <Collapsible
+          isOpen={isOpen}
+          toggle={toggle}
+          alignment={select("Alignment", ["left", "center", "right"], "left")}
+        >
+          <CollapsibleButton>
+            {`${isOpen ? "Hide" : "Show"} Advancement Details`}
+          </CollapsibleButton>
+          <CollapsibleBody>
+            <CollapsibleList heading="Users will advance to the next steps when any one of the following conditions are met:">
+              <CollapsibleListItem>The email is sent</CollapsibleListItem>
+              <CollapsibleListItem>
+                The content card is sent
+              </CollapsibleListItem>
+            </CollapsibleList>
+          </CollapsibleBody>
+        </Collapsible>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### With multiple lists
+
+When using multiple `CollapsibleList`s, they will self-organize
+their UI in a way that clearly distinguishes each list (i.e. an `hr`).
+
+<Canvas>
+  <Story name="with multiple lists">
+    {() => {
+      const [isOpen, setState] = React.useState(false);
+      const toggle = () => setState(!isOpen);
+      return (
+        <Collapsible
+          isOpen={isOpen}
+          toggle={toggle}
+          alignment={select("Alignment", ["left", "center", "right"], "left")}
+        >
+          <CollapsibleButton>{`${
+            isOpen ? "Hide" : "Show"
+          } Details`}</CollapsibleButton>
+          <CollapsibleBody>
+            <CollapsibleList heading="1. Segments associated with Droidboy Firephone and News Feed cards, Campaigns, and Canvases using the following Segments will also be archived.">
+              <CollapsibleListItem>
+                All users (Droidboy Firephone - Kindle)
+              </CollapsibleListItem>
+              <CollapsibleListItem>Wilf Tester</CollapsibleListItem>
+            </CollapsibleList>
+            <CollapsibleList heading="2. Segments including 'Droidboy FirePhone' and other apps will delete the App Filter referencing this app:">
+              <CollapsibleListItem>Test 1</CollapsibleListItem>
+            </CollapsibleList>
+          </CollapsibleBody>
+        </Collapsible>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### With inline header
+
+By using `CollapsibleHeader` and `CollapsibleHeaderText`,
+you can render a summary description that is always shown.
+
+<Canvas>
+  <Story name="with inline header">
+    {() => {
+      const [isOpen, setState] = React.useState(false);
+      const toggle = () => setState(!isOpen);
+      return (
+        <Collapsible
+          isOpen={isOpen}
+          toggle={toggle}
+          alignment={select("Alignment", ["left", "center", "right"], "left")}
+        >
+          <CollapsibleHeader>
+            <CollapsibleHeaderText>
+              I want to advance users when message is sent.
+            </CollapsibleHeaderText>
+            <CollapsibleButton>
+              {`${isOpen ? "Hide" : "Show"} Advancement Details`}
+            </CollapsibleButton>
+          </CollapsibleHeader>
+          <CollapsibleBody>
+            <CollapsibleList heading="Users will advance to the next steps when any one of the following conditions are met:">
+              <CollapsibleListItem>The email is sent</CollapsibleListItem>
+              <CollapsibleListItem>
+                The content card is sent
+              </CollapsibleListItem>
+            </CollapsibleList>
+          </CollapsibleBody>
+        </Collapsible>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### With icon button
+
+By using `CollapsibleIconButton`, you can easily hook into the context
+that contains the `isOpen` and `toggle` states with a smaller button
+footprint.
+
+<Canvas>
+  <Story name="with icon button">
+    {() => {
+      const [isOpen, setState] = React.useState(false);
+      const toggle = () => setState(!isOpen);
+      return (
+        <Collapsible
+          isOpen={isOpen}
+          toggle={toggle}
+          alignment={select("Alignment", ["left", "center", "right"], "left")}
+        >
+          <CollapsibleIconButton size={select("Size", ["lg", "sm"], "lg")}>
+            {`${isOpen ? "Hide" : "See"} Details`}
+          </CollapsibleIconButton>
+          <CollapsibleBody>
+            <CollapsibleList heading="Users will advance to the next steps when any one of the following conditions are met:">
+              <CollapsibleListItem>The email is sent</CollapsibleListItem>
+              <CollapsibleListItem>
+                The content card is sent
+              </CollapsibleListItem>
+            </CollapsibleList>
+          </CollapsibleBody>
+        </Collapsible>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### With a small icon button
+
+The `size` prop can be set to `"sm"` when `CollapsibleIconButton` is located in a dense area of the interface or should be less prominent for other reasons.
+
+<Canvas>
+  <Story name="with small icon button">
+    {() => {
+      const [isOpen, setState] = React.useState(false);
+      const toggle = () => setState(!isOpen);
+      return (
+        <Collapsible
+          isOpen={isOpen}
+          toggle={toggle}
+          alignment={select("Alignment", ["left", "center", "right"], "left")}
+        >
+          <CollapsibleIconButton size="sm">
+            {`${isOpen ? "Hide" : "See"} Details`}
+          </CollapsibleIconButton>
+          <CollapsibleBody>
+            <CollapsibleList heading="Users will advance to the next steps when any one of the following conditions are met:">
+              <CollapsibleListItem>The email is sent</CollapsibleListItem>
+              <CollapsibleListItem>
+                The content card is sent
+              </CollapsibleListItem>
+            </CollapsibleList>
+          </CollapsibleBody>
+        </Collapsible>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### With primary button
+
+You can pass "primary" as a `variant` to the `CollapsibleButton`
+to display a larger and more prominent button.
+
+<Canvas>
+  <Story name="with primary button">
+    {() => {
+      const [isOpen, setState] = React.useState(false);
+      const toggle = () => setState(!isOpen);
+      return (
+        <Collapsible
+          isOpen={isOpen}
+          toggle={toggle}
+          alignment={select("Alignment", ["left", "center", "right"], "left")}
+        >
+          <CollapsibleButton variant="primary">
+            {`Show ${isOpen ? "Less" : "More"}`}
+          </CollapsibleButton>
+          <CollapsibleBody>
+            <CollapsibleList heading="Users will advance to the next steps when any one of the following conditions are met:">
+              <CollapsibleListItem>The email is sent</CollapsibleListItem>
+              <CollapsibleListItem>
+                The content card is sent
+              </CollapsibleListItem>
+            </CollapsibleList>
+          </CollapsibleBody>
+        </Collapsible>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### With secondary button
+
+You can also pass "secondary" as a `variant` to the `CollapsibleButton`
+to display a larger and slightly less prominent button.
+
+<Canvas>
+  <Story name="with secondary button">
+    {() => {
+      const [isOpen, setState] = React.useState(false);
+      const toggle = () => setState(!isOpen);
+      return (
+        <Collapsible
+          isOpen={isOpen}
+          toggle={toggle}
+          alignment={select("Alignment", ["left", "center", "right"], "left")}
+        >
+          <CollapsibleButton variant="secondary">
+            {`Show ${isOpen ? "Less" : "More"}`}
+          </CollapsibleButton>
+          <CollapsibleBody>
+            <CollapsibleList heading="Users will advance to the next steps when any one of the following conditions are met:">
+              <CollapsibleListItem>The email is sent</CollapsibleListItem>
+              <CollapsibleListItem>
+                The content card is sent
+              </CollapsibleListItem>
+            </CollapsibleList>
+          </CollapsibleBody>
+        </Collapsible>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### With tertiary button
+
+You can also pass "tertiary" as a `variant` to the `CollapsibleButton`
+to display a more link-like and slightly less prominent button.
+
+<Canvas>
+  <Story name="with tertiary button">
+    {() => {
+      const [isOpen, setState] = React.useState(false);
+      const toggle = () => setState(!isOpen);
+      return (
+        <Collapsible
+          isOpen={isOpen}
+          toggle={toggle}
+          alignment={select("Alignment", ["left", "center", "right"], "left")}
+        >
+          <CollapsibleButton variant="tertiary">
+            {`Show ${isOpen ? "Less" : "More"}`}
+          </CollapsibleButton>
+          <CollapsibleBody>
+            <CollapsibleList heading="Users will advance to the next steps when any one of the following conditions are met:">
+              <CollapsibleListItem>The email is sent</CollapsibleListItem>
+              <CollapsibleListItem>
+                The content card is sent
+              </CollapsibleListItem>
+            </CollapsibleList>
+          </CollapsibleBody>
+        </Collapsible>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Usage
+
+```javascript
+import {
+  CollapsibleBody,
+  CollapsibleButton,
+  CollapsibleHeader,
+  CollapsibleHeaderText,
+  CollapsibleIconButton,
+  CollapsibleList,
+  CollapsibleListItem,
+} from "@braze/beacon-core";
+```
+
+## Properties
+
+### `Collapsible`
+
+| propName    | propType                           | defaultValue | isRequired | Description                                      |
+| ----------- | ---------------------------------- | ------------ | ---------- | ------------------------------------------------ |
+| `alignment` | oneOf( `left`, `center`, `right` ) | `left`       | -          | alignment of elements within the collapsible     |
+| `children`  | oneOfType( node, arrayOf( node ) ) | -            | -          | children to be passed into component             |
+| `className` | string                             | -            | -          | class name of the component                      |
+| `id`        | string                             | -            | -          | id to be passed to the DOM                       |
+| `isOpen`    | boolean                            | -            | -          | indicates that the collapsible is currently open |
+| `toggle`    | `() => void`                       | -            | -          | toggles isOpen state back and forth              |
+
+### `CollapsibleBody`
+
+| propName    | propType                           | defaultValue | isRequired | Description                          |
+| ----------- | ---------------------------------- | ------------ | ---------- | ------------------------------------ |
+| `children`  | oneOfType( node, arrayOf( node ) ) | -            | -          | children to be passed into component |
+| `className` | string                             | -            | -          | class name of the component          |
+| `id`        | string                             | -            | -          | id to be passed to the DOM           |
+
+### `CollapsibleList`
+
+| propName    | propType                           | defaultValue | isRequired | Description                          |
+| ----------- | ---------------------------------- | ------------ | ---------- | ------------------------------------ |
+| `children`  | oneOfType( node, arrayOf( node ) ) | -            | -          | children to be passed into component |
+| `className` | string                             | -            | -          | class name of the component          |
+| `id`        | string                             | -            | -          | id to be passed to the DOM           |
+
+### `CollapsibleListItem`
+
+| propName    | propType                           | defaultValue | isRequired | Description                          |
+| ----------- | ---------------------------------- | ------------ | ---------- | ------------------------------------ |
+| `children`  | oneOfType( node, arrayOf( node ) ) | -            | -          | children to be passed into component |
+| `className` | string                             | -            | -          | class name of the component          |
+| `id`        | string                             | -            | -          | id to be passed to the DOM           |
+
+### `CollapsibleButton`
+
+| propName    | propType                                                  | defaultValue | isRequired | Description                                                                |
+| ----------- | --------------------------------------------------------- | ------------ | ---------- | -------------------------------------------------------------------------- |
+| `children`  | oneOfType( node, arrayOf( node ) )                        | -            | -          | is the children to be passed into component                                |
+| `className` | string                                                    | -            | -          | is the class name of the component                                         |
+| `disabled`  | boolean                                                   | -            | -          | indicates that the button should be visually and functionally disabled     |
+| `id`        | string                                                    | -            | -          | id to be passed to the DOM                                                 |
+| `size`      | oneOf( `sm`, `lg`, `full` )                               | "lg"         | -          | size of the button                                                         |
+| `variant`   | oneOf( `primary`, `secondary`, `tertiary`, `quaternary` ) | "primary"    | -          | visually indicate to the user the relative importance/impact of the button |
+
+### `CollapsibleIconButton`
+
+| propName    | propType                           | defaultValue | isRequired | Description                                                                      |
+| ----------- | ---------------------------------- | ------------ | ---------- | -------------------------------------------------------------------------------- |
+| `children`  | oneOfType( node, arrayOf( node ) ) | -            | -          | children to be passed into component                                             |
+| `className` | string                             | -            | -          | class name of the component                                                      |
+| `id`        | string                             | -            | -          | id to be passed to the DOM                                                       |
+| `name`      | string                             | -            | +          | the name key of the icon to display                                              |
+| `disabled`  | boolean                            | -            | -          | indicates that the button should be visually and functionally disabled           |
+| `muted`     | boolean                            | -            | -          | apply muted styles to the component, making it grab less of the user's attention |

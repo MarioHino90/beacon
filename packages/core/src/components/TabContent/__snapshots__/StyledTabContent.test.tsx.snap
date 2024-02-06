@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StyledTabContent should render correctly 1`] = `
+.c0 {
+  margin: 1.5rem 0;
+}
+
+<div
+  className="c0 extraClass extraClass bcl-tab-content"
+/>
+`;

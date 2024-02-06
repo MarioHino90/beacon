@@ -1,0 +1,905 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`makePopperPlacement should match snapshot when element is NOT defined 1`] = `
+{
+  "activePlacement": "bottom",
+  "left": 0,
+  "top": 0,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'auto' and 'element' is defined should match snapshot 1`] = `
+{
+  "activePlacement": "bottom",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'auto' and 'element' is defined should match snapshot when 'distance' is '0' 1`] = `
+{
+  "activePlacement": "bottom",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'auto' and 'element' is defined should match snapshot when 'distance' is '5' 1`] = `
+{
+  "activePlacement": "bottom",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'auto' and 'element' is defined should match snapshot when 'distance' is '10' 1`] = `
+{
+  "activePlacement": "bottom",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'auto' and 'element' is defined should match snapshot when 'interactive' is true 1`] = `
+{
+  "activePlacement": "bottom",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'auto' and 'element' is defined should match snapshot when 'skidding' is '0' 1`] = `
+{
+  "activePlacement": "bottom",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'auto' and 'element' is defined should match snapshot when 'skidding' is '5' 1`] = `
+{
+  "activePlacement": "bottom",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'auto' and 'element' is defined should match snapshot when 'skidding' is '10' 1`] = `
+{
+  "activePlacement": "bottom",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'bottom' and 'element' is defined should match snapshot 1`] = `
+{
+  "activePlacement": "bottom",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'bottom' and 'element' is defined should match snapshot when 'distance' is '0' 1`] = `
+{
+  "activePlacement": "bottom",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'bottom' and 'element' is defined should match snapshot when 'distance' is '5' 1`] = `
+{
+  "activePlacement": "bottom",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'bottom' and 'element' is defined should match snapshot when 'distance' is '10' 1`] = `
+{
+  "activePlacement": "bottom",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'bottom' and 'element' is defined should match snapshot when 'interactive' is true 1`] = `
+{
+  "activePlacement": "bottom",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'bottom' and 'element' is defined should match snapshot when 'skidding' is '0' 1`] = `
+{
+  "activePlacement": "bottom",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'bottom' and 'element' is defined should match snapshot when 'skidding' is '5' 1`] = `
+{
+  "activePlacement": "bottom",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'bottom' and 'element' is defined should match snapshot when 'skidding' is '10' 1`] = `
+{
+  "activePlacement": "bottom",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'bottom-end' and 'element' is defined should match snapshot 1`] = `
+{
+  "activePlacement": "bottom-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'bottom-end' and 'element' is defined should match snapshot when 'distance' is '0' 1`] = `
+{
+  "activePlacement": "bottom-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'bottom-end' and 'element' is defined should match snapshot when 'distance' is '5' 1`] = `
+{
+  "activePlacement": "bottom-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'bottom-end' and 'element' is defined should match snapshot when 'distance' is '10' 1`] = `
+{
+  "activePlacement": "bottom-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'bottom-end' and 'element' is defined should match snapshot when 'interactive' is true 1`] = `
+{
+  "activePlacement": "bottom-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'bottom-end' and 'element' is defined should match snapshot when 'skidding' is '0' 1`] = `
+{
+  "activePlacement": "bottom-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'bottom-end' and 'element' is defined should match snapshot when 'skidding' is '5' 1`] = `
+{
+  "activePlacement": "bottom-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'bottom-end' and 'element' is defined should match snapshot when 'skidding' is '10' 1`] = `
+{
+  "activePlacement": "bottom-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'bottom-start' and 'element' is defined should match snapshot 1`] = `
+{
+  "activePlacement": "bottom-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'bottom-start' and 'element' is defined should match snapshot when 'distance' is '0' 1`] = `
+{
+  "activePlacement": "bottom-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'bottom-start' and 'element' is defined should match snapshot when 'distance' is '5' 1`] = `
+{
+  "activePlacement": "bottom-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'bottom-start' and 'element' is defined should match snapshot when 'distance' is '10' 1`] = `
+{
+  "activePlacement": "bottom-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'bottom-start' and 'element' is defined should match snapshot when 'interactive' is true 1`] = `
+{
+  "activePlacement": "bottom-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'bottom-start' and 'element' is defined should match snapshot when 'skidding' is '0' 1`] = `
+{
+  "activePlacement": "bottom-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'bottom-start' and 'element' is defined should match snapshot when 'skidding' is '5' 1`] = `
+{
+  "activePlacement": "bottom-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'bottom-start' and 'element' is defined should match snapshot when 'skidding' is '10' 1`] = `
+{
+  "activePlacement": "bottom-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'left' and 'element' is defined should match snapshot 1`] = `
+{
+  "activePlacement": "left",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'left' and 'element' is defined should match snapshot when 'distance' is '0' 1`] = `
+{
+  "activePlacement": "left",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'left' and 'element' is defined should match snapshot when 'distance' is '5' 1`] = `
+{
+  "activePlacement": "left",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'left' and 'element' is defined should match snapshot when 'distance' is '10' 1`] = `
+{
+  "activePlacement": "left",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'left' and 'element' is defined should match snapshot when 'interactive' is true 1`] = `
+{
+  "activePlacement": "left",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'left' and 'element' is defined should match snapshot when 'skidding' is '0' 1`] = `
+{
+  "activePlacement": "left",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'left' and 'element' is defined should match snapshot when 'skidding' is '5' 1`] = `
+{
+  "activePlacement": "left",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'left' and 'element' is defined should match snapshot when 'skidding' is '10' 1`] = `
+{
+  "activePlacement": "left",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'left-end' and 'element' is defined should match snapshot 1`] = `
+{
+  "activePlacement": "left-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'left-end' and 'element' is defined should match snapshot when 'distance' is '0' 1`] = `
+{
+  "activePlacement": "left-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'left-end' and 'element' is defined should match snapshot when 'distance' is '5' 1`] = `
+{
+  "activePlacement": "left-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'left-end' and 'element' is defined should match snapshot when 'distance' is '10' 1`] = `
+{
+  "activePlacement": "left-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'left-end' and 'element' is defined should match snapshot when 'interactive' is true 1`] = `
+{
+  "activePlacement": "left-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'left-end' and 'element' is defined should match snapshot when 'skidding' is '0' 1`] = `
+{
+  "activePlacement": "left-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'left-end' and 'element' is defined should match snapshot when 'skidding' is '5' 1`] = `
+{
+  "activePlacement": "left-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'left-end' and 'element' is defined should match snapshot when 'skidding' is '10' 1`] = `
+{
+  "activePlacement": "left-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'left-start' and 'element' is defined should match snapshot 1`] = `
+{
+  "activePlacement": "left-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'left-start' and 'element' is defined should match snapshot when 'distance' is '0' 1`] = `
+{
+  "activePlacement": "left-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'left-start' and 'element' is defined should match snapshot when 'distance' is '5' 1`] = `
+{
+  "activePlacement": "left-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'left-start' and 'element' is defined should match snapshot when 'distance' is '10' 1`] = `
+{
+  "activePlacement": "left-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'left-start' and 'element' is defined should match snapshot when 'interactive' is true 1`] = `
+{
+  "activePlacement": "left-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'left-start' and 'element' is defined should match snapshot when 'skidding' is '0' 1`] = `
+{
+  "activePlacement": "left-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'left-start' and 'element' is defined should match snapshot when 'skidding' is '5' 1`] = `
+{
+  "activePlacement": "left-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'left-start' and 'element' is defined should match snapshot when 'skidding' is '10' 1`] = `
+{
+  "activePlacement": "left-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'right' and 'element' is defined should match snapshot 1`] = `
+{
+  "activePlacement": "right",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'right' and 'element' is defined should match snapshot when 'distance' is '0' 1`] = `
+{
+  "activePlacement": "right",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'right' and 'element' is defined should match snapshot when 'distance' is '5' 1`] = `
+{
+  "activePlacement": "right",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'right' and 'element' is defined should match snapshot when 'distance' is '10' 1`] = `
+{
+  "activePlacement": "right",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'right' and 'element' is defined should match snapshot when 'interactive' is true 1`] = `
+{
+  "activePlacement": "right",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'right' and 'element' is defined should match snapshot when 'skidding' is '0' 1`] = `
+{
+  "activePlacement": "right",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'right' and 'element' is defined should match snapshot when 'skidding' is '5' 1`] = `
+{
+  "activePlacement": "right",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'right' and 'element' is defined should match snapshot when 'skidding' is '10' 1`] = `
+{
+  "activePlacement": "right",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'right-end' and 'element' is defined should match snapshot 1`] = `
+{
+  "activePlacement": "right-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'right-end' and 'element' is defined should match snapshot when 'distance' is '0' 1`] = `
+{
+  "activePlacement": "right-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'right-end' and 'element' is defined should match snapshot when 'distance' is '5' 1`] = `
+{
+  "activePlacement": "right-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'right-end' and 'element' is defined should match snapshot when 'distance' is '10' 1`] = `
+{
+  "activePlacement": "right-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'right-end' and 'element' is defined should match snapshot when 'interactive' is true 1`] = `
+{
+  "activePlacement": "right-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'right-end' and 'element' is defined should match snapshot when 'skidding' is '0' 1`] = `
+{
+  "activePlacement": "right-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'right-end' and 'element' is defined should match snapshot when 'skidding' is '5' 1`] = `
+{
+  "activePlacement": "right-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'right-end' and 'element' is defined should match snapshot when 'skidding' is '10' 1`] = `
+{
+  "activePlacement": "right-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'right-start' and 'element' is defined should match snapshot 1`] = `
+{
+  "activePlacement": "right-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'right-start' and 'element' is defined should match snapshot when 'distance' is '0' 1`] = `
+{
+  "activePlacement": "right-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'right-start' and 'element' is defined should match snapshot when 'distance' is '5' 1`] = `
+{
+  "activePlacement": "right-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'right-start' and 'element' is defined should match snapshot when 'distance' is '10' 1`] = `
+{
+  "activePlacement": "right-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'right-start' and 'element' is defined should match snapshot when 'interactive' is true 1`] = `
+{
+  "activePlacement": "right-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'right-start' and 'element' is defined should match snapshot when 'skidding' is '0' 1`] = `
+{
+  "activePlacement": "right-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'right-start' and 'element' is defined should match snapshot when 'skidding' is '5' 1`] = `
+{
+  "activePlacement": "right-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'right-start' and 'element' is defined should match snapshot when 'skidding' is '10' 1`] = `
+{
+  "activePlacement": "right-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'some-other-value' and 'element' is defined should match snapshot 1`] = `
+{
+  "activePlacement": "bottom",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'some-other-value' and 'element' is defined should match snapshot when 'distance' is '0' 1`] = `
+{
+  "activePlacement": "bottom",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'some-other-value' and 'element' is defined should match snapshot when 'distance' is '5' 1`] = `
+{
+  "activePlacement": "bottom",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'some-other-value' and 'element' is defined should match snapshot when 'distance' is '10' 1`] = `
+{
+  "activePlacement": "bottom",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'some-other-value' and 'element' is defined should match snapshot when 'interactive' is true 1`] = `
+{
+  "activePlacement": "bottom",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'some-other-value' and 'element' is defined should match snapshot when 'skidding' is '0' 1`] = `
+{
+  "activePlacement": "bottom",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'some-other-value' and 'element' is defined should match snapshot when 'skidding' is '5' 1`] = `
+{
+  "activePlacement": "bottom",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'some-other-value' and 'element' is defined should match snapshot when 'skidding' is '10' 1`] = `
+{
+  "activePlacement": "bottom",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'top' and 'element' is defined should match snapshot 1`] = `
+{
+  "activePlacement": "top",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'top' and 'element' is defined should match snapshot when 'distance' is '0' 1`] = `
+{
+  "activePlacement": "top",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'top' and 'element' is defined should match snapshot when 'distance' is '5' 1`] = `
+{
+  "activePlacement": "top",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'top' and 'element' is defined should match snapshot when 'distance' is '10' 1`] = `
+{
+  "activePlacement": "top",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'top' and 'element' is defined should match snapshot when 'interactive' is true 1`] = `
+{
+  "activePlacement": "top",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'top' and 'element' is defined should match snapshot when 'skidding' is '0' 1`] = `
+{
+  "activePlacement": "top",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'top' and 'element' is defined should match snapshot when 'skidding' is '5' 1`] = `
+{
+  "activePlacement": "top",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'top' and 'element' is defined should match snapshot when 'skidding' is '10' 1`] = `
+{
+  "activePlacement": "top",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'top-end' and 'element' is defined should match snapshot 1`] = `
+{
+  "activePlacement": "top-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'top-end' and 'element' is defined should match snapshot when 'distance' is '0' 1`] = `
+{
+  "activePlacement": "top-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'top-end' and 'element' is defined should match snapshot when 'distance' is '5' 1`] = `
+{
+  "activePlacement": "top-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'top-end' and 'element' is defined should match snapshot when 'distance' is '10' 1`] = `
+{
+  "activePlacement": "top-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'top-end' and 'element' is defined should match snapshot when 'interactive' is true 1`] = `
+{
+  "activePlacement": "top-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'top-end' and 'element' is defined should match snapshot when 'skidding' is '0' 1`] = `
+{
+  "activePlacement": "top-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'top-end' and 'element' is defined should match snapshot when 'skidding' is '5' 1`] = `
+{
+  "activePlacement": "top-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'top-end' and 'element' is defined should match snapshot when 'skidding' is '10' 1`] = `
+{
+  "activePlacement": "top-end",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'top-start' and 'element' is defined should match snapshot 1`] = `
+{
+  "activePlacement": "top-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'top-start' and 'element' is defined should match snapshot when 'distance' is '0' 1`] = `
+{
+  "activePlacement": "top-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'top-start' and 'element' is defined should match snapshot when 'distance' is '5' 1`] = `
+{
+  "activePlacement": "top-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'top-start' and 'element' is defined should match snapshot when 'distance' is '10' 1`] = `
+{
+  "activePlacement": "top-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'top-start' and 'element' is defined should match snapshot when 'interactive' is true 1`] = `
+{
+  "activePlacement": "top-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'top-start' and 'element' is defined should match snapshot when 'skidding' is '0' 1`] = `
+{
+  "activePlacement": "top-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'top-start' and 'element' is defined should match snapshot when 'skidding' is '5' 1`] = `
+{
+  "activePlacement": "top-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;
+
+exports[`makePopperPlacement when 'placement' is 'top-start' and 'element' is defined should match snapshot when 'skidding' is '10' 1`] = `
+{
+  "activePlacement": "top-start",
+  "left": NaN,
+  "top": NaN,
+}
+`;

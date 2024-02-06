@@ -1,0 +1,93 @@
+import LinkTo from "@storybook/addon-links/react";
+
+<Meta title="Welcome/Contributing/Design" />
+
+# Contributing to Design at Beacon
+
+When designing a new component, there are a few areas to consider.
+
+### Component Name
+
+Keep it short and recognizable. Look into the naming patterns used in the industry.
+
+### States and Behavior
+
+States are visual representations used to communicate the status of a component or interactive element.
+Make sure you’re taking into account any applicable states. Check the <a href="https://docs.google.com/document/d/10XDI10BLe-VWARIzirvxIh3WczB3be36MV_OWDEM6iY/edit" target="_blank" rel="noopener noreferrer">Component Documentation Template</a>
+to see the complete list.
+
+Other things to consider if applicable:
+
+- How does this component appear?
+- Can this be dismissed or removed, how?
+- Can this expand, how?
+- Does the component scroll with the page, off the page, or remain sticky?
+- Can you scroll content within?
+- Will the component trigger feedback once it has been interacted, how?
+- What is the appropriate mouse cursor to use based on the event or state of the component?|
+
+### Variants and Properties
+
+Some components may require additional properties like sizing or color variations to name a few in order to
+have more flexibility. Keep in mind the primary use cases the product needs in order to decide what needs to be supported.
+
+### Responsiveness
+
+Consider or showcase how a component scales in various viewports
+
+### Accessibility
+
+In order to build our product for the widest audience possible,
+incorporate <LinkTo kind="welcome-accessibility-a11y-best-practices--page">a11y best practices</LinkTo> when appropriate.
+
+Example of things to keep in mind when designing:
+
+- Colors
+- Ensure proper color contrast
+- Do not rely on color alone to convey information
+- Typography
+- Allow ample spacing around texts to make them easy to distinguish and read
+- Longer lines of text can be hard to follow and make readers lose their place in the text, so aim for shorter lines
+  - _TBD: Need to define what the suggested text length is for both English and Japanese characters_
+- Do not justify text to both the right and left because it creates gaps and uneven spacing.
+- See <a href="https://en.wikipedia.org/wiki/River_(typography" target="_blank" rel="noopener noreferrer">"Rivers of White."</a>
+
+Example of things to keep in mind when developing:
+
+- Using proper and well-structured HTML semantics so the application is understandable and usable with CSS disabled (or when read by screen readers)
+  - _TIP: Use the built-in screen reader "VoiceOver" for Mac OS X to test your component's accessibility_
+- Any text in ALL CAPS should be typed in its proper casing and capitalization should be achieved using CSS
+- All non-text content such as photo, icons, illustrations, and so on, need to have alternative text
+- All component functionality should be accessible by keyboard
+
+### Design tokens
+
+Leverage existing <a href="https://www.figma.com/file/5aPJgeJi365Xunlps00NbE/2-UI-Component-Library?node-id=2010%3A144" target="_blank" rel="noopener noreferrer">design tokens</a>
+when designing the components. Should you need to propose a new design token, make
+sure they can be used across multiple use cases a handful of times
+
+### Internationalization
+
+Make sure the component works properly across various locales supported by Braze.
+
+#### Example of things to keep in mind when designing
+
+Keep copy short and succinct as character counts or length of the string can impact component layouts when translated
+When designing complex components, make sure to allow enough space for longer translations to avoid text being cut off
+
+#### Example of things to keep in mind when developing
+
+- Using typography like `[this]` or `+` to express emphasis or iconography. Instead, use graphical icons with aria attributes
+  for icons, and surround visually emphasized text with html tags with aria attributes styled with CSS to visually indicate emphasis.
+  Some of this overlaps with accessibility.
+- Interspersing interactive form elements inside sentences, or other design that locks visual elements to English grammar.
+- If the component represents dynamic lists, ensure the list is visually separate from other textual elements. Translating
+  sentences with dynamic lists is dramatically more complex.
+
+### Usage Guidelines
+
+In order for Beacon users to learn how best to apply components to their specific use case, bringing in context through
+documentation is vital.
+
+For designers, use this <a href="https://docs.google.com/document/d/10XDI10BLe-VWARIzirvxIh3WczB3be36MV_OWDEM6iY/edit?usp=sharing" target="_blank" rel="noopener noreferrer">template</a>
+to showcase decisions and recommendations.

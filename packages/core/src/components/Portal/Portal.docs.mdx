@@ -1,0 +1,43 @@
+import { Story, Canvas } from "@storybook/addon-docs/blocks";
+
+# Portal
+
+Portals provide a first-class way to render children into a DOM node that
+exists outside the DOM hierarchy of the parent component.
+
+> Note: if you wish to portal your children into a specific div not at the
+> bottom of the page, use `React.createPortal` directly
+
+## Use cases
+
+Below are some common use cases for the `Portal` component.
+
+### Basic use
+
+<Canvas>
+  <Story id="core-portal--basic-use" />
+</Canvas>
+
+### Unmounting
+
+You can unmount the Portal and it's children by just removing it from the render tree,
+like any other React component.
+
+<Canvas>
+  <Story id="core-portal--unmount" />
+</Canvas>
+
+## Usage
+
+```javascript
+import { Portal } from "@braze/beacon-core";
+```
+
+## Properties
+
+| propName    | propType                           | defaultValue | isRequired | Description                          |
+| ----------- | ---------------------------------- | ------------ | ---------- | ------------------------------------ |
+| `children`  | oneOfType( node, arrayOf( node ) ) | -            | -          | children to be passed into component |
+| `className` | string                             | -            | -          | class name of the component          |
+| `id`        | string                             | -            | +          | id to be passed to the DOM           |
+| `node`      | function                           | -            | -          | DOM node override to use portal into |

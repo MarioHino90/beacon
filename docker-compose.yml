@@ -1,0 +1,77 @@
+version: "3.6"
+services:
+  sdk:
+    build:
+      context: .
+      args:
+        NPM_TOKEN: ${BEACON_CI_NPM_TOKEN}
+    volumes:
+      - "${SSH_AUTH_SOCK}:/ssh-agent"
+      - "${HOME}/.ssh/known_hosts:/root/.ssh/known_hosts"
+    environment:
+      - BUILDKITE_AGENT_ACCESS_TOKEN
+      - BUILDKITE_JOB_ID
+      - BUILDKITE_BRANCH
+      - BUILDKITE_BUILD_ID
+      - BUILDKITE_BUILD_NUMBER
+      - SSH_AUTH_SOCK=/ssh-agent
+  test:
+    build:
+      context: .
+      target: test
+      args:
+        NPM_TOKEN: ${BEACON_CI_NPM_TOKEN}
+    volumes:
+      - "${SSH_AUTH_SOCK}:/ssh-agent"
+      - "${HOME}/.ssh/known_hosts:/root/.ssh/known_hosts"
+      # NOTE: update .buildkite/docker-compose.yml with any changes you want to see in CI
+      - "./jest-coverage:/source/coverage"
+      - "./cypress-coverage:/source/integration-tests/coverage/cypress"
+      - "./screenshots:/source/integration-tests/cypress/screenshots"
+      - "./videos:/source/integration-tests/cypress/videos"
+    environment:
+      - BUILDKITE_AGENT_ACCESS_TOKEN
+      - BUILDKITE_JOB_ID
+      - BUILDKITE_BRANCH
+      - BUILDKITE_BUILD_ID
+      - BUILDKITE_BUILD_NUMBER
+      - SSH_AUTH_SOCK=/ssh-agent
+    networks:
+      - default
+  cypress:
+    # https://docs.cypress.io/guides/guides/continuous-integration.html#In-Docker
+    ipc: host
+    build:
+      context: .
+      target: test
+      args:
+        NPM_TOKEN: ${BEACON_CI_NPM_TOKEN}
+    depends_on:
+      - "storybook"
+    volumes:
+      # NOTE: update .buildkite/docker-compose.yml with any changes you want to see in CI
+      - "./jest-coverage:/source/coverage"
+      - "./cypress-coverage:/source/integration-tests/coverage/cypress"
+      - "./screenshots:/source/integration-tests/cypress/screenshots"
+      - "./videos:/source/integration-tests/cypress/videos"
+    command: ["yarn", "cypress:cli", "-c", "baseUrl=http://${COMPOSE_PROJECT_NAME}_storybook_1"]
+  storybook:
+    # https://docs.cypress.io/guides/guides/continuous-integration.html#In-Docker
+    ipc: host
+    build:
+      context: .
+      target: release
+      args:
+        NPM_TOKEN: ${BEACON_CI_NPM_TOKEN}  
+    volumes:
+      - "${SSH_AUTH_SOCK}:/ssh-agent"
+      - "${HOME}/.ssh/known_hosts:/root/.ssh/known_hosts"
+    environment:
+      - BUILDKITE_BRANCH
+      - SSH_AUTH_SOCK=/ssh-agent
+    ports:
+      - "6009:6009"
+    networks:
+      - default
+networks:
+  default:

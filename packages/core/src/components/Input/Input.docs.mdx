@@ -1,0 +1,110 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+
+# Input
+
+`Input` lets the user input free alphanumeric strings.
+
+## Use cases
+
+Below are some common use cases for the `Input` component.
+
+### Basic use
+
+A basic input field can be used thusly. See code for how you
+can control the state of the component.
+
+<Canvas>
+  <Story id="core-forms-input--basic-use" />
+</Canvas>
+
+### Disabled
+
+Use prop `disabled` to disable the use of the underlying
+input:
+
+<Canvas>
+  <Story id="core-forms-input--disabled" />
+</Canvas>
+
+### Invalid
+
+Use prop `invalid` to denote that the value in the input is
+not valid:
+
+> Add a descriptive error message to the field's label to tell your user what went wrong.
+
+<Canvas>
+  <Story id="core-forms-input--invalid" />
+</Canvas>
+
+### Full width
+
+Use prop `fullWidth` to make the input field span the full
+width of its parent container:
+
+<Canvas>
+  <Story id="core-forms-input--full-width" />
+</Canvas>
+
+### Different vertical sizes
+
+Use prop `vSize` to make the `SearchInput` vertical size change to fit the container:
+
+<Canvas>
+  <Story id="core-forms-input--vertical-size" />
+</Canvas>
+
+### Label
+
+Use a `FieldLabel` to add a label to the `Input`:
+
+<Canvas>
+  <Story id="core-forms-input--label" />
+</Canvas>
+
+### `type` is "number"
+
+Use prop `type === "number"` to make the text field accept only
+numeric values. Use props `min` and `max` to set minimum or
+maximum values. Use prop `step` to set the increment/decrement
+for the number values.
+
+<Canvas>
+  <Story id="core-forms-input--type-number" />
+</Canvas>
+
+## `type` is "date"
+
+Use prop `type: date` to make the text field accept date
+values. This is meant to be a placeholder until we have a proper date
+picker.
+
+Use props `min` and `max` to set minimum or
+maximum dates. Use prop `step` to set the increment/decrement
+for the date values in whole days.
+
+<Canvas>
+  <Story id="core-forms-input--type-date" />
+</Canvas>
+
+## Usage
+
+```javascript
+import { Input } from "@braze/beacon-core";
+```
+
+## Properties
+
+| propName    | propType                              | defaultValue | isRequired | Description                                                                           |
+| ----------- | ------------------------------------- | ------------ | ---------- | ------------------------------------------------------------------------------------- |
+| `className` | string                                | -            | -          | class name of the component                                                           |
+| `fullWidth` | boolean                               | -            | -          | takes up 100% of the width of the container                                           |
+| `id`        | string                                | -            | -          | id to be passed to the DOM                                                            |
+| `invalid`   | boolean                               | -            | -          | indicates that the currently inputted value is invalid                                |
+| `max`       | oneOfType( number, string )           | -            | -          | max value for the input field; only relevant when `type` is either `number` or `date` |
+| `min`       | oneOfType( number, string )           | -            | -          | min value for the input field; only relevant when `type` is either `number` or `date` |
+| `ref`       | `React.RefObject<HTMLInputElement>`   | -            | -          | ref to get access to the DOM node                                                     |
+| `step`      | number                                | -            | -          | step to use when bumping up numbers                                                   |
+| `type`      | oneOf( `date`, `number` ,`text` )     | -            | -          | type of the input field                                                               |
+| `value`     | oneOfType( string, number, string[] ) | -            | -          | value to be rendered in the input field                                               |
+| `vSize`     | oneOf( `sm`, `md`)                    | `md`         | -          | vertical size for input box                                                           |

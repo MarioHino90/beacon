@@ -1,0 +1,220 @@
+import { Story, Canvas } from "@storybook/addon-docs";
+
+import {
+  BannerAlert,
+  BannerAlertBody,
+  BannerAlertDescription,
+  BannerAlertDescriptionText,
+} from "@braze/beacon-core";
+
+# Button
+
+A `Button` allows the user to make things happen.
+
+## Use cases
+
+Below are some common use cases for the `Button` component.
+
+### Basic use
+
+Try clicking! You can also show icons with text by passing it the
+icon as a child.
+
+> Go to the canvas tab to interact with the `disabled`, `intent`,
+> `muted`, `variant`, and `size` props!
+
+<Canvas>
+  <Story id="core-primitives-button--basic-use" />
+</Canvas>
+
+### Primary variant
+
+The most typical use case of the `Button`, the `primary`
+variant indicates that the `Button` has highest relative importance
+and/or impact relative to other `Button` variants.
+
+> Tip: try clicking into the box below and tabbing through the
+> `Button`s to see their focus state!
+
+<Canvas>
+  <Story id="core-primitives-button--primary-variant" />
+</Canvas>
+
+### Secondary variant
+
+The `secondary` variant usually indicates a contrast to the `primary`
+but is not the intended focus of the user's attention. A common use
+case is in `Modal` dialogs where there's a `Keep editing` action as
+a contrast to the primary, which might be `Save and close`.
+
+<Canvas>
+  <Story id="core-primitives-button--secondary-variant" />
+</Canvas>
+
+### Tertiary variant
+
+The `tertiary` variant is the `Button` that is meant to draw
+the least attention relative to other button variants. A common
+use case often involves effects that may be destructive.
+
+For example, in `Modal` dialogs where there's a `Save and close`
+`Button` as the `primary`, and a `Keep going` `Button` as the secondary,
+a `tertiary` `Button` may say `Don't save and close`.
+
+> NOTE: The `tertiary` variant is being considered for deprecation
+> and may be replaced by the `quaternary` variant (below) in the near
+> future. If you have use cases that require ongoing support for the
+> `tertiary` variant, please inform the DASHI team at your earliest
+> convenience.
+
+<Canvas>
+  <Story id="core-primitives-button--tertiary-variant" />
+</Canvas>
+
+### Quaternary variant
+
+The `quaternary` variant is the `Button` that is meant to
+behave more like a link than a `Button` and has a much
+smaller profile. A common use case often involves including
+it among text or with actions that may be destructive.
+
+For example, in `Modal` dialogs where there's a `Save and close`
+`Button` as the `primary`, and a `Keep going` `Button` as the
+`secondary`, a `quaternary` `Button` may say `Don't save and close`.
+
+<Canvas>
+  <Story id="core-primitives-button--quaternary-variant" />
+</Canvas>
+
+### Different sizes
+
+Depending on the layout of your application, you may need to use
+differently sized `Button` components. The following illustrate
+the available sizing options.
+
+> Tip: go to the `canvas` tab to change how the different sizes
+> appear in different prop configurations.
+
+<Canvas>
+  <Story id="core-primitives-button--different-sizes" />
+</Canvas>
+
+### Disabled use
+
+<BannerAlert isOpen intent="warning">
+  <BannerAlertBody>
+    <BannerAlertDescription>
+      <BannerAlertDescriptionText>
+        When using a <code>ref</code> with a <code>Button</code>, it will attach to the
+        button, unless it is disabled. Disabled buttons cannot be used to trigger tooltips or
+        annotations. To work around this, when the button is disabled, the entire thing is wrapped in
+        a <code>div</code> element, and the ref is attached to this instead. If the ref is being used
+        to trigger the button action, or any other button-specific interaction, it is important that
+        the button cannot be disabled, or that the code referencing the ref prevent attempting to
+        interact with the button when it is disabled.
+      </BannerAlertDescriptionText>
+    </BannerAlertDescription>
+  </BannerAlertBody>
+</BannerAlert>
+
+If you need to prevent the user from being able to take any
+action (e.g. because they need to fill out all the required fields
+in a form before submitting), you can disable the `Button` entirely
+using the `disabled` prop.
+
+When disabled, the `Button` will NOT call the `onClick` function upon
+user click.
+
+<Canvas>
+  <Story id="core-primitives-button--disabled-use" />
+</Canvas>
+
+Using tooltips or annotations on disabled buttons is directly supported as well
+
+<Canvas>
+  <Story id="core-primitives-button--disabled-with-tooltip" />
+</Canvas>
+
+### Loading state (w/ success)
+
+Clicking a `Button` may sometimes trigger an async action that can take
+some time to complete. In such cases, you can set the `loadingState` prop
+to `loading` to indicate that the `Button` is currently loading. Note that
+the button will automatically be disabled when `loadingState` is `loading`.
+
+<Canvas>
+  <Story id="core-primitives-button--loading-state-w-success" />
+</Canvas>
+
+### Loading state (w/ error)
+
+Occasionally, the async action created by the button may result in an
+error. In such cases, you can set the `loadingState` to `error` to
+denote the failure.
+
+By default, an error state will NOT be reset automatically to the
+default button state. If you want to modify this behavior, you can pass
+an `options` object with `resetOnError: true` as the second argument
+of the `useLoadingButton` hook.
+
+To get out of the error state, a second element of the `useLoadingButton`
+return is an `onReset` callback that can be called to imperatively reset
+state.
+
+> NOTE: It's recommended that you supplement this with information on
+> how to resolve the error, so that the user can remedy the issue.
+
+<Canvas>
+  <Story id="core-primitives-button--loading-state-w-error" />
+</Canvas>
+
+## Usage
+
+```javascript
+import { Button } from "@braze/beacon-core";
+import { useLoadingButton } from "@braze/beacon-hooks";
+```
+
+## Properties
+
+### `Button`
+
+| propName         | propType                                                                 | defaultValue | isRequired | Description                                                                                                                               |
+| ---------------- | ------------------------------------------------------------------------ | ------------ | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `children`       | oneOfType( node, arrayOf( node ) )                                       | -            | -          | is the children to be passed into component                                                                                               |
+| `className`      | string                                                                   | -            | -          | is the class name of the component                                                                                                        |
+| `disabled`       | boolean                                                                  | -            | -          | indicates that the button should be visually and functionally disabled                                                                    |
+| `getAriaLabel`   | `(loadingState: ButtonLoadingState OR undefined) => string OR undefined` | \*see below  | -          | callback function to get aria label for different loading states; should typically only return something for 'error' and 'success' states |
+| `id`             | string                                                                   | -            | -          | id to be passed to the DOM                                                                                                                |
+| `intent`         | oneof( `danger`, `info`, `succcess`, `warning`)                          | "info"       | -          | indicates to the user the the possible outcome of clicking the button                                                                     |
+| `loadingMessage` | string                                                                   | -            | -          | message to display in the button alongside spinner while loading                                                                          |
+| `loadingState`   | oneOf(`idle`, `loading`, `success`, `error`)                             | -            | -          | indicates that the button is currently in a pending, active, or recently completed loading state                                          |
+| `minWidth`       | number                                                                   | -            | -          | minimum width the button should take                                                                                                      |
+| `ref`            | `React.RefObject<HTMLButtonElement>`                                     | -            | -          | ref object to access DOM instance of `Button` element                                                                                     |
+| `size`           | oneOf( `sm`, `lg`, `full` )                                              | "lg"         | -          | size of the button                                                                                                                        |
+| `type`           | oneOf( `button`, `submit`, `reset` )                                     | "button"     | -          | specifies the type of button for the DOM                                                                                                  |
+| `variant`        | oneOf( `primary`, `secondary`, `tertiary`, `quaternary` )                | "primary"    | -          | visually indicate to the user the relative importance/impact of the button                                                                |
+| `onClick`        | `(event: React.MouseEvent<HTMLButtonElement>) => void`                   | -            | -          | callback function on button click; will not be called if `disabled` prop is `true`                                                        |
+
+\*: by default, the aria-label of `Button` is set to "Button click success" or "Button click error"
+(localized via the `@braze/beacon-translations` package) for "success" and "error" loading states, resp.
+
+### `useLoadingButton`
+
+This hook is used to handle loading state management for a `Button`.
+
+> NOTE: A separate `useLoadingButton` hook call should be used for each button.
+
+- `status`: required; must be one of `idle`, `loading`, `success`, `error`
+- `options`: optional; must be an object that can have any combination of the following key:value pairs:
+  - `ref`: if you want to pass your own `ref` into the `Button`, pass it here instead of into the `Button` directly
+  - `timeout`: miliseconds after which the `Button` state will reset to `idle`; default is `3000`
+  - `resetOnError`: indicates that the loading state of the `Button` should be reset to `idle` after `timeout`; default: `false`
+
+Returns an array with two elements:
+
+- Props to be passed directly into the button, including the following (see `Button` properties for details):
+  - `loadingState`
+  - `minWidth`
+  - `ref`
+- A reset callback that resets the hook's loading state to `idle`

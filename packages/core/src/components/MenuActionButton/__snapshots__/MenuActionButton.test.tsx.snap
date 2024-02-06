@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuActionButton should match the snapshot 1`] = `
+<li
+  role="menuitem"
+>
+  <MenuButton
+    aria-label="administrator vatu"
+    className="bcl-menu-action-button turn-key"
+    id="defect"
+  >
+    <BodyText
+      size="md"
+    >
+      Administrator Vatu
+    </BodyText>
+  </MenuButton>
+</li>
+`;
+
+exports[`MenuActionButton should match the snapshot when 'children' is NOT a string 1`] = `
+<li
+  role="menuitem"
+>
+  <MenuButton
+    className="bcl-menu-action-button Rupee"
+    id="Card"
+  >
+    <BodyText
+      size="md"
+    >
+      <span>
+        hi
+      </span>
+    </BodyText>
+  </MenuButton>
+</li>
+`;
+
+exports[`MenuActionButton should match the snapshot when 'iconName' is defined 1`] = `
+<li
+  role="menuitem"
+>
+  <MenuButton
+    aria-label="mozambique"
+    className="bcl-menu-action-button invoice"
+    id="analyzer"
+  >
+    <Flex
+      justifyContent="center"
+      style={
+        {
+          "minWidth": 32,
+        }
+      }
+    >
+      <Icon
+        color={[Function]}
+        name="file"
+        size="1x"
+      />
+    </Flex>
+    <BodyText
+      size="md"
+    >
+      Mozambique
+    </BodyText>
+  </MenuButton>
+</li>
+`;
